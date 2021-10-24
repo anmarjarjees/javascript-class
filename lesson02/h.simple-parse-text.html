@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt and Numbers more example</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1. The code below has an error and you need to find it and fix it in order to get the right answer
+        */
+        var num1 = parseFloat(prompt("Enter the value of your first number")); // it's fixed by adding parseFloat
+
+        var num2 = parseFloat(prompt("Enter the value of your second number")); // it's fixed by adding parseFloat
+
+        var total = num1 + num2;
+        // you can test the formula of adding num1 to num2 by alerting the total variable to see where is the mistake
+        // so you can comment or uncomment the alert code below just for testing
+        console.log(total);
+
+        /*
+        2. The alert message below should alert the following if num1 = 5 and num2 = 6 (for example)
+           The total of adding 5 to 6 is: 11
+        */
+        console.log("the total of adding " + num1 + " to " + num2 + " is: " + total);
+    </script>
+
+</body>
+
+</html>

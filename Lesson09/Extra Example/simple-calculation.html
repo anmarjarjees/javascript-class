@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Calculations</title>
+</head>
+
+<body>
+
+    <form>
+        <!-- 
+            - The user can put a list of numbers with spaces between them
+            - the user can select what type of operation:
+                - The sum of even numbers ==> find the total of even numbers only
+                - the sum of odd numbers ==> find the total of odd numbers only
+            - then when they click "Calculate" button the "findResult()" function will work
+         -->
+        Enter your numbers with spaces:
+        <!-- example: 90 56 78 71 -->
+        <input type="text" id="numbers">
+        <br> Select your operation:
+        <br>
+        <!-- 
+            based on HTML rules and regulations, if we use radio buttons, we should have
+            one of them to be selected as default.
+
+            the classical way ==> checked = "checked"
+            the new HTML5 way ==> checked
+         -->
+        <input type="radio" id="even" name="op" value="even" checked>The sum of even numbers
+        <br>
+        <input type="radio" id="odd" name="op" value="odd">The sum of odd numbers
+        <div>
+            <input type="button" value="Calculate" onclick="findResult()">
+            <input type="reset" value="Clear numbers">
+        </div>
+    </form>
+    <div id="result">
+
+    </div>
+    <!-- 
+        we link this html file to an external js file 
+        Our js file is named "script.js" and it's inside "js" folder
+
+        notice that:
+        - we placed our js link at the end of the page
+        to make sure that the entire page is finished loading before 
+        calling our js code.
+
+        - the external js file name can be any name you like
+    -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

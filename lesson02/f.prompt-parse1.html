@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Prompt</title>
+</head>
+
+<body>
+    <h1>Heading 1</h1>
+    <p>
+        make sure to place the script element at the end of all the other HTML elements exactly before the closing body
+        tag.
+    </p>
+
+    <!-- We should place our script at the end of all html elements -->
+    <script>
+        /*
+        Important Note to Review Again:
+        It's better to place the JavaScript code or calling the external file at the end
+        of loading all the HTML page elements for these two main reasons:
+        1. To let the browser download the entire page (HTML and CSS) before trying to read the JS code. it's faster.
+        2. For the DOM (Document Object Model) purpose as we will see why later in the future
+        */
+
+
+        /*
+        Reminder:
+        The + sign in JS is used for "adding" numbers or "concatenating" string with numbers:
+        */
+
+        /*
+        Note:
+        In this file, I will not use the alert(), but I will use console.log()
+        just to avoid the annoying disturbing window that keeps alerting my test code.
+
+        So I just kept the final 4 alert() to show us the result
+        */
+
+        // Notice the way we are naming our files: camelCase
+        var myValue1 = "ABC"; // string (text) data type
+        var myValue2 = 10; // number data type
+        var result1 = myValue1 + myValue2; // "ABC" + 10 => "ABC" + "10" = "ABC10" as a string
+        console.log(result1); // "ABC10" as a string data type
+
+        var num1 = "100"; // the double quotes will make 100 as a string "100"
+        var num2 = "200"; // and so on here also
+        var numTotal = num1 + num2; // "100"+"200"
+        console.log(numTotal); // 100200
+
+        var firstName = "Alex";
+        var lastName = "Chow";
+        // concatenating two string values
+        var fullName = firstName + " " + lastName; // "Alex"+" "+"Chow"=> Alex Chow
+        console.log(fullName);
+
+        // So only the + sign can be used with text: we can say "A"+"B"="AB"
+        // But we cannot write "A"/"B" = "C"!!!!!
+
+        var value1 = 7; // numeric value
+        var value2 = "7"; // text value that has the character 7
+        // this only with +
+        console.log(value1 + value2); // => 7 and "7" = 77
+
+        // below JS will "implicitly" convert value2 into a number
+        // because the - is only used with numeric data
+        console.log(value1 - value2); // 7 - "7" =JS will make it=> 7 - 7 = 0
+
+        // more examples:
+        var assignment1 = "90";
+        var assignment2 = "80";
+        var assignmentsTotal = assignment1 + assignment2;
+        console.log("The total of my two assignments is: " + assignmentsTotal);
+
+
+        var item1 = "abc";
+        var item2 = 'xyz'; // we can either " or '
+        console.log(item1 + item2); // "abc" + 'xyz' = abcxyz
+        console.log(item1 - item2); // NaN => Not a Number
+        console.log(item1 * item2); // NaN
+        console.log(item1 / item2); // NaN
+
+        /*
+          Quick Review (Idea) About Methods or Functions:
+          Method / Function always have ( and )
+          example: we used alert()
+
+          In between these "(" and ")", We can have parameter(s).
+          Example:
+          exam1=90;
+          alert(exam1); // her exam1 is the alert function parameter
+
+          Some times we can have more than one parameter:
+          These parameters have to be separated with ","
+
+          Our new function to learn is prompt():
+          **************************************
+          In this file we will use a new function named prompt() to help us getting data from the user
+          We learnt how to output/print the data using alert() and console.log()
+
+          for example, this prompt function can accept two parameters:
+          - prompt("The text to be displayed", default value);
+          - notice that default value is "optional" which means we can write (put) it or just ignore it
+
+          prompt("Text that we want to display", default value)
+      */
+
+        /*
+        the code below is hard coding, it means we are putting the values of these two exams using our code!
+        we should give the user the option to enter their exam marks
+        */
+        // var exam1 = 90;
+        // var exam2 = 89;
+
+
+        /*
+         We used alert() ==> JavaScript Built-in function
+         to output (display) data to the browser
+
+         We can use prompt() ==> JavaScript Built-in function
+         to get data from the user instead of only displaying data, we can also receive data from the user!
+
+         prompt function needs at least one parameter and the second one is optional
+         prompt (string, value)
+         Remember that the prompt function returns a value of type string (text value)
+
+         In JavaScript, like any other programming language, function can return a value
+         prompt function can accept two parameters (arguments)
+         prompt ( Text to be displayed, default value).
+
+         function can return values,
+         We need to save the returned value of prompt() into a variable "var"
+         so we can use this value in our code
+
+         The returned value of the function prompt() is a string data type
+
+         You might think about prompt is like contact us form in html,
+         where we have a text to displayed plus a text box to put a value based on that text
+
+         prompt() function: is designed to accept string user input and return a string data type
+         even if the user input numeric values, these values will be converted to string
+
+         if we click ok:
+         - the value in the input box will be taken
+         - No value in the input box, it will just an empty string
+
+         if we click "cancel":
+         - the value will be "null"
+       */
+        var clientName = prompt("Hi there! What's your name please?");
+        console.log("Your full name is: " + clientName);
+        // using the built-in function typeof() to return the data type (not the value)
+        console.log(typeof (clientName)); // "string" if we click "OK", "object" if we click "cancel"
+
+        /*
+        In our example the first prompt() function will return the value of exam1 and so on
+
+        Below we put the second parameter to be 0 as a default value,
+        so if the user forgot to put the exam mark, the value will be 0
+        */
+
+        // Below: if the user didn't put any value for the first/second exam, the default value will be 0
+        var exam1 = prompt("Enter the value of your first exam:", 0); // 10 as a number => prompt will return "10"
+        var exam2 = prompt("Enter the value of your second exam:", 0); // 8 as a number => prompt will return "8"
+
+        // for testing:
+        console.log("Your exam1 mark is " + exam1);
+        console.log("Your exam2 mark is " + exam2);
+
+        // testing the input data type:
+        console.log(typeof (exam1)); // "number" if we click "OK"
+        console.log(typeof (exam2)); // "number" if we click "OK"
+
+        // Because the two values are returned from the prompt() function as string
+        // So JS will use the + for concatenating these two string variables
+        var total = exam1 + exam2; // "10" + "8" = "108"
+        console.log("The total of exam1 and exam2 is: " + total);
+        // Or:
+        console.log("The total of exam1 and exam2 is: " + (exam1 + exam2));
+
+        // let's try the other operations:
+        // because these 3 symbols (-, *, /) work only with numbers (Math operations)
+        // and also because this symbol (+) can work as a math operation or as a concatenating symbol
+        // That's why JS will convert the string "10" into 10 as number and convert "8" into 8 as number
+        console.log(exam1 - exam2); // works: "10" - "8" => 10 - 8 = 2
+        console.log(exam1 * exam2); // works: "10" * "8" => 10 * 8 = 80
+        console.log(exam1 / exam2); // works: "10" / "8" => 10 / 8  = 1.25
+        // but if we have "10" + "8" = 108 <= Here is the problem!
+
+        // also for our previous example:
+        // var book1 = 40.75; NO Hard Coding anymore!
+        var book1 = prompt("Enter the price of your first book"); // 78.56
+        var book2 = prompt("Enter the price of your second book"); // 34.18
+        var bookTotal = book1 + book2;
+        console.log("The total of your two books is: $" + bookTotal);
+
+        /*
+        the returned value of prompt function is always a "string" data type,
+        so it's not numeric even if the user put numbers!
+
+        prompt() function returns a string value by JavaScript!
+        so even if the user type 90 JS will make it "90" or '90' as string data type
+        the prompt() function will automatically convert it to a string by adding the " or '
+
+        var exam1=prompt("Enter the value of your first exam",0); => if the user inputs 100 as number
+        the returned value will be "100" for example
+        with "+" ==> "100"+"90" = 10090
+        so in this case JS will concatenate "100" to "90" because both
+        value 100 and 90 are string data type not numeric
+
+        In JavaScript the "+" symbol or sign is used for:
+        - concatenating (for text values)
+        - adding (for numeric values)
+
+        so JS will use the concatenate operator +
+        because the + symbol is used for addition or concatenating
+
+        Let's take this example:
+
+        exam1 = 8 with prompt(): convert the input into a text ==> "8"
+        exam2 = 5 with prompt(): convert the input into a text ==> "5"
+
+        JS Interpreter will see the values as text "8" and "5"
+        for this reason "8"+"5" ==> 85 like "A"+"B" ==> AB
+        so the + sign will be a concatenating operation NOT arithmetic operation
+
+        8+5 as numbers not "8"+"5" as text
+        */
+
+        // to fix it, we need to convert the returned value from the prompt() into a number
+        /*
+        We have two built-in JS functions to explicitly convert (text value) to (numeric value)
+
+        - parseFloat() ==> to deal with integer (Whole) or float (decimal) numbers
+        example: 89.75 or even 89
+
+        - parseInt() ==> to deal only with integer(Whole) value only
+          int is short for integer
+          example: 89 ==> it has to be an integer value (no decimal point)
+
+        Note:
+        parseFloat works with the both types of numbers: integers and decimals
+        parseInt can work only with whole number and it will ignore the decimals
+
+        Examples:
+        parseFloat("90.75") ==> 90.75 as numeric value
+        parseInt("90.75") ==> 90 as numeric value (ignore the decimals!!!!)
+        parseInt("7") ==> 7 as numeric value
+
+        be careful with this example below:
+        parseInt("78.5") ==> 78 (ignore the decimals!!!!)
+        */
+
+        // Now we can use one these function to solve our problem :-)
+
+        // getting the old "string" value of exam1 and using parseFloat() to make it "numeric" value
+        // then assign it back to our same variable exam1
+        exam1 = parseFloat(exam1); // "100" => 100 Or "89.72" => 89.72
+
+        // And we can repeat the same step with exam2:
+        exam2 = parseFloat(exam2); // "90.67" => 90.67
+
+        // Just for testing:
+        console.log("Again the correct total of exam1 + exam2 after pars is: " + (exam1 + exam2));
+        // OR:
+        var examTotal = exam1 + exam2;
+        console.log("Again the correct total of exam1 + exam2 is: " + examTotal);
+
+        var average = examTotal / 2; // divided by 2 because we have two exams
+        console.log("the average of exam1 and exam2 is: " + average);
+
+        // We can use the same functions with book price problem
+        /*
+        book1 =  parseFloat(book1);
+        book2 =  parseFloat(book2);
+        */
+        bookTotal = parseFloat(book1) + parseFloat(book2);
+        console.log("Again the correct total of book1 price + book2 price is: " + bookTotal);
+
+        // or for some of you:
+        /*
+            Like Any Programming language, JavaScript also follows the Math rules (like MS Excel):
+            PEDMAS OR BEDMAS
+            P => Parenthesis: ( and ) OR B => Brackets
+            E => Exponent => example: 5 to the power of 2 which means 5 x 5 = 25
+            D => Division
+            M => Multiplication
+            A => Addition
+            S => Subtraction
+        */
+        // var average = (exam1+exam2)/2; // PEDMAS
+
+        console.log("The average of your two exams is " + average);
+        // Or more advanced:
+        // if the user inserted 100 for exam1 and 90 for exam2
+        // the output: the average of 100 and 90 is XX
+        // text + Exam1 value + text + Exam2 value + text + average value
+        // below we used ' instead of " because in JS we can use both
+        console.log('The average of ' + exam1 + ' and ' + exam2 + ' is: ' + average);
+
+        // More example:
+        console.log('Hi ' + clientName + '! Your average for ' + exam1 + ' and ' + exam2 + ' is: ' + average)
+
+        // To summarize:
+        // we can use parseFloat() to get
+        // both whole numbers (integers)
+        // float numbers (decimal numbers)
+
+    </script>
+</body>
+
+</html>

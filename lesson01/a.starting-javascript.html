@@ -1,0 +1,141 @@
+<!--
+    Generate the HTML5 template (boilerplate) in vscode:
+    Type: html:5
+
+    OR:
+
+    Press SHIFT + 1 ==> ! then press Enter key
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to JS with The Browser Console</title>
+
+    <!--
+        we have style element to write our css and it has to be inside <head> element
+        "Internal Styles"
+
+        we can also put our styles in a different/separate file with the extension of .css
+        and it's "External Styles"
+
+        or we can add our styles to html elements as attributes,
+        and it's called "Inline Styles"
+     -->
+    <style>
+        /*
+        we can write our CSS rules
+
+        using * as the general selector to select all the elements
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <!--
+        Any programming language must be converted to machine language (code) to be understood by the computer. So,
+        some languages are interpreted into a machine code using an interpreter software, other languages are compiled
+        into machine code using a complier software. JavaScript is an interpreted language rather than a compiled
+        language. NOTE: JavaScript is NOT the script version of the Java language. Both are different languages, but the
+        good news is that JavaScript is much easier to learn and use than Java
+    -->
+
+    <!--
+        Internal JavaScript code:
+        Using script element to write JavaScript code:
+     -->
+    <script>
+        /*
+        Multiple lines of comment in JS
+        Line1
+        Line2
+        */
+
+        // Double front slash symbols can be used for a single line of comments in JS
+        // here is another line of comment
+        // One line of short comment in JS
+        // Here is another One line of short comment in JS
+
+        /*
+        We can use the console window in any browser
+        to write our JS code:
+
+        below are samples of what we have written in
+        the console window:
+
+        Notes:
+        - To open the console window, we can use the hotkey "F12" in the browser window
+        - Notice that "F12" is not for ALL the browser
+        - We can make right click with any browser then inspect then console
+        - We can clear the console window by just typing or using the function: clear()
+        Link: https://developer.mozilla.org/en-US/docs/Web/API/console/clear
+
+        NOTE:
+        We can type the full syntax: console.clear() to fully clear console window output
+        But since we are already writing our code inside the console window itself so we can just write clear()
+        */
+        // below are examples from the code we wrote in the console
+        alert("I am learning JavaScript")
+
+        alert('testing JS')
+
+        alert('testing JS                       with spaces again')
+
+        alert(100) // output 100 as a number => no need for ' or "
+
+        alert("100") // output "100" as a text
+
+        alert("100+100") // the output will be: 100+100
+
+        // using " or ' for text (string):
+        alert('1+2+3+4+5') // the output will be: 1+2+3+4+5
+
+
+        /*
+        Notice below we are mixing " and '
+
+        Either:
+        the whole sentence start and end with " and use ' in between
+
+        Or:
+        the whole sentence start with ' and use " in between
+        */
+        alert("Martin's car is Honda, John's car is Camry")
+
+        // alert(x)
+        // Uncaught ReferenceError: x is not defined
+
+        alert("Hi there! I hope you like JavaScript")
+
+        // Alert("test")
+        // Uncaught ReferenceError: Alert is not defined
+
+        // x is just a "variable"
+        x = 7
+        alert(x)
+
+        y = 8
+
+        alert(x + y)
+
+
+        /*
+        Please be advised that:
+        - JavaScript is Case Sensitive so alert() is not like Alert()
+        and it's not like ALERT()
+        - Each line/statement in JS needs to be ended with ; (exactly like CSS rule)
+        although it's optional to ignore/skip adding ; at the end
+        but it's strongly recommended and good coding practice
+        */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

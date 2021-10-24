@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Review Part1</title>
+</head>
+
+<body>
+    <script>
+        /*
+        The Factorial:
+        5! = 5 * 4 * 3 * 2 * 1
+        7! = 7 * 6 * 5 * 4 * 3 * 2 * 1
+        3! = 3 * 2 * 1 OR we say 1 * 2 * 3
+
+        6! = 1 * 2 * 3 * 4 * 5 * 6
+        */
+
+        /*
+            We will ask the user to input any number
+            then we will use the logic above to find the factorial for this number
+        */
+
+        var userNumber = parseInt(prompt("Enter any integer number: ", 0)); // "5" => 5
+
+        /*
+        userName = 5
+
+        5 * 4 * 3 * 2 * 1 
+        container = userName with the initial value of the user number
+
+        container (the new value) = container (the current value ) * counter
+        */
+
+        // in our example we will start from the user value and moving to 1
+        // if the user inputs 5 ==> count=5, count=4, count=3, count=2, count=1 then stop my loop
+        // first loop cycle: factorial (the new value) = factorial (the current value ) * count = 5
+        // second loop cycle: factorial = factorial * count= 4
+        // third loop cycle: factorial = factorial * count= 3
+        var factorial = 1;
+        for (var count = userNumber; count >= 1; count--) {
+            //for now:  5 4 3 2 1
+            // for testing:
+            // console.log(count);
+            factorial = factorial * count;
+        }
+
+        document.write("<p>The factorial of " + userNumber + " is: " + factorial + "<p>");
+
+        // while loop:
+        // we can reset the same variable to 1
+        factorial = 1;
+        var count = userNumber;
+        while (count >= 1) {
+            factorial = factorial * count;
+            count--;
+        }
+        document.write("<p>Again, the factorial of " + userNumber + " is: " + factorial + "<p>");
+
+        // working with Arrays and for loop:
+        var courses = ["HTML", "CSS", "JavaScript", "PHP"];
+
+        // to print the second course is "CSS":
+        document.write("<br>" + courses[0]); // HTML
+        document.write("<br>" + courses[1]); // CSS
+
+        document.write("<hr>");
+        // for loop to print all the values of courses array variable:
+        // the for loop counter will represent the array index
+        // the first index in the array is 0
+        for (var i = 0; i < 4; i++) {
+            document.write("<br>" + courses[i]);
+        }
+    </script>
+</body>
+
+</html>

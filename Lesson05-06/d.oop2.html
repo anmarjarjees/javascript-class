@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object-Oriented Programming 2</title>
+</head>
+
+<body>
+    <script>
+        /*
+      We can use "class" in other languages like PHP or Python to create a blueprint of multiple objects
+      then we can create multiple objects (instances) of that class (blueprint)
+
+      in JS there is NO keyword/structure named "class"
+
+      In JS we can use "Constructor function" to imitate the behaviour of using the keyword "class"
+
+      the code we had before with out "Constructor Function) example:
+      let house1 = {
+          model: "Astra",
+          bedRooms: 3,
+          guestRoom: true,
+          finishedBasement: true,
+          kitchen: 1,
+          garage: 2,
+          bathRooms: 2,
+          flooring: "laminate"
+      }
+      */
+
+        /*
+          In PHP/Python:
+          class House {
+              // write the class members
+          }
+        
+          In JS:
+          Use function keyword with a "capitalized function name". 
+          Put parameters in parenthesis and use them as arguments in function body.
+          this function will act as boilerplate (template) to create the other object
+  
+          Notice here that "flooringType" has the value of "laminate" by default 
+          */
+        function House(modelName, bedRoomNum, hasGuestRoom, finishedBasement, kitchenNum, garageNum, bathRoomNum, flooringType = "Laminate") {
+            // the code for assigning these values to the current object:
+            // assigning these values to this object:
+            // varName1 = modelName, varName2= bedRoomNum, and so on...
+
+            // we can think about below are the properties:
+            // we need to use the keyword "this" to inform JS that these list variables
+            // are properties that belongs to this object
+
+            // the variable on the left-hand side is the key (property) for this object
+            // teh variable on the right-hand side is the value we are passing to this Constructor
+            this.name = modelName;
+            this.bedRooms = bedRoomNum;
+            // we can use the same name for both: the property name and its value varaible:
+            // LHS: (property) House.hasGuestRoom
+            // RHS: (parameter) hasGuestRoom
+            this.hasGuestRoom = hasGuestRoom;
+            this.finishedBasement = finishedBasement;
+            this.kitchenNum = kitchenNum;
+            this.garage = garageNum;
+            this.bathRooms = bathRoomNum;
+            this.flooring = flooringType;
+        }
+
+        /*
+        Remember that we used this syntax before with arrays:
+        var myArray = [];
+        OR:
+        var myArray = new Array();
+        OR:
+        var myArray= [10,20,30,40];
+        OR:
+        var myArray=new Array(10,20,30,40)
+
+        // with string:
+        let firstName = new String("Martin");
+        let lastName = new String("Smith");
+        // we just used the shorthand:
+        let middleName = "Alex";
+
+        Now we can use the same syntax with our constructor function House!
+        */
+        let house1 = new House("Astra", 3, true, true, 1, 2, 2);
+        let house2 = new House("Presto", 2, false, true, 1, 1, 2);
+        let house3 = new House("Galaxy", 2, true, true, 2, 1, 2);
+
+        // Quick Test:
+        console.log(house1);
+
+        // output the numbers of bedroom for each house model
+        console.log("Model Name: ", house1.name);
+        console.log("Number of bedrooms: ", house1.bedRooms);
+        console.log("****************************************");
+        console.log("Model Name: ", house2.name);
+        console.log("Number of bedrooms: ", house2.bedRooms);
+        console.log("****************************************");
+        console.log("Model Name: ", house3.name);
+        console.log("Number of bedrooms: ", house1.bedRooms);
+
+        // Another example:
+        // Constructor named "Member":
+        function Member(memberName, memberAge, membershipType, city) {
+            // includes these properties:
+            // the keyword "this" will be member1, member2, member3, etc...
+            this.name = memberName;
+            this.age = memberAge;
+            this.type = membershipType;
+            this.city = city;
+            // adding two methods (functions) for this constructor named "consoleInfo" and "info":
+            this.consoleInfo = function () {
+                console.log(this.name + " has " + this.type + " membership");
+            }
+
+            // this function should only return the "name" and their "age"
+            this.info = function () {
+                return this.name + " " + this.age;
+            }
+        }
+
+        // remember in arrays, we can write: let myArray = new Array();
+        // the same thing here:
+        // The keyword "new" is necessary to instantiate the object.
+        // name, age, membership type, city
+        let member1 = new Member("Alex Chow", 23, "Golden", "Toronto");
+        let member2 = new Member("Martin Smith", 45, "Basic", "Thornhill");
+        let member3 = new Member("Sarah Grayson", 35, "Standard", "Markham");
+
+        console.log(member1.name); // the keyword "this" will be member1
+        console.log(member2.name); // the keyword "this" will be member2
+        console.log(member3.name); // the keyword "this" will be member3
+
+        member1.consoleInfo();
+        member2.consoleInfo();
+        member3.consoleInfo();
+
+        console.log(member1.info());
+        console.log(member2.info());
+        console.log(member3.info());
+
+
+        /*
+        Review: typeof() => returns the data type of any varaible/value:
+        - number (int or float)
+        - string
+        - boolean
+        - object
+        */
+        console.log(typeof (member1)); // object
+        console.log(typeof (Member)); // function
+        // we can use typeof without ():
+        console.log(typeof member2, typeof Member); // object function
+
+        /*
+        To summarize:
+        There are some differences in syntax between
+        - literal notation (oop1 examples)
+        - and function constructor (this file oop2 examples)
+
+        Literal notation uses double colons while constructor uses equals sign = for defining properties.
+        Constructor function uses the "this" keyword which references the current object when adding data to it.
+        Literal notation doesn’t use "this" keyword for properties' keys.
+        */
+
+        // PascalCase (camelCase): Our Resource Example
+        function Car(year, owner, manufacturer) {
+            this.year = year;
+            this.owner = owner;
+            this.manufacturer = manufacturer;
+            this.speak = function () {
+                return `vrooooooom!`;
+            };
+        }
+
+        let myCar1 = new Car("1965", "Ann", "Ford");
+        document.write(myCar1.speak() + "<br>");
+
+        let myCar2 = new Car("1935", "Sarah", "Ford");
+        document.write(myCar2.speak() + "<br>");
+
+
+        // another example:
+        // starting with a blueprint for games => Game
+        function Game(name, players, type, gender = "m") {
+            this.name = name;
+            this.players = players;
+            this.type = type; // Indoor, Outdoor, or both
+            this.gender = gender; // m,f, both
+            this.play = function () {
+                // we are calling the object properties
+                return this.players + " players play " + this.name + ". This game can be played " + this.type;
+            }
+        }
+
+        let game1 = new Game("Basketball", 5, "indoor/outdoor", "both");
+        let game2 = new Game("Soccer", 11, "indoor/outdoor", "both");
+        let game3 = new Game("Volleyball", 6, "indoor/outdoor", "both");
+
+        document.write(game1.play() + "<br>");
+
+        let msg = game2.play();
+        document.write(msg);
+
+        /*
+               game1 = {
+                   name:"Basketball"
+                   // and so on for the rest of the properties
+               }
+
+               game2 = {
+                   name:"Basketball"
+                   // and so on for the rest of the properties
+               }
+
+               game3 = {
+                   name:"Volleyball"
+                   // and so on for the rest of the properties
+               }
+        */
+
+        // when x = 1
+        var x = 1;
+        // later can be changed to 2
+        x = 2;
+
+        // ********************************************************
+        //  Overriding
+        // ********************************************************
+        /*
+         There are simple overriding examples.
+         You can override a function if you declare it again after original declaration
+        */
+
+        function saySomething() {
+            console.log("Something!");
+
+        }
+
+        // call the function:
+        // the last one will override the previous one
+        saySomething(); // Something else
+
+        function saySomething() {
+            console.log("Something else");
+        }
+
+        // call the function:
+        saySomething(); // Something else
+
+        // JavaScript OOP Lab:
+        /*
+             Your Task (Mandatory Lab):
+
+             Create a constructor named "Instructor"
+             
+             The properties:
+             - the name of instructor: name
+             - the campus name: campus
+             - the program name: program
+             - the hire date: hireDate
+
+             A method to return: instInfo()
+             - just return one string: the Instructor name, campus name, program name
+
+            Then create a couple of instructors (instances of the constructor)
+        */
+    </script>
+</body>
+
+</html>

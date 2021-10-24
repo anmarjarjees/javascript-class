@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even and Odd Arrays</title>
+</head>
+
+<body>
+    <!-- We can place all our HTML elements -->
+    <script>
+        // create an array that has random list of even/odd numbers named "mixedArray"
+        var mixedArray = [67, 90, 82, 71, 100, 83, 22, 75]; // 8 elements (numbers), the highest index is 7
+
+        // for testing
+        // console.log(mixedArray);
+
+        /*
+        Problem:
+        we need loop through the elements of the "mixedArray" to scan/check them all one by one:
+        scan/check every number in this array: mixedArray = [67, 90, 82, 71, 100, 83, 22]
+
+        - if the current element is even number:
+        so add it to another array "evenArray" that contains all the even numbers only
+
+        - if the current element is odd number:
+        so add it to another array "oddArray" that contains all the odd numbers only
+
+        Based on the two if conditions, we need to declare two empty arrays first:
+        - one for even numbers called "evenArray"
+        - the other one for odd numbers called "oddArray"
+
+        Loop (for loop) mixedNumbers array and populate (putting values inside) the two empty arrays (evenArray and oddArray)
+        evenArray = [90,82,100,22]
+        oddArray = [67,71,83]
+        */
+
+        // create our two empty arrays
+        // to have them ready:
+        // informing the JS interpreter that we have two empty variables of type "Array Object"
+        var evenArray = []; // to receive only the even numbers
+        // or:
+        // var evenArray = new Array();
+        var oddArray = []; // odd numbers
+
+        // for testing:
+        console.log(typeof (evenArray)); // object
+
+
+        // Imagine checking/scanning each element inside mixedArray without loop!!!!
+        /*
+        if (mixedArray[0] % 2 == 0) {
+            evenArray.push(mixedArray[0]);
+        } else {
+            oddArray.push(mixedArray[0])
+        }
+
+        if (mixedArray[1] % 2 == 0) {
+            evenArray.push(mixedArray[1]);
+        } else {
+            oddArray.push(mixedArray[1])
+        }
+
+        if (mixedArray[2] % 2 == 0) {
+            evenArray.push(mixedArray[2]);
+        } else {
+            oddArray.push(mixedArray[2])
+        }
+        */
+
+        // start looping through the "mixedArray"
+        for (var i = 0; i < 8; i++) {
+            // scan every item in the array
+            // to check if it's even => add it to evenArray else add it to oddArray
+            if (mixedArray[i] % 2 == 0) {
+                // the current number is even
+                // add it to the evenArray
+                /*
+                    to insert an element into array:
+                    array is an object that has properties and methods like any other object in JS
+                    push() is a method to push new element into the array
+
+                    To summarize:
+                    Object has properties and method:
+                    - objectName.propertyName
+                    - objectName.methodBName() => method is like function
+                */
+                evenArray.push(mixedArray[i]);
+            } else {
+                // the current number is odd
+                // add it ot the oddArray
+                oddArray.push(mixedArray[i]);
+            }
+        } // end for loop
+
+        // for testing:
+        console.log("evenArray: " + evenArray);
+        console.log("oddArray: " + oddArray);
+
+
+        // we should use document.write()
+        // to output the even array:
+
+
+        /*
+            not easy to predict how many elements we have in the everArray as we need to read and check
+            In JS, array is an object so it has a built-in property named length
+            the length property will give us the length of the array (how many elements we have in this array)
+        */
+
+        // Output the three arrays a list items:
+        document.write("<h2>Mixed Numbers:</h2>");
+        // Task write the for loop for mixedArray
+        // I will leave this task for for you...
+
+        document.write("<h2>Even Numbers:</h2>");
+
+        document.write("<ul>");
+        for (var i = 0; i < evenArray.length; i++) {
+            // document.write(evenArray[i] + '<br>');
+            document.write("<li>" + evenArray[i] + "</li>");
+        }
+        document.write("</ul>");
+
+        document.write("<hr>");
+
+        document.write("<h2>Odd Numbers:</h2>");
+
+        document.write("<ul>");
+        for (var i = 0; i < oddArray.length; i++) {
+            // document.write(oddArray[i] + '<br>');
+            document.write("<li>" + evenArray[i] + "</li>");
+        }
+        document.write("</ul>");
+
+
+
+
+
+    </script>
+</body>
+
+</html>

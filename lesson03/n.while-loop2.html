@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While Loop Part 2</title>
+</head>
+
+<body>
+    <script>
+    /*
+            Problem:
+            - We need to keep asking (loop structure!) the user about his/her favourite sport
+
+            - every time the user type a sport name,
+            we want to add it (push it) into an array:
+
+            - We need to continue asking the user till he/she types (enters): x or X
+
+            - At end print the sport names list with unordered list
+        */
+
+        // The solution:
+
+        /*
+        New concept: Null Value => JS keyword = "null"
+        In JavaScript we can use the keyword "null" for nothing (no value)
+        */
+
+        /*
+        Declare a varaible named "sport" to be used in our while loop
+        just assign a temporary value of "null" because we don't know the user input yet!
+        */
+        var sport = null;
+
+        // for testing:
+        console.log(sport); // null
+
+        // I want to keep asking the user to enter his favourite sports!
+        // I want to stop my while when the user input "x" or "X"
+        // So my while loop will stop when the value of name is "x" or "X"
+
+        // I want to save the user input into an array:
+        var sportList = []; // declare a new array to be used in our while loop
+        var count = 1; // Notice that this counter has nothing to do with the loop
+        while (sport != "x" && sport != "X") {
+            /*
+            Note to review:
+            prompt() or alert() will prevent the browser from viewing any content till we close them!
+            The better way is to use "DOM" to get the user input (to be explained in the coming chapters)
+            */
+            sport = prompt(`Please enter your favourite sport#${count} :-) \n or just input x to quit this amazing game!`);
+            /*
+            Instead of checking both small x and capital X
+            we can use the string method "toLowerCase()"
+
+            if (sport != "x" && sport != "X")
+            OR:
+            if (sport.toLowerCase() != "x")
+            OR:
+            if (sport.toUpperCase() != "X")
+            */
+            if (sport.toLowerCase() != "x") {
+                sportList.push(sport);
+                count++;
+            }
+        }
+
+        document.write(`The number of sports that you like is ${sportList.length}`);
+        document.write("<ul>");
+        for (var i = 0; i < sportList.length; i++) {
+            document.write(`<li>  ${sportList[i]} </li>`);
+        }
+        document.write("</ul>");
+
+
+
+
+
+        // I want to keep asking the user to enter his favourite sports!
+        // I want to stop my while when the user input "x" or "X"
+        // So my while loop will stop when the value of name is "x" or "X"
+        while (name != "x" && name != "X") {
+            name = prompt("Please enter your name to welcome you :-), or just input x to quit this amazing game!");
+            oLowerCase() != "x") {
+
+                document.write("Hello " + name + "!<br>");
+            }
+        }
+
+
+        // More Examples:
+        // Review for while loop by making this very very very simple guessing game:
+        // This annoying game :-) is just a review
+        /*
+        Problem:
+        - We will ask the user to guess a lucky number between 1 and 10
+        - Let's assume the lucky number is 7
+        - We need to keep asking them till they enter number 7
+        */
+        var luckyNumber;
+        while (luckyNumber != 7) {
+            // We need to ask the user about the luck number, let's say the lucky number is 7
+            luckyNumber = parseInt(prompt("Can you guess the lucky number between 1 and 10:"));
+            if (luckyNumber < 1 || luckyNumber > 10) {
+                alert("Sorry, you are going beyond the game rules! Your numbers has to be between 1 and 10");
+            } else if (luckyNumber != 7) {
+                alert("Sorry, this is not the lucky number, try again");
+            } else {
+                alert("Bravooooooo! you got the right number!");
+            }
+        }
+
+        /*
+        while(the user input is not valid) {
+                    - keep ask the user (till they input a valid number)
+                }
+
+        Review:
+        !True = False
+        !False = True
+        */
+
+        // We can use this feature in our example of the shopping list:
+        // Please keep asking while itemsNum is not a number
+        // which means this while will stop as soon as the user inputs a valid number
+        var itemsNum; // I don't want to give it any value
+        while (isNaN(itemsNum)) {
+            itemsNum = parseInt(prompt("How many items did you buy?"));
+            // if itemsNum variable is not a number "isNaN()"
+            if (isNaN(itemsNum)) {
+                alert("Invalid Input! please input a numeric value");
+            }
+        }
+        /*
+        REVIEW: isNaN()
+        we can use isNaN():
+        - isNaN(numeric) ==> returns false
+        - isNaN(not numeric) ==> returns true
+
+        Example:
+        isNaN(5) ==> False because 5 is numeric value
+        isNaN(xyz) ==> True because xyz is not numeric value
+
+        We had to use while loop instead of for loop because we don't know how many times we will ask the user
+        for loop, we have to specify the maximum limit to ask the user
+        */
+
+
+        // all the code below will be run after the user passing the while by entering a valid number:
+        // we repeat exactly the same logic for the shopping list:
+
+
+    </script>
+</body>
+
+</html>

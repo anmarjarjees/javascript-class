@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continue and Break Loops</title>
+</head>
+
+<body>
+    <script>
+        // using var or let:
+        for (let i = 0; i < 10; i++) {
+            /*
+            stop the for loop when i became 3
+            */
+            if (i == 3) {
+                // NOTE to Review: if (i=3) => always true
+                // By using the break keyword
+                break; // terminate my for loop code/block
+            }
+            document.write("i: " + i + "<br>"); // 0 1 2
+        }
+
+        document.write("<hr>");
+        for (let i = 0; i < 10; i++) {
+            /*
+            omit the current iteration code when i became 3
+            */
+            if (i == 3) {
+                // By using the continue keyword
+                continue; // skip the rest of the for block
+            }
+            document.write("i: " + i + "<br>"); // 0 1 2 4 5 6 7 8 9 (vertical layout)
+        }
+
+        /*
+        The two keywords: continue and break can be used with while loop and do while loop
+        */
+    </script>
+</body>
+
+</html>

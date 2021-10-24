@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch5: JavaScript objects review 2</title>
+</head>
+
+<body>
+    <script>
+        /*
+                    each element in JS is an object
+                    String is also an object
+                */
+
+        // To review we learnt two ways to create an empty array:
+        // first way:
+        var myArray1 = [];
+
+        // second way:
+        var myArray2 = new Array();  // using the new object way
+
+        // as we have an array object, we also have a string object:
+        var myStr1 = "JavaScript Programming Language";
+        var myStr2 = new String("PHP Programming Language");
+        /*
+         because string is an object, it has:
+         - properties: like length
+         - methods
+        */
+        // using the length property:
+        // string has the same property named "length" like the array
+        document.write("The length of myStr1 is: " + myStr1.length);
+        document.write("<br>");
+
+        /*
+            string object has these methods:
+            - toLowerCase ==> to change all the string letters to be lowercase
+            - toUpperCase ==> to change all the string letters to be uppercase
+
+            Below is an example of using "toLocaleLowerCase":
+        */
+
+        var fruit = prompt("Enter your favourite fruit:");
+        /*
+        ORANGE, Orange, OrAnGe, orangE, ... etc = Change any format to => orange
+        */
+        switch (fruit.toLowerCase()) {
+            case "apple":
+                document.write("You like Apple");
+                break;
+            case "orange":
+                document.write("You like Orange");
+                break;
+            case "banana":
+                document.write("You like Banana");
+                break;
+            default:
+                document.write("You like " + fruit);
+            // we can add break; but we don't have to
+        }
+
+        // To work with objects: objectName.property or objectName.method()
+        document.write("<p>***********************</p>")
+        // more example of string object:
+        // using the indexOf() method of string object
+        // remember that our varaible "myStr1" has the value of "JavaScript Programming Language"
+        document.write(myStr1.indexOf("JavaScript")); // 0
+        document.write("<br>");
+        document.write(myStr1.indexOf()); // index of what!!!! => -1
+        document.write("<br>");
+        document.write(myStr1.indexOf("Programming")); // 11
+        document.write("<br>");
+        document.write(myStr1.indexOf("programming")); // -1
+
+
+        // using substr() method of string object:
+          // myStr1 = "JavaScript Programming Language"
+
+          // Task: Getting the word "JavaScript" out of the of the full text "JavaScript Programming Language"
+          // VSC Hint: (method) String.substr(from: number, length?: number): string
+          // will take the first char in index 0 and counts 10 characters (starting from index 0)
+          // first parameter (argument) is the starting index of the string that we want to cut/copy
+          // second parameter (argument) is the length of the string (how many characters)
+          var myLanguage = myStr1.substr(0, 10);
+          document.write("<br>");
+          document.write(myLanguage); // JavaScript
+          document.write("<br>the length of my string varaible 'myLanguage' is:" + myLanguage.length); // JavaScript
+
+          // Or we can simply use this code:
+          document.write("<br>");
+          document.write(myStr1.substr(0, 10)); // JavaScript
+
+          // Task: Getting the word "Programming" out of the of the full text "JavaScript Programming Language"
+          /*
+          substr(): has two parameters:
+          - First: the starting for the text that we want
+          - Second (Optional): how many characters
+          */
+          var topic1 = myStr1.substr(myStr1.indexOf("Programming"));
+          document.write("<br>");
+          document.write(topic1); // Programming Language
+
+          var topic2 = myStr1.substr(myStr1.indexOf("Programming"), 11);
+          document.write("<br>");
+          document.write(topic2); // Programming
+
+        document.write("<br>");
+        document.write("<br>");
+        document.write(myLanguage.toLowerCase());
+        document.write("<br>")
+
+        // resume with array object:
+        // the array object has another method named "sort()"
+        var myLetterArray = ["b", "t", "d", "a", "q", "w", "j", "u", "g", "f", "v", "k", "p", "o"];
+        console.log(myLetterArray);
+
+        myLetterArray.sort();
+
+        console.log(myLetterArray);
+
+        var myNumbers = [92, 87, 95, 91, 86, 82];
+        myNumbers.sort();
+        console.log(myNumbers);
+
+        var cars = ["Honda", "Nissan", "Dodge", "Toyota"];
+
+        cars.reverse(); // this will reverse the array elements: first element will become the last one
+        // the last one will become the first one
+        console.log(cars);
+
+        // sort() method is sorting from the lower value to highest value
+        // creating our own function to sort an array in descending order
+        function sortDesc(myArray) {
+            myArray.sort();
+            myArray.reverse();
+            // this function will returned the sorted array (desc)
+            return myArray;
+        }
+
+        document.write("<br>");
+
+        // calling our function to sort array in descending order
+        sortDesc(myLetterArray);
+        console.log(myLetterArray);
+
+        // now we need to output the array values after sort DESC
+        for (var any = 0; any < myLetterArray.length; any++) {
+            document.write(myLetterArray[any] + "<br>");
+        }
+
+        // BOM: Browser Object Model ==> for the browser object "window"
+        // example:
+        window.alert();
+
+        // Examples:
+        // window is the root object of the browser
+        // window object has a method named alert();
+        window.alert("test");
+        // for short:
+        // no need to write window. because the browser knows it
+        alert("test2");
+
+        // the same with prompt:
+        window.prompt("How are you today?");
+        // for short:
+        prompt("Are you sure?");
+
+        /*
+           We used part of the DOM
+           Document Objects Models ==> for the HTML document
+           example:
+           document.write()
+           document.title
+           =======================
+       */
+
+
+    </script>
+</body>
+
+</html>

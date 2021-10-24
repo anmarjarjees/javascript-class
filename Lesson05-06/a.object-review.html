@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch5: JavaScript objects review 1</title>
+</head>
+
+<body>
+    <script>
+        /*
+        We can think of the JavaScript elements as objects
+
+        In our real life we also have objects:
+        for example:
+        "dog" as an object
+        - specifications (specs): tail, white
+        - Actions: bark, wag
+
+        The same like JavaScript, each object in JavaScript has its own set or specifications and actions:
+        - specifications (specs) => properties
+        - actions => methods
+
+        for example: "document" is an object that represents the the current webpage
+
+        The "document" object has:
+       - properties: title
+       - methods: write() ==> so we can use document.write()
+
+        Each object can have properties and methods
+
+        To summarize:
+        Object in JavaScript has:
+        - properties
+        - methods
+
+        we use the dot notation:
+        - objectName.propertyName => document.title
+        - objectName.methodName() => document.write()
+        */
+
+        // calling the title property of the "document" object and save it into a JS variable
+        // Code below, to get the title of this document object (HTML page)
+        var myPageTitle = document.title; // title is a property of document object
+
+        // we will use write() method for the document object:
+        document.write("My page title is: " + myPageTitle + "<hr>");
+
+
+        /*
+        To summarize:
+        document is an object that has:
+        - properties: like "title"
+        - methods: like "write()"
+
+        - object.property ==> document.title
+        - object.method() ==> document.write()
+        */
+
+
+        /*
+        we used alert() function ==> alert() is  a method of window object
+
+        window.alert();
+
+        the good news, we don't need to write window.alert():
+        */
+        alert("Hi There!"); // it works without window.
+
+        // the real actual code:
+        window.alert("Hello again!");
+
+        // window object has the prompt method
+        var name = window.prompt("What's your name?");
+
+        /*
+        array is an object (has properties and methods):
+        array has a property named length to give us the array length
+
+        arrayName.length ==> the length of this array
+        */
+
+        // example
+        var examMarks = [90, 88, 87, 91, 90]; // declaring an empty array
+        // printing array without looping (bad idea!)
+        document.write("<br" + examMarks[0]);
+        document.write("<br" + examMarks[1]);
+        document.write("<br" + examMarks[2]);
+        document.write("<hr>");
+
+        // we can use the "length" property to get the array length
+        // below is just for printing the values of examMarks array
+        for (var i = 0; i < examMarks.length; i++) {
+            document.write(" " + examMarks[i]);
+        }
+    </script>
+</body>
+
+</html>

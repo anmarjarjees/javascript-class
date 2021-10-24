@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times Table</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Problem:
+        1 - Ask the user to input an integer value between 1 and 10
+        2 - If the user's input is valid (1-10)
+            then find the multiplication table of the user's value from 1 to 10
+            for example:
+            if the user enters 5 then we find:
+            5 x 1 = 5
+            5 x 2 = 10
+            and so on...
+            till 5 x 10 = 50
+        3 - else (if the user's input is invalid)
+            then just output any warning message using alert() function
+        */
+
+        var userNum = prompt("Please enter any integer (whole) number between 1 and 10"); // 5 ==> "5"
+        /* 
+        Review:
+        As we had learned before, prompt will always returns a string value no matter the user input, for example:
+        if the user inputs Martin Smith ==> "Martin Smith"
+        if the user inputs 100 ==> "100" as a string
+        if the user input 45.78 ==> "45.78" as a string
+    	
+        We need to convert the user input into a number, since the user has to input an integer number (no decimals),
+        so we can use parseInt() instead of using parseFloat().
+    	
+        we can be smarter or faster by writing the parseInt() method in the same line with the prompt(), 
+        or we can write it below:
+        */
+        userNum = parseInt(userNum); // for example: userNum = 5;
+
+        /*
+        Step 2: We need to check whether the user's value/number is between (1-10), 
+        if so then write the code for the multiplication otherwise (else) just output a message:
+        */
+        // check if userNum is between and 1 and 10
+        if (userNum >= 1 && userNum <= 10) {
+            // in this if block in between { and } we will write our major code:
+            // the code when the condition is true:
+            // write the code for the multiplications:
+            // for testing
+            // document.write(userNum); // for testing
+            /*
+            Note:
+            Since we are going to use the loop counter one time because we have only one for loop,
+            we can declare and initialize the loop counter inside for loop itself:
+            */
+            for (var times = 1; times <= 10; times++) {
+                // before do the logic
+                // for testing:
+                // document.write(" " + times);
+                // output the userNum multiplied by times
+                // remember that we can write equation/formula inside document.write
+                // output: userNum value "x" times value "=" userNum*times
+                document.write(userNum + " x " + times + " = " + userNum * times + "<br>");
+            } // end for loop
+        } // end if condition
+        else {
+            // the code when the if condition is false:
+            // just output a message:
+            alert("Your number has to be between 1 and 10!");
+        } // end else block
+    </script>
+</body>
+
+</html>

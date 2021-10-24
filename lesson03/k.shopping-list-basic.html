@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List Items (Basic)</title>
+</head>
+
+<body>
+    <script>
+        /*
+      Problem:
+      - The user bought x number of items
+      - they need to know the total price for these items and also print the item price list
+
+      Required Steps:
+      1- Ask the user to input how many items did they buy?
+         and save it into a variable
+
+      2- We need to loop for x of times based on the number of items they bought
+
+      3- In each loop iteration:
+        a. we ask the user to enter the price of the current item
+        b. Each price value has to be saved into an "array"
+        (So we need to declare an empty array before the loop starts)
+        c. Adding the prices to a variable "total"
+
+      4- Output (print) the arrays that contains the prices
+
+      5- Output the total value of adding all the items' prices
+      */
+
+        // 1) Getting the number of items:  
+        var itemsNum = parseInt(prompt("How many items did you buy?")); // 4 items ==> items = 4;
+
+        // so if the user input 4, we need to loop 4 times
+        // if user input any number, we need to loop x of times based on that number
+        // we need to loop for 4 times to ask the user to enter the prices of their four items:
+
+        // How can we save the price values for all these x items
+        // It's almost impossible to create a varaible for each item price 
+        // Solution: We can use array to save all price values for all the items
+
+        // declare an empty array:
+        var itemPriceList = []; // var itemPriceList = new Array();
+        /*
+            We will use this empty array (for now) "itemPriceList" to save the price of each item that the user is going to enter, Why? 
+            because at the end of the program it's very good and nice idea to print price list of all the items to the user with the total value.
+        */
+
+
+        var priceTotal = 0; // the container with initial value of 0 for the total formula
+
+        // We need a for loop to repeat the question 4 times:
+
+        /*
+        Notice that below we put counter=0 because this will the first index of itemPriceList array
+        and since arrays is 0 based index so we should start with 0
+
+        if you have no intention to use the loop counter to be the index of your arrays,
+        Yes, in such case you can start with 1 or any other value
+        */
+        for (var counter = 0; counter < itemsNum; counter++) {
+            // ask the user to enter the price of this current item:
+            // and save it into the array "itemPriceList"
+            /*
+                Saving each price item into the array "itemPriceList"
+                If we have 3 items:
+                price of item1 has to be saved in the index 0 of the array
+                price of item2 has to be saved in the index 1 of the array		
+                price of item3 has to be saved in the index 2 of the array
+            */
+            itemPriceList[counter] = parseFloat(prompt("Enter the price of this item"));
+            // if the input is: 55.17 = prompt => "55.17" => parseFloat => 55.17;
+
+            // The other solution:
+            // Or using the push() array method to insert the price of the current item
+            // itemPriceList.push(parseFloat(prompt("Enter the price of this item")));
+
+            // long way:
+            // priceTotal = priceTotal + itemPriceList[counter];
+
+            // or use the short way:
+            priceTotal += itemPriceList[counter];
+        }
+
+        // 2) Printing the list of prices:
+        /*
+        To make sure that the array itemPriceList contains all the item prices that the user entered,
+        we need to output all the array values.
+        Which means that we need to output:
+        the array value of index 0
+        the array value of index 1
+        the array value of index 2
+        the array value of index 3
+        the array value of index x (depending on how many items we have)
+        */
+
+        // below will output value1, value2, value3, ....
+        document.write(itemPriceList); // 20,60,34
+        document.write("<br>");
+
+        // if you want to display it vertically, refer to "JS05: for-array.html"
+        // remember that itemPriceList is an array, so print its items (elements)
+        // we need to use for loop, just create a new for loop:
+        /*
+        for example:
+        3 items prices: 89, 90, 56
+        in the array:
+        index 0 ==> 89
+        index 1 ==> 90
+        index 2 ==> 56
+        to print beyond index 2, we wil get "undefined"
+        index 3 ==> undefined		
+        */
+        for (var i = 0; i < itemsNum; i++) {
+            document.write(itemPriceList[i] + "<br>");
+        }
+
+        // NOTE: don't forget to place the output message for the total after the loop (not inside the loop)
+        document.write("Total is: " + priceTotal);
+    </script>
+</body>
+
+</html>

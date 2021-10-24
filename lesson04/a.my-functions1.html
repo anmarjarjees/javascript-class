@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Custom Functions 1</title>
+
+    <style>
+        .vip {
+            color: azure;
+            background-color: darkblue;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .note {
+            color: lightgoldenrodyellow;
+            background-color: darkred;
+            font-style: italic;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Learning JavaScript</h1>
+    <h2>Random Paragarph1:</h2>
+    <p class="vip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam molestias placeat dolorum, eius
+        nulla explicabo
+        adipisci fugit id libero quam, possimus nam voluptas tempora dignissimos odio dolores quisquam, modi optio?</p>
+
+    <h2>Random Paragarph2:</h2>
+    <p class="note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam molestias placeat dolorum, eius
+        nulla explicabo
+        adipisci fugit id libero quam, possimus nam voluptas tempora dignissimos odio dolores quisquam, modi optio?</p>
+    <hr>
+
+    <!-- Always place the script at the very end -->
+    <script>
+        /*
+            functions are useful if you want to repeat/reuse the same code many times.
+            So instead of typing 4 lines of code and make a copy and paste them 3 times (for example),
+            we can just encapsulate them inside a custom function
+            (function that belongs to us not to JavaScript) block
+            and just call that function to execute its code when we need it
+
+            Review: Examples of some JavaScript built-in functions or methods that we have used:
+            - alert()
+            - prompt()
+            - parseFloat()
+            - parseInt()
+            - document.write()
+            - console.log()
+
+            Method and Function:
+            Yes we use these two words interchangeably or we always switching between them like saying function or method but they are not exactly the same:
+
+            Function: is just a function name by itself
+            functionName() ==> like parseFloat() or parseInt()
+
+            Method: is a function attached to an "object" using the "dot" notation
+            object.methodName() ==> like console.log() or document.write()
+
+            We will have more explanation about "objects" later
+
+            Now we will create our custom functions:
+
+            The function syntax:
+
+            function myFunctionName(null or x numbers of parameter) {
+
+            }
+
+            function parameters: are comma separated variables or values that we write in between ( and )
+            function can have 0 parameter, or x number of parameter
+            The values we pass to these parameters are called "arguments"
+
+            We used the concept of function parameters/arguments, example:
+            the built-in (native) function is prompt()
+            we found that prompt() takes two parameters (variables):
+            1) The first parameter == will take "The text that we want to display" as an argument
+            2) The second parameter == will take "The default value" to be displayed and used as an argument
+
+            prompt("Enter you number", 0)
+        */
+
+        // Examples of using JS built-in function:
+        // using write method or function to output anything:
+        document.write("<p>here is my major text</p>");
+        document.write(); // nothing (no arguments)==> Accept null values
+
+        /*
+            Let's create a function to print any simple text
+        */
+
+        // simple and basic example of creating a custom function
+        // step 1: Create our function: to print "Here is my first function!"
+        /*
+            function functionName() {
+                the function code goes here...
+            }
+        */
+
+        // camelCase for naming our function as we do with naming our variables:
+        function viewText() {
+            document.write("<p>Here is my first amazing function :-)</p>");
+        }
+
+        /*
+            Creating a function is not enough to run or execute it!
+            If you want to use your function we have to call it
+        */
+
+        // step2: is to call (Execute) the function
+        // to call a function we just put the function name:
+        viewText();
+        viewText();
+        viewText();
+        viewText();
+
+        // What if we want to output other content?!?!?!
+        // In the examples below, whatever "argument" we pass to our function "viewText()"
+        viewText("I do like JavaScript!"); // Here is my first amazing function :-)
+        viewText("Programming is interesting!"); // Here is my first amazing function :-)
+
+        /*
+        functions can accept arguments (parameters) which means the info we put inside the "(" AND ")"
+        this function accepts two parameters:
+        */
+
+        // to make our function more useful,
+        // we can change it to accept parameter(s) [data/Content/values]
+
+        // Task:
+        // 1. creating a new function named "view()"
+        // 2. This function should print/output any value we pass to it => using document.write()
+        /*
+        Example:
+        if we pass the text "Our program is DMWD" to our custom function "view()"
+        we should see this text printed in our HTML page in the browser window
+
+        Notice the step for passing real values/content/data to our function
+        is happing when we call the function (not when create a function)
+        */
+
+        // Step1: Create a function
+        // function signiture ==> the function parts
+        function view(anyValue) {
+            // My Function code:
+            // for testing:
+            // console.log(anyValue);
+            document.write("<p>" + anyValue + "</p>");
+        }
+
+        // Step2: Call/run/use/execute our function:
+        view("Our program is DMWD"); // x = "Our program is DMWD"
+        view("We are studying JavaScript");
+        view("JavaScript is a very good language to learn");
+        view("Wow, using this function helped me to reduce my typing");
+
+        view(100);
+        view(78.91);
+        view(true);
+
+        view("All the text inclosed with the p element");
+
+
+        /*
+        Problem:
+        What if we want our function to print a text but with any HTML element we specify
+        because we don't always to use p element:
+
+        let's name our new function "display()":
+        - The user can pass to it any text/data they want to print
+        - If the user wants to specify the html element, he needs to pass this element to the function
+
+        Idea Example:
+        when we call this function,
+        we can pass the text/string value of "Here is my another more advanced function!"
+        then we can pass for example:
+        - h1 => if we want to enclose our text with h1 element
+        - h2 => if we want to enclose our text with h2 element
+        - p => if we want to enclose our text with p element
+        - and so on...
+
+        Coding Example:  calling the function:
+        > display("Learning JavaScript","h2");
+        > should output: <h2>Learning JavaScript</h2>
+
+        > display("I hope that you like JavaScript","p");
+        > should output: <p>Learning JavaScript</p>
+
+        > display("JavaScript is very important","span");
+        > should output: <span>JavaScript is very important/span>
+
+        > display("PHP will be our back-end programming language","div")
+        > should output: <div>PHP will be our back-end programming language</div>
+        */
+
+        // 1) Create a function:
+        // this function has two parameters to accept two arguments:
+        // First parameter (placeholder) is "content" => The content we want to display
+        // Second parameter (placeholder) is "element" => The HTML element/tag we like to use
+        function display(content, element) {
+            // for testing:
+            /*
+            console.log(content);
+            console.log(element);
+            */
+            document.write("<" + element + ">" + content + "</" + element + ">");
+            // OR
+            document.write(`<${element}>${content}</${element}>`);
+        }
+
+        document.write("<hr>");
+        // 2) Call/Run:
+        display("Here is my heading 1", "h1"); // <h1>Here is my heading 1</h1>
+        display("Here is my heading 2", "h2"); // <h2>Here is my heading 2</h2>
+        display("Learning JavaScript is interesting!", "h2");
+        display("I hope that you do like JavaScript", "p");
+        display("JavaScript is very important", "span");
+        display("PHP will be our back-end programming language", "div");
+        display(100, "div");
+        display(783.90, "p");
+
+
+        // Task:
+        // create a function to check if the number is "even" or "odd"
+        // this function accepts one parameter (arguments) which is the number that we want to test (even/odd)
+        // we only need to test one number at a time
+        // if the number is even => this function should print/output: "Your number is even"
+        // else this function should print: "Your number is odd"
+        // Let's name it "testEvenOdd"
+
+        function testEvenOdd(number) {
+            // this function needs to have a number to test,
+            // so we have to pass this "number" as an argument to the function
+            /*
+                Review:
+                to find if the number is even or odd:
+                we can divide the number by 2 then check the "Remainder"
+                if the remainder is 0 then it's an even number
+                else it's an odd number
+
+                in JS the operation to get the remainder named modulo "%"
+            */
+            // Other solution:
+            if (number % 2 == 0) {
+                document.write("Your number " + number + " is even");
+            } else if (number % 2 == 1) {
+                document.write("Your number " + number + " is odd");
+            } else {
+                document.write("Invalid Number!");
+            }
+        }
+
+        testEvenOdd(234); // Your number is even.
+        document.write("<br>");
+        testEvenOdd(987645); // Your number is odd.
+        document.write("<br>");
+        testEvenOdd(34); // Your number is even.
+        document.write("<br>");
+        testEvenOdd(1); // Your number is odd.
+        document.write("<br>");
+        testEvenOdd(71); // Your number is odd.
+        document.write("<br>");
+        testEvenOdd("abc"); // Invalid Number!
+
+        var userNumber = prompt("Enter any numeric value:", 0);
+        document.write("<br>");
+        testEvenOdd(userNumber);
+
+
+        /*
+        Task:
+        create a function that accepts two numeric values [two placeholder variables, parameters]
+        use if condition to output (document.write) the maximum value.
+        name your function "maxNum()"
+
+        if we input 10 and 12 => the function should output: The maximum number is 10
+        if we input 25 and 18 => the function should output: The maximum number is 18
+        */
+
+        // your task is create this function below:
+        // 1. create the function
+        // camelCase for naming our function: maxNum()
+        function maxNum(a, b) {
+            // remember that a and b are just local variables
+            // to be used inside the function
+            if (a > b) {
+                document.write("<p>The maximum number is " + a + "</p>");
+            } else if (b > a) {
+                document.write("<p>The maximum number is " + b + "</p>");
+            } else {
+                document.write("<p>both numbers are equal</p>");
+            }
+        }
+
+        // below I am calling my function:
+        // 2. call the function to be run
+        maxNum(10, 12);
+        maxNum(-10, 2);
+        maxNum(100, 120);
+        maxNum(5, 5);
+
+
+        var num1 = prompt("Enter your first number: ", 0);
+        num1 = parseFloat(num1);
+
+        // we can nest two functions together in a one line:
+        // praseFloat + prompt
+        var num2 = parseFloat(prompt("Enter your second number:", 0));
+        findAverage(num1, num2); // nothing will be shown
+        alert(findAverage(num1, num2));
+
+        /*
+            most of the time, we don't want the function to output (print) the result into the browser,
+            we just need to get the result and save it into a variable for example.
+
+            Task:
+            Create a function that:
+            1- Accepts two numeric values [two placeholder variables, parameters]
+            these two variables will be numbers to represent exam marks, or assignments marks, or project marks, etc..
+
+            2- Find the average of these two numbers (two marks)
+            3- Return the result (average value)!
+
+            so this function will have something new which is "returning a value".
+            We don't want this function to print/output the result immediately in the browser!
+            We just want this function give us (return) the result
+
+            In this case will need to use the JavaScript keyword "return"
+
+            so to summarize;
+            our own custom functions can return values
+            like other built-in JavaScript functions that return values.
+
+            for example:
+            we used "prompt()" to return whatever the user inputs (as a string):
+            var userName = prompt("What's your name?");
+
+        create a simple function to receive two numeric values
+        this function will return the average of these two values
+
+        build the function block:
+        function myFunction() { }
+        between () ==> function parameter(s)
+        */
+
+        // 1. Create a function:
+        // with the function's name we also use camelCase, and let's name it "findAverage"
+        // This function should return the average of any two numeric values:
+        function findAverage(value1, value2) {
+            // just find the average:
+            var average = (value1 + value2) / 2;
+            /*
+                this function is supposed to return the value of the average
+                as the function name indicates "average",
+                and that's why it's better to remove the code for printing which is document write.
+            */
+            // document.write("<br>" + average);
+
+            // error because of using the same the double quotes: "
+            // document.write("<h3 class="vip1">" + average + "</h3>");
+            // so we can't use the same " from the outside and inside the text
+            // we need to mix or using \ as shown below:
+
+            // we will comment the three document.write
+            // because we want this function to return only the average value
+            // Below is just a review of how can we mix " and \
+            // document.write("<h3 class='vip1'>" + average + "</h3>");
+            // document.write('<h3 class="vip1">' + average + '</h3>');
+            // document.write("<h3 class=\"vip1\">" + average + "</h3>");
+
+            // since we need get the value of average outside the function
+            // we can let our function findAverage return the value of average
+            // we can simply use the keyword return:
+            // output the value of average to our internal code not to the user screen to the HTM: document
+
+            /*
+            return keyword will return the value of the local variable "average" inside the function
+            to any global variable outside the function
+            */
+            return average;
+        }
+
+        // 2. call the function findAverage()
+        findAverage(90, 82); // this will not print anything, why? because there is no document.write()
+        document.write("The average of 90 and 82 is: " + findAverage(90, 82));
+        document.write("<br>");
+        document.write("The average of 92 and 87 is: " + findAverage(92, 87));
+
+        var avg1 = findAverage(92, 95); // the first average of the two main exams for the first semester
+        var avg2 = findAverage(82, 83); // the second average of the two main exams for the second semester
+        var finalAverage = (avg1 + avg2) / 2; // the average of the two semesters
+        document.write("<br>Your final average for the two semesters is: " + finalAverage);
+
+
+        // let's use our function in different example:
+        var exam1 = parseFloat(prompt("Enter your first exam"));
+        var exam2 = parseFloat(prompt("Enter your second exam"));
+
+        var examAvg = findAverage(exam1, exam2);
+
+        document.write("<p> the average of " + exam1 + " and " + exam2 + " is: " + examAvg + "</p>");
+        // instead of typing document.write()
+        // we can use our function view() that already created/designed to print any content with p element
+        view("the average of " + exam1 + " and " + exam2 + " is: " + examAvg);
+
+        // ***********************************************
+        // another advanced example for your reference:
+        /*
+        <p class="vip">here is my paragraph</p>"
+        text = "here is my paragraph"
+        tag = "p"
+        className = "vip"
+
+        in other words, we need to concatenate "class=" with the value of className variable:
+
+        <p class=className>.....etc....
+        */
+        // present ("Hello World!","h2")
+
+        // Let's do it by using document.write() inside the main script:
+
+        // Error: document.write("<p class="vip">Hi there I am using here my .vip class style</p>");
+        // Error: document.write('<p class='vip'>Hi there I am using here my .vip class style</p>');
+
+        // First solution: using escape character "\"
+        document.write("<p class=\"vip\">Hi there I am using here my .vip class style</p>");
+
+        // Second solution:
+        // using single quote from the outside (at the beginning and at the end) and double quotes inside:
+        document.write('<p class="vip">Hi there I am using here my .vip class style</p>');
+
+        // Third solution: the same as the second one but by reversing the quotes
+        // using single quote from the outside (at the beginning and at the end) and double quotes inside:
+        document.write("<p class='vip'>Hi there I am using here my .vip class style</p>");
+
+        /*
+            so now we can use a function to do this job for us:
+        */
+        function present(text, tag, className) {
+            // example:
+            // document.write("<h2> Hello world </h2>");
+            // tag = <h2>
+            document.write("<" + tag + " class=" + className + ">" + text + "</" + tag + ">");
+        }
+
+        present("Hi there I am just testing my function using my .vip class", "p", "vip");
+
+        // below we are calling our "present" function() twice
+        present("Working with functions is very interesting", "p", "note");
+
+        // remember that in JavaScript, we can use either " or '
+        present('Working with functions is indeed very interesting', 'p', 'vip');
+    </script>
+
+</body>
+
+</html>

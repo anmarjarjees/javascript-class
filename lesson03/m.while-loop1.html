@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While Loop Part 1</title>
+</head>
+
+<body>
+    <script>
+        /*
+        3 types of loops:
+        - for loop (already covered before)
+        - while loop (is covered here)
+        - do while loop (to be covered later)
+        */
+
+        // review: for loop to print 1 to 10:
+
+        for (var i = 1; i <= 10; i++) {
+            document.write("<p>" + i + "</p>");
+        }
+
+        /*
+        Result:
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+        8
+        9
+        10
+        */
+
+        document.write("<hr>");
+
+        // The same task using while loop:
+        /*
+            like for loop, in while loop we need:
+            1- the initial value of the loop counter
+            2- the condition to keep the loop running
+            3- the increment/decrement operator for the loop counter
+        */
+
+
+        // the same logic (printing 1 to 10) using while loop
+        var counter = 1; // the initial value of the loop counter
+
+        // inside the loop we put the condition to keep the loop running
+        while (counter <= 10) {
+            document.write("<p>" + counter + "</p>");
+            // and please don't forget to increment the loop counter
+            counter++;
+            /*
+            Note: missing the increment statement "counter++"
+            in While loop (inside while loop block)  will give us an infinite loop
+            (a loop that doesn't end)
+            */
+        }
+
+        // for testing:
+        console.log(counter); // 11
+
+        // more examples:
+        // Using <ul> element to format our code:
+
+        // Using the same varaible "counter" that has been already declared above (no use for "var")
+        // We just need to reset its initial value to 1 again
+        document.write("<ul>");
+        counter = 1;
+        while (counter <= 10) {
+          document.write("<li> The loop counter value is: " + counter + "</li>");
+          // OR
+          document.write(`<li> The loop counter value is: ${counter} </li>`);
+          counter++;
+        }
+        document.write("</ul>");
+
+
+        // Examples of infinite while loop!
+        // It's a mistake that we should avoid as programers
+
+
+        // the condition will always be true => my loop will never stop!
+        /*
+        while (true) {
+            document.write("<br> infinite loop!");
+        }
+        */
+
+        // the condition will always be true (because x is always less than 1)=> my loop will never stop!
+        /*
+        var x = 1;
+        while (x < 10) {
+            document.write(x);
+        }
+        */
+    </script>
+
+</body>
+
+</html>

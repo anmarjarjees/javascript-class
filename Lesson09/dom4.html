@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 4: Styling</title>
+    <!-- internal styles -->
+    <style>
+        .blueTheme {
+            background-color: #e6f2ff;
+            border: 2px solid #00264d;
+        }
+
+        .redTheme {
+            background-color: #ffebe6;
+            border: 2px solid #661400;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divAdvert" onmouseover="addStyle()" onmouseout="removeStyle()">
+        Here is an advertisement.
+    </div>
+
+    <div id="divComment" onclick="switchStyle()">
+        Click here to switch the colours
+    </div>
+
+    <!-- The best way to make sure that all the page elements are loaded before staring paring them is to place our JS DOM code after loading the entire page (html elements) : -->
+    <!-- Internal JavaScript -->
+    <script>
+        // More review about using CSS with DOM:
+        // Review: style.property and style.className
+
+        function addStyle() {
+            var divAdvert = document.getElementById("divAdvert");
+            /*
+            In CSS: background-color => In JS style.backgroundColor
+            In CSS: font-style => In JS style.fontStyle
+            In CSS: text-decoration => In JS style.textDecoration
+            */
+            divAdvert.style.backgroundColor = 'green';
+            divAdvert.style.fontStyle = "italic";
+            divAdvert.style.textDecoration = "none";
+        }
+
+        function removeStyle() {
+            var divAdvert = document.getElementById("divAdvert");
+            divAdvert.style.backgroundColor = 'yellow';
+            divAdvert.style.fontStyle = "normal";
+            divAdvert.style.textDecoration = "underline";
+        }
+
+        var isSwitched = false;
+        function switchStyle() {
+            var divComment = document.getElementById("divComment");
+            if (isSwitched) {
+                divComment.className = "blueTheme";
+            } else {
+                divComment.className = "redTheme";
+            }
+            isSwitched = !isSwitched;
+        }
+    </script>
+
+</body>
+
+</html>

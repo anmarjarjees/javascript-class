@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working with 2 Dimensional Arrays</title>
+</head>
+
+<body>
+
+  <!-- All JavaScript Code has to be enclosed (surrounded) by script element -->
+  <script>
+    // To recap: one dimensional array
+    let oneDimensionalArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    // I want to output the fourth item/element 'd':
+    console.log(oneDimensionalArray[3]); // d
+
+    // Multidimensional Arrays (2 dimensions) =>2 arrays:
+    /*
+         var my2DArray = [ array1, array2, array3, ...  ];
+         
+         array1 = [ value1, value2, value3 ]
+         array2 = [ value1, value2, value3 ]
+         array3 = [ value1, value2, value3 ]
+     */
+
+
+    /*
+    twoDimensionalArray = [ list the elements of this array ]
+    twoDimensionalArray = [ element1, element2, element3 ]
+    element1 = ["a", "b", "c"]
+    element2 = ["d", "e", "f"]
+    element3 = ["g", "h", "i"]
+    */
+    let twoDimensionalArray = [
+      ["a", "b", "c"],
+      ["d", "e", "f"],
+      ["g", "h", "i"]
+    ];
+    console.log(twoDimensionalArray);
+
+    // I want to output the 'd' from this array "twoDimensionalArray":
+    console.log(twoDimensionalArray[3]); // undefined => because this array has only 3 indices: 0,1,2
+
+    console.log(twoDimensionalArray[1]); // Array(3) => ["d", "e", "f"]
+
+    // [1] => will target the second element 
+    // ["d", "e", "f"] => d has the index of 0
+    console.log(twoDimensionalArray[1][0]); // d
+
+    // Task: print the letter "g"
+    console.log(twoDimensionalArray[2][0]);
+
+
+    // Another example of two dimensional array:
+    let officeApps = [
+      ["Word", "2 Weeks", "2 Assignments"],
+      ["PowerPoint", "1 Week1", "1 Assignment"],
+      ["Excel", "2 Weeks", "1 Assignment"]
+    ];
+
+    // Output "PowerPoint"
+    console.log(officeApps[2][0]);
+
+    for (var i = 0; i < officeApps.length; i++) {
+      for (var j = 0; j < officeApps[i].length; j++) {
+        console.log(officeApps[i][j]);
+      }
+    }
+
+    // Using a user friendly way to output this to the main page:
+
+    document.write("<ul>");
+    for (var i = 0; i < officeApps.length; i++) {
+      for (var j = 0; j < officeApps[i].length; j++) {
+        document.write("<li>" + officeApps[i][j] + "</li>");
+      }
+      document.write("<hr>");
+    }
+    document.write("</ul>");
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do While</title>
+</head>
+
+<body>
+    <script>
+        /*
+                 3  Types of loops:
+                 - for loop
+                 - while loop
+                 - do while loop
+
+                 Note: Please don't forget that most loops have:
+                 1. a loop variable which is the counter to count how many times the loop must run
+                 2. 3 parts (section) regarding the loop counter variable:
+                     - the initial value to start with
+                     - the condition to keep the loop running
+                     - *the increment/decrement operator (change the loop counter value) => for loop
+      */
+
+
+        // Review for loop:
+        var myIndex;
+        for (myIndex = 1; myIndex <= 25; myIndex++) {
+            document.write("<h2>" + myIndex + "</h2>");
+        }
+
+        document.write("<hr>");
+
+        /* print: 1 - 20 with while loop */
+        var value1 = 1; /* the loop counter initial value is 1 */
+        /* in between the bracket is the condition */
+        while (value1 <= 25) {
+            document.write("<p>" + value1 + "</p>");
+            value1++; /* either increment or decrement the loop counter */
+        }
+
+        // the same loop with do while: (1-20)
+        var value2 = 1; /* the loop counter initial value is 1 */
+        do {
+            document.write("<p>" + value2 + "</p>");
+            value2++;
+        } while (value2 <= 20)
+
+        /*
+      Summary:
+
+      While loop:
+      // we check first before starting the loop
+      while (condition) {
+          // this code here will NEVER run IF the condition is FALSE!
+      }
+
+      Do While loop:
+      // we check after the loop block
+      do {
+          // this code will run AT LEAST one time EVEN IF the condition is FALSE
+      } while (condition)
+      */
+
+        // best example of using do while like our game for guessing the secret number:
+        var secretNumber = 3;
+        var userNumber;
+        // the do while loop code will run at least one time
+        // even if the condition is false
+        do {
+            userNumber = prompt("Try to guess the secret number between 1 and 5"); // 3 => "3"
+            // we do need to check after getting the answer from the user
+        } while (userNumber != secretNumber);
+        /*
+        Review about the == and ===:
+        if (6 == "6") ==> True
+        if (6 === "6") ==> False
+
+        also we have:
+        if (6 != "6") ==> False
+        if (6 !== "6") ==> True
+        */
+        document.write("Good Job! The secret number is: " + secretNumber);
+        /*
+        The code inside do while block { } will be always executed (run) at least one time regardless of the condition, because the condition in not checked until the loop has been executed
+        */
+
+
+
+        //  More simple examples of do while loop
+        // While loop: to print 10 to 1
+
+        var count = 10; // we place the loop variable outside the loop block:
+        // while loop will check first then run the code block
+        // place the condition inside the while brackets ()
+        while (count >= 1) {
+            document.write("<p>" + count + "</p>"); // no output (count=0)
+            // missing the increment/decrement operation will lead to infinite loop
+            count--;
+        }
+        document.write("<hr>");
+
+        // Do While *******************************
+        document.write("<h1>Do While:</h1>");
+        /* the same logic using do while loop */
+        var num = -2;
+        do {
+            document.write("<p>" + num + "</p>"); // -2 (num=-2)
+            num--;
+        } while (num >= 1)
+
+        document.write("<hr>");
+
+
+    </script>
+</body>
+
+</html>

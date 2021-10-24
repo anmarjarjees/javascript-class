@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working with 1 Dimensional Arrays</title>
+</head>
+
+<body>
+
+  <!-- All JavaScript Code has to be enclosed (surrounded) by script element -->
+  <script>
+    // declare a variable that can contain only one value:
+    /* using camelCase for naming convention */
+    var myLuckyNumber = 7; // if I want to use one number
+
+    // Question: What if we have 5 lucky numbers:
+    var myLuckyNumber1 = 9;
+    var myLuckyNumber2 = 3;
+    var myLuckyNumber3 = 10;
+    var myLuckyNumber4 = 25;
+    var myLuckyNumber5 = 30;
+    // above we have declared 5 separate variables to save 5 lucky numbers!
+    // to save my lucky numbers
+
+    // In JavaScript like any other languages
+    // we can create a variable that can save/have many/multiple values
+    // 5 values/numbers for example:
+    // if we can create a variable "myLuckyNumbers"
+    // and myLuckyNumbers can have all my numbers
+    // we need to use "array"
+    // this kind of variable that contains more than one value is named "array"
+
+    // the rules for creating an array variable
+    // array uses the [ and ] symbols to refer to its content (elements),
+    // all the contents (values) have to be in between [ ]
+    // the content of the array has to be a comma separated values
+    // below we added spaces to show you that spaces here are fine (no errors)
+    /*
+        ( and ) => parenthesis (brackets)
+        { and } => curly brace
+        [ and ] => square bracket
+    */
+    var myLuckyNumbers = [9, 3, 10, 25, 30]; // using square brackets with arrays
+
+    // testing:
+    console.log(myLuckyNumbers); // Array(5)
+    /*
+    the output of console window:
+    Array(5) ==> because we have 5 values (numbers)
+
+    0: 9
+    1: 3
+    2: 10
+    3: 25
+    4: 30
+    length: 5
+    */
+
+    /*
+    - Arrays can have multiple values
+    - Each element (value) inside the array has a unique index (like StudentID for student)
+      which the address to access that specific value
+    - Arrays in JavaScript like many other languages are 0 based index,
+      so the first element/item in the array has the index of 0
+    - in the above example:
+    the value/element 10 has the index of 2
+    */
+
+    // Task: My all lucky numbers are: 9,3,10,25,30
+    console.log("My all lucky numbers are: " + myLuckyNumbers);
+
+    // Task: My first lucky number is: 9
+    // 9 is the first element/item in this array => it has the index of 0
+    console.log("My first lucky number is: " + myLuckyNumbers[0]);
+
+    // Task: My second lucky number is: 3
+    // 3 is the second element/item in this array => it has the index of 1
+    console.log("My second lucky number is: " + myLuckyNumbers[1]); // 3
+    console.log("My forth lucky number is: " + myLuckyNumbers[3]); // 25
+
+    // going beyond the index values!
+    console.log("My last lucky number is: " + myLuckyNumbers[5]); // My last lucky number is: undefined
+
+    // Creating variables to save our programming languages:
+    var language1 = "JavaScript";
+    var language2 = "PHP";
+    var language3 = "Python";
+
+    // Arrays can contain string values:
+    /*
+    array can have text values and any text value has to be enclosed with ' or "
+    below we are just mixing them:
+    */
+    // let's create an array named "languages" to contain a list of programming languages
+    var languages = ["HTML", "CSS", "JavaScript", "PHP", "Python"];
+    console.log(languages);
+    /*
+    (5) ["HTML", "CSS", "JavaScript", "PHP", "Python"]
+    0: "HTML"
+    1: "CSS"
+    2: "JavaScript"
+    3: "PHP"
+    4: "Python"
+    length: 5
+    */
+
+    // Task: Our first programming language to learn is: JavaScript
+    console.log("Our first programming language to learn is: " + languages[2]);
+
+    // Task:
+    // output (console.log): We are studying JavaScript now, our next module will be PHP
+    // don't write them as literal text, use the + for concatenating them with a text
+    console.log("We are studying " + languages[2] + " now, our next module will be " + languages[3]);
+
+    // on your own code try to create any other arrays....
+
+    // We can increase/add more elements to our array, we have different ways:
+    // one of them:
+    // since our last value is "Python" in index 4,
+    // so we can simply add another new value in index 5
+    languages[5] = "C#";
+    // and we can keep going:
+    languages[6] = "Java";
+    console.log(languages);
+
+    /*
+    Review:
+    The same with a simple variable,
+    we can initialize a variable in the same line:
+    var myValue1=5;
+
+    OR declare a variable then give it a value on the second line:
+    var myBestFriend;
+    myBestFriend="Tom"; // 'Tom';
+
+    We can declare an empty array, then we can add elements to this empty array
+    below is a short version of creating a new array:
+    */
+    var myExams = [];  // just declaring an empty array
+    // We can add the values to myExams array for each index (adding 5 exam marks):
+    console.log(myExams); // [] => length: 0
+    myExams[0] = 90;
+    myExams[1] = 94;
+    myExams[2] = 82;
+    myExams[3] = 75;
+    myExams[4] = 78;
+    /*
+    you might think we could have created the array like this:
+    The better smart way:
+    In this simple example, we should use one line:
+    var myExams=[90,94,82,75,78];
+    */
+    // to output the value of my first exam:
+    // the value of the first exam is inside myExams array
+    // using console message "Your first exam is: 90"
+    console.log("Your first exam is: " + myExams[0])
+
+    /* creating an array of subjects */
+    /*
+    - "Dreamweaver" with double quote
+    - 'Photoshop' with single quote
+    - try to avoid mixing them as shown below!!!
+    */
+    var mySubjects = ["Dreamweaver", 'Photoshop', "JavaScript"];
+    /*
+    So again:
+    array has index, each element inside the array has its own unique index value
+    JS like PHP and other languages is 0 based index
+
+    first element has index of 0 which is "Dreamweaver"
+    second element has index of 1
+
+    JavaScript has the index of 2
+    */
+
+    // More example: (working as Front-End Developer)
+    var myFavSubjects = ["HTML", "CSS", "JavaScript"];
+
+    // for testing: output the CSS subject of the array:
+    console.log(myFavSubjects[1]) // CSS
+
+    // Task Output:
+    // "We should start by learning {HTML} then {CSS} before learning {JavaScript}"
+    // use console.log() and we need to access these subjects by calling the array myFavSubjects
+    // writing the console using the array structure:
+    // the first element (index:0) of my myFavSubjects is "HTML"
+    // the second element (index:1) of my myFavSubjects is "CSS"
+    // the third element (index:3) of my myFavSubjects is "JavaScript"
+    console.log("We should start by learning " + myFavSubjects[0] + " then " + myFavSubjects[1] + " before learning " + myFavSubjects[2]);
+
+    /*
+    Another way of declaring an empty array using a long version (Object way):
+    var Array: ArrayConstructor
+    */
+    var myShoppingList = new Array();
+    /*
+    The code above is exactly as we say/write:
+    var myShoppingList = [];
+    */
+
+    // then we can insert the values by specifying the index for each one
+    myShoppingList[0] = "Green Tea";
+    myShoppingList[1] = "Sugar";
+    myShoppingList[2] = "Tomato";
+    myShoppingList[3] = "Milk";
+
+    // for testing:
+    console.log("My last item in my shopping list is " + myShoppingList[4]);
+    // the output (there is no idex 4): My last item in my shopping list is undefined
+
+    // Task:
+    // Find the average of my 5 exams:
+    // logic/formula in MS Excel: (exam1+exam2+exam3+exam4+exam5)/5
+    // in JS: average =(exam1+exam2+exam3+exam4+exam5)/5
+    // Note: call the values based on their index inside the array
+    // var avg = 90+94+82+75+78/5; // Wrong => PEDMAS
+    // var avg = (90+94+82+75+78)/5; // Right => PEDMAS
+    var average = (myExams[0] + myExams[1] + myExams[2] + myExams[3] + myExams[4]) / 5;
+    // we can use console.log:
+    console.log("The average is: " + average); // The average is: 83.8
+
+    /*
+    Conclusion:
+    - Array: is a variable that can contain multiple values
+    - Each value has an "index number"
+    - The array index starts with 0
+    - The first index will be 0 and highest index in the array will the length of the array - 1
+
+    Example:
+    myShoppingList has 4 elements which means its length is 4
+    so the index of the last item is 4 - 1 = 3
+    which is right, the index of element "Milk" in myShoppingList is 3
+    output: myShoppingList[3] ==> this will be "Milk"
+    */
+
+    // More Examples (Tasks for my students):
+    // Task#1: declare a new empty array:
+    // this array will contains the marks of 3 exams so you can name it "finalExams"
+    var finalExams = [];
+
+    // I want to insert 90 into the array:
+    // finalExams[0]=90; // but not by hard coding
+    /*
+    instead of populate the array with the 3 exams marks using hard coding,
+    we will get these three marks from the user and save them directly into our array "finalExams[]
+    */
+
+    // Task#2
+    /*
+    Ask the user to input the first exam using prompt() function
+    The returned value of prompt() should be saved into the finalExams[0]
+    */
+    finalExams[0] = prompt("Enter your first exam");
+    finalExams[0] = parseFloat(finalExams[0]);
+
+
+    // do the same for exam2 and exam3:
+    finalExams[1] = parseFloat(prompt("Enter your second exam"));
+    finalExams[2] = parseFloat(prompt("Enter your third exam"));
+
+    // for testing:
+    // we will do the old classical way
+    var examsTotal = finalExams[0] + finalExams[1] + finalExams[2];
+    // just output the value of examsTotal:
+    document.write("Exams Total is:" + examsTotal);
+    document.write("<hr>");
+    /*
+    document.write() like "alert()" and "console.log()", so we can write a full formula
+    or equation and get the result!
+    */
+
+    // Task#3
+    // output the total of the three exams
+    // using document.write() directly
+    // without creating a variable "total"
+    // "The total is: xy"
+
+    /*
+    When we add with "+" text to numeric value
+    JS will convert this numeric value into a text
+
+    so if put: "ABC"+1+2+3
+    this will be converted into "ABC"+"1"+"2"+"3"
+    so the result will be ABC123 and NOT ABC6 !
+
+    because the "+" is used for both:
+    - concatenating
+    - addition operation
+
+    Very Important Note:
+    so just to let JS distinguish between the text and
+    our formula, we just need to enclose our equation/formula
+    within the opening and closing parenthesis ( )
+    */
+    document.write("The total is: " + (finalExams[0] + finalExams[1] + finalExams[2]));
+
+
+    /*
+    Very Important Note:
+    Please remember that every thing in JavaScript is an object!
+    ------------------------------------------------------------
+
+    *******************
+    Array is an object:
+    *******************
+    Note: We will talk about the idea of object later in more details
+
+    Object in JS like any object (item) in our life: a car, a pen, a house, a keyboard, etc...
+
+    In our real life any object can have two things, let's take the "car" object for example:
+    1- specifications/descriptions => 4WD, White color, 2010, Dodge
+    2- action (verb) => drive forward, reverse, beeping, turn lef/right
+
+    Let's take the "pen" as real-life object:
+    1- specs(specifications): Brand => Sharpie, Color => Light Yellow, Type => Highlighter
+    2- actions: Highlight
+
+    As we have objects in real-life, any programming language has objects
+    Objects in JS (or any programming language) can have the following two members:
+    1- properties (like specs/descriptions for our real life objects)
+    2- methods (like actions for our real life objects)
+
+    Because in JavaScript, Array is an object which means array has "properties" and "methods"
+    The object properties and methods can make our coding much easier and faster.
+
+    To access the properties or the methods that belong to each object:
+
+    The object syntax (using the dot notation):
+    objectName.ObjectProperty
+    objectName.ObjectMethod()
+
+    exactly lie "console", yes, it's an object!
+    console.log() => using the method log() for the console object
+
+    Noticed that the property doesn't have ()
+    while method name ends with () == because method is just a function for that object
+    and any function in JS has ( and ) like: alert(), prompt(), parseInt(), parseFloat()
+
+    Our current object which is the array "fruits" has:
+    - Property => length
+    - has these two methods for Popping and Pushing:
+
+    When you work with arrays, it is easy to remove elements and add new elements.
+    This is what popping and pushing is:
+    Popping items out of an array, or pushing items into an array.
+
+    Popping:
+    The "pop()"" method removes the last element from an array:
+
+    Pushing:
+    The "push()"" method adds a new element to an array (at the end):
+
+
+    The syntax:
+    arrayName.pop()
+    arrayName.push(value)
+    */
+
+    // Let's create an array of fruits named "fruits":
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    // fruits => array => object => has "properties" and "methods"
+    console.log(fruits);
+
+    // Task:
+    // Removes the last element ("Mango") from fruits array
+    // don't forget that method like function, has to have at the end ( and )
+    fruits.pop(); // will remove the last item in the array
+    console.log(fruits); // Banana Orange Apple
+
+    // let's create another array of cars:
+    var cars = ["Honda", "Nissan", "Dodge", "Toyota"];
+    console.log(cars);
+    // Adds a new element (car) "Ford"
+    // cars[4]="Ford"
+    // Or:
+    cars.push("Ford");
+    console.log(cars);
+
+    // We can use the length property of the array object
+    console.log("Now, we have " + cars.length + " cars!");
+
+    // To summarize: array is an object:
+    console.log(typeof (fruits)); // object
+    console.log(typeof (cars)); // object
+
+    // anything in JS is an object even the other types: string, number, boolean:
+    // for fun and quick practice:
+    var myTextbook = "Beginning JavaScript";
+    console.log(typeof (myTextbook)); // string
+    // since everything is an object in JS, so string is also an object
+    console.log(myTextbook.length); // 20
+    // toUpperCase() => Converts all the alphabetic characters in a string to uppercase.
+    console.log(myTextbook.toUpperCase()); // BEGINNING JAVASCRIPT
+  </script>
+
+</body>
+
+</html>

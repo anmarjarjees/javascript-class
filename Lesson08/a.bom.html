@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Programming the Browser:
+
+            - we can access the browser object in JS like the "window" object
+            - The window object represents the browser's frame or window, in which your page is contained
+
+            The collection of objects that the browser makes are called:
+            - BOM ==> Browser Object Model
+
+            since the first day, we've been using alert(), alert() is a method that belongs to the browser object:
+            */
+
+        alert("Here is my first message");
+        // because alert() method that belongs to the browser object "window"
+        window.alert("Here is my second message");
+
+        /*
+            We don't have to put the full code window.alert(), because the "window" object is a global object, which means you don't need to use its name to access its properties and method
+        */
+
+        // the same like:
+        var firstName = window.prompt("Enter your first name:");
+
+        // or just type:
+        var lastName = prompt("Enter your second name");
+
+        /*
+        window is one of the objects that belongs to the browser
+
+        window as an object has:
+        - properties: example ==> window.alert()
+        - methods: example ==> window.document
+
+        Examples:
+        window.alert();
+        */
+
+        var pageTitle = window.document.title;
+        // or we can just type:
+        var pageTitleAgain = document.title;
+
+        alert(pageTitle);
+        alert(pageTitleAgain);
+    </script>
+</body>
+
+</html>

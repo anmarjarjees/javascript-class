@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model - DOM 3</title>
+    <style>
+        /* 
+        Targeting the input field with type value of "button" and the button element:
+        */
+        input[type="button"],
+        button {
+            border-radius: 50%;
+            background-color: #d4b386;
+            color: #471414;
+            cursor: pointer;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+
+        <h1 id="first">Simple Calculations</h1>
+        <!-- 
+            Notice that we don't want to create an official form with submit button and clear buttons
+            so we can just use the wanted elements with out including the form element!
+         -->
+        <div>
+            <label for="numbers">Input your numbers with spaces in between:</label>
+            <!-- 
+                required => this field is required to have some content when the form is being submitted
+                the required attribute works ONLY when the from is being submitted
+                
+                In our code below we are using these tricks:
+                - <input type="button" ...
+                - <button ...
+                
+                to prevent the form from being submitted
+                so adding/removing the attribute "required" will not make any changes!:-)
+             -->
+            <input type="text" name="numbers" id="numbers" size="30" maxlength="35">
+        </div>
+
+        <div>
+            <!-- 
+            In this example, we can use either way below because we don't have a form element:
+            -->
+            <input type="button" value="Submit1" onclick="findTotal();">
+            <button onclick="findTotal();">Submit2</button>
+        </div>
+
+        <p>The total of your numbers: <span id="result"> </span></p>
+    </div>
+
+    <script>
+        // Below is the function to find the total of x numbers that use inputs
+
+        // This function "findTotal1()" will be called/run on click event for "Submit1"
+        function findTotal() {
+            // for test:
+            // alert(" findTotal1() is called!");
+
+            // The first initial step is to get the user input:
+            // the user input will be just a text (string ) of numbers
+            // we need to take the user input (numbers) => getElementById()
+            // HTML form input field convert the user input to text type="text" 
+            // To get input value of <input> tag:
+            // I put the variable name to "inputDataStr" => the input data will be of string data type
+
+            /*
+            var inputDataStr = document.getElementById("numbers");
+            console.log(inputDataStr); // <input type="text" name="numbers" id="numbers" size="30" maxlength="35">
+            */
+
+            // We need only the value inside the input field not the entire input element!
+            // We can use the property named "value"!
+            var inputDataStr = document.getElementById("numbers").value;
+            console.log(inputDataStr); // 1 2 3 4 5
+            console.log(typeof (inputDataStr)); // string
+
+            // The second step:
+            // in case if the user puts spaces after or before the numbers
+            // we need to use the string javascript method named  "trim()" to remove the leading and trailing Whitespace:
+            // The trim() method removes whitespace from both sides of a string.
+            // Note: The trim() method does NOT change the original string.
+            // the syntax: myString.trim()
+            inputDataStr.trim();
+
+            // for testing if we still have white spaces before and after:
+            console.log(inputDataStr);
+
+            inputDataStr = inputDataStr.trim();
+
+            // for testing if we still have white spaces before and after:
+            console.log(inputDataStr);
+
+            // The third step:
+            // now we have inputDataStr="1 2 3 4 5 6 7"
+            /*
+                To recall from the assignment 1
+                we had an array of numbers = [90,88,87,75]
+                In that assignment it was easy to use for loop to go through each number in the array 
+                and add it to the total variable (when we had total=0 before the loop)
+
+                But here, we have a string of numbers = "90 88 87 75"
+                it's really hard to loop through list of characters in a string to find the total!
+                If we can convert this string into array?
+                Good News: JS can convert "90 88 87 75" to [90,88,87,75] using a built-in function named split()
+            */
+            // in other words:
+            // the returned value of the input text box is a string
+            // we need to convert this string into an array:
+            // using split() method to split the string letters into an array
+            // split() method (function) needs one parameter which is the delimiter that we put in between our numbers
+            // The split() method is used to split a string into an array of substrings, and returns the new array.
+            // because split() method returns an array so we can save it into a new variable "inputDataArray"
+            // you can read more: https://www.w3schools.com/jsref/jsref_split.asp
+            var inputDataArray = inputDataStr.split(" ");
+
+            // for testing:
+            console.log(inputDataArray);
+
+            // for testing: output the values of the array using for loop to the document:
+            /*
+            for (var i = 0; i < inputDataArray.length; i++) {
+                document.write(i + " " + inputDataArray[i] + "<br>");
+            }
+            */
+
+            // The fourth step:
+            // the following code will take the user input array that contains spaces and number
+            // and will filter the input array to create another new array that contains the numeric values only:
+            /*
+            in other words, the initial user array is: inputDataArray
+            but this array "inputDataArray" might contains extra spaces in between the numbers or even some characters!
+
+            Lets create a new array on the fly that will take all the numbers (numeric values) from "inputDataArray"
+            and ignore all the spaces or the null values
+
+            The current way:
+            ---------------
+            We are going to loop and filtering (inside if validation) the array
+
+            The other way:
+            --------------
+            In Advances Programming Topics, There is concept named "Regular Expression"
+            By placing a complex code (pattern) and compare the user input with this complex code (pattern)
+
+            In our case the code/pattern is: number space number space and so on
+            */
+
+            var numericArray = []; // declare an empty array first
+            // This "numericArray" supposed to receive/contain only the numeric values from the initial array "inputDataArray"
+            // the numericArray items will be added on the fly throughout the following loop:
+            for (var i = 0; i < inputDataArray.length; i++) {
+                /*
+                Notice that if we use hex numbers like 0x => it will be accepted also as a number
+                You can learn more about "Hexadecimal" for your are really interested :-)
+                https://en.wikipedia.org/wiki/Hexadecimal
+                */
+                if (inputDataArray[i] != "" && !isNaN(inputDataArray[i])) {
+                    // if the current value is a number (not space)
+                    // I want to push it into our numeric Array:
+                    numericArray.push(inputDataArray[i]);
+                    /*
+                    yes, we can attach parseFloat() function above
+                    or do it later below:
+                    */
+                } // end if
+            } // end for loop
+
+            // for testing:
+            console.log(numericArray);
+
+
+
+            // The final loop for finding the total:
+            var total = 0;
+            for (let i = 0; i < inputDataArray.length; i++) {
+                total += Number(inputDataArray[i]); // "1" + "2" = "12"
+                // Number()/parseFloat() will convert the string "1" into a number 1
+            }
+
+            // Print the result:
+            document.getElementById("result").innerHTML = total;
+        } // end function findTotal
+    </script>
+</body>
+
+</html>

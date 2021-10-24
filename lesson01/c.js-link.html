@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link to external JS File</title>
+    <!-- the link for an external CSS file -->
+    <link rel="stylesheet" href="">
+
+    <!-- the link for an external JS file -->
+    <script src=""></script>
+
+    <!-- We can still add our internal JS code also: -->
+    <!--
+        Review again:
+        we don't need the "type" attribute <script type="text/javascript">
+        with HTML5
+    -->
+    <script>
+        // you can write your JavaScript code here
+        // with text we need to use " or '
+        // using alert() built-in function
+        alert("Hello World with double quote"); // this text with double quotes
+        alert('Hello World with single quote'); // this text with single quote
+    </script>
+</head>
+
+<body>
+    <!-- Just writing our normal HTML page content: -->
+    <h2>Learning JavaScript</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum optio voluptatum, cum quis doloremque
+        architecto asperiores officia. Expedita id consequuntur exercitationem ipsum sunt esse blanditiis animi
+        repellendus pariatur fugit?
+    </p>
+
+    <!-- we can also place our script inside the body -->
+    <script>
+     // we can write our internal JS code here
+    </script>
+
+    <!-- the link for an external JS file -->
+    <!--
+        Or we can add a link to an external JS file
+        using the same script element with src attribute
+    -->
+    <!--
+        Instead of using internal JavaScript code.
+        We will use an external JavaScript file.
+        The JavaScript file extension is: .js
+        [remember we had the style sheet file extension: .css]
+
+        Since JavaScript deals with the page content as we will learn later (stay tuned)
+        it's better to call our script after the page is fully loaded
+        and that's why we should place the <script> element
+        for calling our external JS file at the end of wrting all our HTML content exactly before </body> tag
+
+        So put it just before the closing </body>
+        This comment will make more sense to you when we start using the DOM (Document Object Model)
+
+        Below we using the src (source) attribute to call/link the scrip JavaScript file to our current page
+    -->
+    <script src="script.js"></script>
+</body>
+
+</html>

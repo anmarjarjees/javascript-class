@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Statement</title>
+</head>
+
+<body>
+    <script>
+        // the returned value of the prompt() method will be saved into firstName variable
+        var firstName = prompt("What's your first name?");
+
+        /*
+            The logic:
+            if the firstName is "Tom", we write "Hi Tom"
+            if the firstName is "Smith:, we write "Hi Smith"
+            if the firstName is "Martin:, we write "Hi Martin"
+            if the firstName is "James:, we write "Hi James"
+            otherwise, we write "Hi there, so you are a new user, and your
+            name is (the value of firstName)"
+        */
+
+        /*
+        Although we can use if condition for this logic, but for the purpose of this example,
+        we need to learn how to use switch statement to......
+
+        Remember that JS/PHP are case-sensitive:
+        "tom" is not the same as "Tom"
+        */
+
+        /*
+        if (firstName == "Tom") {
+            alert("Hello Tom");
+        } else if (firstName == "Smith") {
+            alert("Hello Smith");
+        } else if (firstName == "Martin") {
+            alert("Hello Martin");
+        } else if (firstName == "James") {
+            alert("Hello James");
+        } else {
+            alert("Hi there, so you are a new user, and your name is: " + firstName);
+        }
+        */
+
+        // switch statement:
+        // another way to code conditions instead of using if
+        // we will repeat the same logic using switch statement:
+        /*
+        switch (myVariable) {
+            case value1:
+            case value2:
+            case value3:
+            default:
+
+        }
+        */
+
+        switch (firstName) {
+            case "Tom":
+                // Remember it's case-sensitive => it has to be "Tom" with capital:
+                // as a human "tom" is the same as "Tom"
+                // in programming language "tom" is NOT the same as "Tom"
+
+                // writing my code her in case if firstName is "Tom"
+                document.write("<h3>Hello Tom</h3>");
+                break;
+
+            case "Smith":
+                // writing my code her in case if firstName is "Smith"
+                document.write("<h3>Hello Smith</h3>");
+                break;
+
+            case "Martin":
+                // writing my code her in case if firstName is "Martin"
+                document.write("<h3>Hello Martin</h3>");
+                break;
+
+            case "James":
+                // writing my code her in case if firstName is "James"
+                document.write("<h3>Hello James</h3>");
+                break;
+            /*
+            with if condition we have else for the last option
+            in switch statement we have "default" like else with if condition
+            otherwise (if it's not Tom, Smith, Martin, James)
+            we can output this message:
+            Hi there, so you are a new user, and your name is (the value of firstName)
+            */
+            default:
+                document.write("<h3>Hi there, so you are a new user, and your name is " + firstName + "</h3>");
+                break;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

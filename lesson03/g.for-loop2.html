@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The For Loop 2</title>
+</head>
+
+<body>
+    <script>
+        // Task:
+        /*
+            Ask (prompt) the user to input a number between 1 and 10
+            if the user input a valid number
+            then using for-loop to find the result of this operation as explained below:
+
+            For example:
+            if the user inputs 5 (for example) => you need to find the total of:
+            - 5 + 4 + 3 + 2 + 1 = the total
+            OR:
+            - 1 + 2 + 3 + 4 + 5 = the total
+
+            if the user inputs 7 ==> 7 + 6 + 5 + 4 + 3 + 2 + 1 = the result
+            if the user inputs 3 ==> 3 + 2 + 1 = the result
+
+            and so on for any number the user inputs
+
+            But if the user inputs a number out of the range (1-10) => alert a warning message
+
+            The logic:
+            variable = ask the user to input a number
+            If (this variable is greater/equal to 0 AND less/equal to 10)
+                Then: do the operation of addition
+            Else alert the user
+        */
+
+        var userNumber = parseInt(prompt("Enter any number between 1 and 10: "));  // for example: 4
+        if (userNumber >= 1 && userNumber <= 10) {
+            // We will write our main logic (the major code solutions)
+            // for testing the if condition:
+            // alert("Ok!");
+
+            /*
+                my code is to find the addition/total from 1 to 4
+                1+2+3+4 Or 4+3+2+1
+           
+                Assuming 4-- => 3-- => 2-- => 1--
+
+                 number = 4 and we have a container=0;
+                 4+3+2+1
+                 container = 0 + 4 = 4
+                 container = 4 + 3 = 7
+                 container = 7 + 2 = 9
+                 container = 9 + 1 = 10
+
+                 going descendencly from 4 to 1:
+            */
+            var count;
+            var total = 0; // my cart when I shop online :-)
+            for (count = userNumber; count >= 1; count--) {
+                // for testing:
+                // document.write("<br> " + count);
+
+                // we can use the long way:
+                // total = total + count; // +4 then +3 then +2 then +1 then stop!
+
+                // or we can use the short way
+                total += count; // instead of saying: total = total + count;
+            }
+            // we need to output the result AFTER (outside) the loop block
+            document.write("<h2>The total is " + total + "</h2>");
+
+            // Another way, we can change the logic of the for loop:
+            // instead of going in this order: 4 + 3 + 2 + 1
+            // we can start from 1 and stop with the user's number: 1 + 2 + 3 + 4
+            // (4 + 3 + 2 + 1) is the same as (1 + 2 + 3 + 4)
+            // Below we need to keep looping while the loopCounter is less than or equal to the user's number
+            total = 0; // Just initialize the total variable with 0 (no need for var)
+            for (count = 1; count <= userNumber; count++) {
+                total = total + count;
+                /*
+                total = 0 + 4 ==> 4
+                total = 4 + 3 ==> 7
+                total = 7 + 2 ==> 9
+                total = 9 + 1 ==> 10
+                */
+            } // end for loop
+            // we need to output the result AFTER (outside) the loop block
+            document.write("<h2>The total again is: " + total + "</h2>");
+        } else {
+            alert("Invalid Input!");
+        }
+
+    </script>
+</body>
+
+</html>

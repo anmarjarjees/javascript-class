@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events via HTML Attributes</title>
+    <style>
+        /* internal styles */
+        .blue-theme {
+            background-color: #e6f2ff;
+            border: 2px solid #00264d;
+        }
+
+        .red-theme {
+            background-color: #ffebe6;
+            border: 2px solid #661400;
+        }
+
+
+        /* to prevent the normal behaviour (colors) of a link */
+        /* 4 major states of a link */
+        a:link {
+            text-decoration: none;
+            color: #07a10e;
+        }
+
+        a:visited {
+            color: chocolate;
+        }
+
+        a:hover {
+            color: darkgrey;
+        }
+
+        a:active {
+            color: darkblue;
+            /* italic */
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header class="main">
+            <!-- adding a JS event as an attribute like "onclick"
+                the value of onclick attribute is a javascript code
+            -->
+            <h1 id="head1" onclick="alert('You clicked the h1 element');">Document Object Model</h1>
+            <nav>
+                <ul>
+                    <li onclick="addBlueColor()">
+                        <!-- 
+                            we don't want this link to go anywhere just to change the color,
+                            so can add the value to be #
+                         -->
+                        <a href="#">Blue Theme</a>
+                    </li>
+                    <li onclick="addRedColor()">
+                        <a href="#">Red Theme</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section id="content">
+            <!-- onmouseover="alert('You hovered the mouse over this p element');" -->
+            <!-- we can add our own custom function to onclick event -->
+            <!-- since it's only one statement so the ; is optional -->
+            <p id="first" onclick="paraClick();">Here is my first paragraph</p>
+            <a href="http://www.w3schools.com" onclick="return linkClick()">W3 Schools</a>
+            <p>Here is my second paragraph</p>
+            <p id="msg"></p>
+        </section>
+        <footer class="main">
+            Designed by me...
+        </footer>
+    </div>
+
+    <!-- since we are going to target the HTML element in this page,
+    we should place all our script after the HTML code -->
+
+    <script>
+        function paraClick() {
+            // don't forget to comment this statement:
+            // document.write("you clicked a paragraph!"); // will override all the page contents
+            /*
+                DOM:
+                "document" is the object that refers to the entire page elements
+                getElementById() is the method of document object
+                innerHTML property to change the content of that HTML elements
+
+                we need to write our message inside the <p> element
+                that has an id="msg"
+
+                In our HTML we have this line:
+                <p id="msg"></p>                
+            */
+            document.getElementById("msg").innerHTML = "you clicked a paragraph!";
+        } // end paraClick()
+
+        // any variable we declare OUTSIDE the function is a global variable
+        var divWrapper = document.getElementById("wrapper"); // global variable
+
+        function addBlueColor() {
+            // alert for testing
+            // alert("blue");
+
+            // we want to apply the class style "blue-theme" to the this <div id="wrapper">
+            // className:
+            // instead of keep typing ==> document.getElementById("wrapper")
+            // we can save it into a JS variable
+
+            divWrapper.className = "blue-theme";
+            // or:
+            // put the idName.className =.....
+            // wrapper.className = "blue-theme";
+        } // end addBlueColor()
+
+        function addRedColor() {
+            // alert for testing
+            // alert("red");
+            divWrapper.className = "red-theme";
+        } // end addRedColor()
+
+        function linkClick() {
+            alert("So you are going to leave our page and visit w3schools!");
+            // to prevent the <a> element from doing the normal action "open the link"
+            // we can add "return false to the function"
+            // and return keyword to the "onclick"
+            // return false can prevent the page from being refreshed
+
+            document.getElementById("msg").innerHTML = "This link will not work because of return false statement;"
+            return false;
+            // any code we place after the return statement will not be run
+            // because return statement will terminate my function
+
+            /* remember that return statement CANNOT be used outside the function block */
+        } // end linkClick()
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if condition part 2: AND, OR, NOT</title>
+</head>
+
+<body>
+    <script>
+        /*
+            In JavaScript, we have the following 3 keywords and are called: "Logical Operator"
+            - AND ==> &&
+            - OR ==> ||
+            - NOT ==> !
+        */
+
+        /*
+           With the logical operators we need to use following
+           table. This table is called "Truth Table"
+
+           OR Formula (OR Truth Table):
+           LEFT-HAND SIDE OR RIGHT-HAND-SIDE ==> BOOLEAN RESULT
+           TRUE OR TRUE ==> TRUE
+           TRUE OR FALSE ==> TRUE
+           FALSE OR TRUE ==> TRUE
+           FALSE OR FALSE ==> FALSE <== All FALSE = FALSE (The key)
+
+           AND Formula (And Truth Table):
+           LEFT-HAND SIDE AND RIGHT-HAND-SIDE ==> BOOLEAN RESULT
+           TRUE AND TRUE ==> TRUE <== All TRUE = TRUE (The key)
+           TRUE AND FALSE ==> FALSE
+           FALSE AND TRUE ==> FALSE
+           FALSE AND FALSE ==> FALSE
+
+           NOT:
+           NOT TRUE (!TRUE) ==> FALSE
+           NOT FALSE (!FALSE) ==> TRUE
+
+           Simple Trick:
+           Assume that:
+           TRUE = 1
+           FALSE = 0
+           Remember that there is no "2", the maximum value is 1
+           OR = +
+           AND = *
+
+           Examples:
+           TRUE OR TRUE ==> TRUE
+           like saying: 1 + 1 = 1
+
+           TRUE OR FALSE ==> TRUE
+           like saying: 1 + 0 = 1
+
+           TRUE AND TRUE ==> TRUE
+           like saying: 1 * 1 = 1
+
+
+           TRUE AND FALSE ==> FALSE
+           like saying: 1 * 0 = 0
+       */
+
+        /*
+        Example of using OR in our real life:
+        if (lives in GTA OR works in GTA OR Studies in GTA) {
+            then he/she can have the "Toronto Public Library" Card for free!
+        }
+
+        if (FALSE OR TRUE OR FALSE) {
+            I can have a TPL card
+        }
+
+        another example,
+        some one wants to apply for a Medicine School:
+        - condition1: age 18+
+        - condition2: avg 90+
+
+        if condition1 AND condition2 are TRUE ==> you can apply for any MD college
+        */
+
+        var userAge = parseInt(prompt("How old are you?"));
+        var userAvg = parseFloat(prompt("Please enter your final school average: "));
+
+        if (userAge >= 18 && userAvg >= 90) {
+            document.write("<p>You can apply for any MD college</p>");
+        } else {
+            document.write("<p>You can't apply for any MD college for the time being</p>");
+        }
+
+        var x = 1;
+        var y = 2;
+        // using OR symbol ||
+        // I want to check if either x or y is greater than 10 or no
+        if (x > 10 || y > 10) {
+            // if (False || False) => False
+            document.write("At least one value is more than 10");
+        } else {
+            document.write("there is no value more than 10");
+        }
+
+        document.write("<br>");
+
+        // Using AND Logical Operator. The symbol is: &&
+        /*
+            Based on CBC rules in a normal situation,
+            all marks for each individual section have to be 60+
+            (for the final exam AND the final project AND the assignments) have to be at least 60%
+
+            The average has to be at least 60%
+            and every individual mark has to be also 60%
+
+            New Rules with Online:
+            Participation: 10%
+            Middle-Assignment: 40%
+            Final-Assignment (final-exam): 60%
+        */
+        var finalExam = 70;
+        var finalProject = 85;
+        var assignmentsAVG = 78;
+        if (finalExam >= 60 && finalProject >= 60 && assignmentsAVG >= 60) {
+            document.write("OK, you passed!");
+        } else {
+            document.write("Don't' worry, you will need to get an extra assignment");
+        }
+
+
+        /*********** more examples ********************/
+        var age = 18;
+        // Here is the simple solution using our classical way:
+        // if (age is greater than or equal to 18)
+        if (age >= 18) {
+            document.write("Yes, you can buy fireworks");
+        }
+
+        // So let's try to repeat the same example using the "NOT" Logical Operator, the symbol is: !
+        // more example: ! (not)
+        // the NOT operation !
+        // if (age is NOT less than 18)
+        if (!age < 18) {
+            document.write("Yes, you can buy fireworks");
+        }
+
+        /*
+        in the example above:
+        we can write the condition in two ways:
+        if (age>=18)==> you can buy ...
+        Or:
+        if (!age<18)==> you can buy...
+        if (the age is NOT less than 18)
+
+        we used ! operator with the same logic of age
+        logic: if the age is NOT less than 18 ==> "Yes, you can buy fireworks"
+        */
+
+
+        var city = "Toronto";
+        /*
+        Problem: If the student is 18+ and lives in Toronto,
+        he/she can register at CBC Toronto Campus. (Just assuming as an example)
+
+        Write the code using if function:
+        */
+        // be careful with comparison, we have to use either == or ===
+        if (age >= 18 && city == "Toronto") {
+            document.write("You can register with Toronto Campus");
+        }
+
+
+        /*
+        Review again the use of not operator !
+
+        Problem: The general rule: the student has to be 18+ to register with any campus:
+        let's try to use the NOT operator which is !
+
+        Which is the same logic/idea with the example of buying fireworks:
+        */
+
+        // the answer with using NOT:
+        if (age >= 18) {
+            document.write("Since your age is not less than 18, you can register with any CBC campus");
+        }
+
+        // now try to write the same condition using the NOT operator
+        // if the age is NOT less than 18:
+        if (!age < 18) {
+            document.write("Since your age is not less than 18, you can register with any CBC campus");
+        }
+
+    </script>
+</body>
+
+</html>

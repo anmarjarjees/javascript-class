@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object-Oriented Programming 1</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+            Review:
+            We used some methods of the built-in objects in JS (Object Dot Notation):
+            - the log() method of the console object:
+              console.log("Hello World!");
+            - the write() method of the document object:
+              document.write("<h1>Heading 1</h1>");
+    
+            We used some properties of the built-in objects in JS:
+            - the title property of the document object:
+            - document.title => will give us the document title
+    
+            to access our object members (properties and methods) using the dot notation:
+            - myObjectName.property
+            - myObjectName.method()
+    
+            
+            Creating Our Custom Objects:
+            ----------------------------
+            The syntax (template) to create our own/custom object:
+            let/var objectName = {
+                property1Name: property1Value,
+                property2Name: property2Value,
+                property3Name: property3Value,
+            };
+        */
+
+
+        // adding the owner of the car, name, year:
+        // using array might not be clear!
+        let carInfoArr = ['Martin', '2017', 4, 'white', 30000];
+
+        // for learning demo, we will use the name carObj
+        // literal notation
+        // creating our "carObj" object:
+        let carObj = {
+            /*
+            object is based on keys and values:
+
+            Notice that each key-value pair is separated by a comma.
+
+            in this example:
+            the key "owner" has the value of "Martin"
+            the key "year" has the value of 2017
+
+            The last key-value pair can have a trailing or hanging comma, but it’s not necessary (optional).
+
+            A value can be of any data type: boolean, function, string, integer and even other objects.
+
+             key: value => owner: "Martin" (inside the object)
+             var = value => let owner = "Martin"
+
+            */
+
+            // Notice that this object contains "properties" only (no methods/function)
+            owner: "Martin",  // if the property value is string, we have to enclose it with ' or "
+            year: 2017,
+            wheels: 4,
+            color: "White",
+            km: 30000,
+            // Yes we can use " or ' but stick with one
+            // no need for comma for the last item/property
+            name: 'speedy'
+        };
+
+        console.log(carObj);
+        /*
+            Object
+            color: "White"
+            km: 30000
+            name: "speedy"
+            owner: "Martin"
+            wheels: 4
+            year: 2017
+        */
+
+        // output the content to our document for the end user:
+        document.write(carObj); // [object Object]
+
+        /*
+        carObj object has properties and methods
+        objectName.property => document.title or myArray.length
+
+        the same with our carObj object:
+        carObj.owner => to get the owner name
+        carObj.year => to get the year of the carObj
+        */
+        document.write("<hr>");
+
+        document.write("<p>This car " + carObj.name + ", it belongs to " + carObj.owner + " the car year model is " + carObj.year + ". Its color is: " + carObj.color + ", " + carObj.wheels + " wheel-drive" + ", and finally they used for " + carObj.km + " km.</p>");
+
+        /*
+        We had a very basic example of creating a object with properties only:
+        We have another example below of having an object with properties and methods:
+        */
+        // we can modify the first one by adding methods to it "different name"
+        let carFullInfo = {
+            // staring with properties first:
+            owner: "Martin",
+            year: 2017,
+            wheels: 4,
+            color: "Silver",
+            km: 30000,
+            brand: 'Jeep',
+
+            // ending with methods (method is just a function inside and object):
+            /*
+            methodName: function () {
+
+            }
+            */
+            bio: function () {
+                // let's just output the car info (bio) into the page:
+                // I want to access this object members (properties and methods)
+                // to access the object members within the object like this example:
+
+                /*
+                To access any object property => object.propertyName
+
+                Yes, we can use for example: carFullInfo.owner (Not recommended)
+                
+                To access any object members (properties/methods) within this object itself
+                we need to use a JS keyword "this" (it's better than using the object name itself)
+                */
+                document.write("<p>This car belongs to " + this.owner + ".</p>");
+                // Error: owner is not defined => we need to use the object dot notation to access its properties
+                // and so on for the rest: year and brand
+                document.write("<p>The car model " + this.year + ". and it's " + this.brand + " " + this.wheels + " wheels drive." + "\nColor:" + this.color + "</p>");
+                // Error: brand is not defined
+            }, // end bio()
+
+            // another method/function to output the car specifications named "specs":
+            specs: function () {
+                document.write("<h3>Car Full Specifications</h3>");
+                // using JS ` literal Template
+                // we can ignore the ' or " and just warp our entire text with ` first
+                // wrap every variable with { } with the symbol of $ => ${variableName}
+                document.write(`
+                    <ul>
+                        <li>Brand: ${this.brand}</li>
+                        <li>Color: ${this.color}</li>
+                        <li>Model: ${this.year}</li>
+                        <li>Wheel-Drive: ${this.wheels} drive</li>
+                        <li>kilometers: ${this.km} km</li>
+                    </ul>`);
+            } // end specs() // no need for a comma , since "specs" method is last item/member in this object
+        };
+
+        // the way to access its properties:
+        // no output for these two lines:
+
+        // access the name property => not such property called "name"!
+        console.log(carFullInfo.name); // undefined
+
+        // access the brand property
+        console.log(carFullInfo.brand);
+
+        // access the year property
+        console.log(carFullInfo.year);
+
+        // access the color property
+        console.log(carFullInfo.color);
+
+        // access the object "carFullInfo" methods:
+        // these two object's functions (methods) will output the content to my page:
+        carFullInfo.bio();
+        carFullInfo.specs();
+
+
+        // Another Example:
+        let country = {
+            name: "Canada",  // string value
+            capital: "Ottawa", // numeric value
+            sea: true, // boolean value
+            population: 38131104,
+            language: "English",
+            provinces: ["ON", "QC", "NS", "NB", "MB", "BC", "PE", "SK", "AB", "NL"],
+            territories: ["NT", "YT", "NU"],
+            // To know more about our country Canada: https://en.wikipedia.org/wiki/Provinces_and_territories_of_Canada
+            //adding a method for this object named "bio":
+            bio: function () {
+                console.log(this.name + " is a country with " + this.population + " people");
+                console.log("We are studying in Toronto Campus, Toronto is part of " + this.provinces[0]);
+            }
+        };
+
+        console.log("country name:" + country.name);
+        country.bio();
+
+        // Review to create an empty array:
+        let myArray = [];
+
+        // we can add elements to this array:
+        myArray[0] = "HTML";
+        // or using push()
+        myArray.push("CSS");
+
+
+        // To create a new empty object, we can this syntax:
+        let objectName = {};
+
+        // We are just creating a new object named "sport"
+        // We can assign its properties/method later:
+        let sport = {};
+
+        // on the fly(go) :-)
+        // adding a name property to my object "sport"
+        sport.name = "Basketball";
+        sport.type = "Indoor/Outdoor";
+        sport.country = "Worldwide";
+        sport.players = 5;
+
+        console.log(sport);
+
+        // another object example:
+        let person = {
+            firstName: "Judy",
+            lastName: "Smith",
+            hello: function () {
+                // The classical way to output:
+                console.log("My full name: " + this.firstName + " " + this.lastName);
+                // Or using the template literal and string interpolation
+                console.log(`My full name:
+                - First Name: ${this.firstName}
+                - Last Name: ${this.lastName}
+                `);
+            }
+        }
+
+        // calling a method named hello()
+        person.hello();
+
+        // We can update properties, change their values.
+        // Use the same syntax: objectName.property and assign the new value to it:
+        person.firstName = "Martin";
+        person.hello();
+
+
+        // The magic of the keyword "this" in JS
+        console.log("Hello for the first time!");
+        window.console.log("Hello again!");
+        // "this": The global object of JavaScript that refers to the "window" object
+        this.console.log("Hi there and bye!");
+        /*
+        alert()
+        window.alert();
+        this.alert();
+        */
+
+        document.write();
+        window.document.write();
+        // or:
+        this.document.write();
+
+        // to summarize "this" in the main script (global) will refer to the object window!
+        // for testing:
+        console.log(this); // The keyword "this" contains the properties and method of the browser window
+        // this will represent the "window" object
+
+        // More examples about literal objects:
+        // objects can have objects:
+        let tree = {
+            specie: "olive tree",
+            age: 101,
+            location: "Zadar",
+            height: 30,
+            // adding another property named "leaves"
+            // leaves has two key=value pair: amount of leaves and the color of leaves
+            // leaves as a property for tree object has two inner properties: amount and color
+            leaves: {
+                amount: 1000,
+                color: "green",
+                show: function () {
+                    // Text: This tree "olive tree" has 1000 leaves with green color.
+                    // We cannot use: tree.this.amount => error: Cannot read property 'amount' of undefined
+                    // We have to specify/write the names: tree.leaves.amount
+                    console.log(`This tree "${tree.specie}" has ${tree.leaves.amount} leaves with ${tree.leaves.color} color.`);
+                } // end function show
+            } // end leaves property that has a value of object data type
+        } // end tree object
+
+        // to check/test the object properties and methods:
+        console.log(tree);
+
+        // output the tree age:
+        console.log(tree.age); // 101
+
+        // output the leaves color: green
+        // tree => leaves => color
+        console.log(tree.leaves.color);
+
+        // access the show function inside the object:
+        tree.leaves.show();
+
+        // delete/remove a property from an object:
+        // we will delete one property from the "tree" object:
+        // delete objectName.propertyName
+        delete tree.height;
+        console.log(tree);
+
+        // What if we need to create 4 objects of "house"
+        // The three should have the same specifications (properties) but with different values:
+
+        // The issues:
+        // 1) We have to repeat the same keys (properties) but with different values for each object we create!
+        // 2) The first object has the key "flooring" and we didn't add this key for the rest
+
+        let house1 = {
+            model: "Astra",
+            bedRooms: 3,
+            guestRoom: true,
+            finishedBasement: true,
+            kitchen: 1,
+            garage: 2,
+            bathRooms: 2,
+            flooring: "laminate"
+        }
+
+        let house2 = {
+            model: "Presto",
+            bedRooms: 2,
+            guestRoom: false,
+            finishedBasement: false,
+            kitchen: 1,
+            garage: 1,
+            bathRooms: 2
+        }
+
+        let house3 = {
+            model: "Galaxy",
+            bedRooms: 3,
+            guestRoom: true,
+            finishedBasement: false,
+            kitchen: 1,
+            garage: 2,
+            bathRooms: 2
+        }
+
+        let house4 = {
+            model: "Horizon",
+            bedRooms: 4,
+            guestRoom: true,
+            finishedBasement: true,
+            kitchen: 2,
+            garage: 3,
+            bathRooms: 2
+        }
+
+        // Example to access house1 properties:
+        console.log("Bathrooms Number: ", house1.bathRooms);
+        console.log("Garage Number: ", house1.garage);
+    </script>
+</body>
+
+</html>

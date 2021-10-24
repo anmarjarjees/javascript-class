@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning JavaScript</title>
+
+    <!-- we have style element to write our css and it has to be inside <head> element -->
+    <style>
+        /* we can write our CSS rules */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <!-- To write JS inside HTML file we use script element to write JavaScript -->
+
+    <!--
+    Note: In the old days (before HTML5), we used to add the attribute:
+    "type="text/javascript"
+    to specify that the scripting language is JavaScript,
+    but with the HTML5 document no need to add this attribute.
+
+    We used to have another scripting language from Microsoft
+    named "Visual Basic Script or VB Script"
+    but this language "VBS" was working only on Microsoft Internet Explorer Browser
+    so it became obsolete sooner
+
+    <script type="text/JavaScript">
+    </script>
+
+    W3 Validator will give us this WARNING:
+    Warning: The type attribute is unnecessary for JavaScript resources.
+
+    The 3 ways to run/execute a JS code:
+    1- Writing our code inside our HTML file in between the script element
+    Or
+    2- Write our code in separate (external) js file with the extension of .js and attach/link this js file
+    to our current HTML file (the same idea when we link the css file with our HTML page)
+    3- Writing our code as inline code inside the html elements using the events attribute as we see later
+	-->
+
+    <script>
+        /*
+        Here is my comment in JavaScript
+        it's a long comment that contains many lines:
+        line 1
+        line 2
+        etc...
+        */
+
+        // We can write a short comment (1 line)
+        // we only need these two symbols at the beginning
+        // each line has a comment
+
+        /*
+        NOTE:
+        like CSS we should end each statement (line) with ;
+        although it's optional jn JS
+        */
+        alert("Hello JavaScript from the head section in my HTML page!");
+
+        /*
+        We used alert() => it's a built-in JS function (it comes with JS)
+
+        later, we will learn how or own custom functions:
+        for example: display()
+
+        name() ==> function or method
+        functionName()
+        methodName()
+
+        above and below we are using a JavaScript built-in function!!!
+        built-in ==> native to JavaScript language itself
+
+        example:
+        alert() => is native/built-in function/method
+        each function has to have "(" and ")"
+        whether its empty or not we have to add them
+
+        Please be advised that JavaScript is Case Sensitive
+        so alert() is not like Alert()
+        and it's not like ALERT()
+        */
+        alert("Hello JavaScript from the body section in my HTML page!");
+        alert('I hope that you will like JavaScript!');
+    </script>
+</head>
+
+<body>
+    <!-- We can place our script anywhere inside the html file -->
+    <script>
+        // it has to be alert()
+        // Alert("another test"); // error: Alert is not defined
+        /*
+            To check our JavaScript error we need to open the console window always
+        */
+        alert("Hello again from the body element");
+
+        /*
+        Although adding ";" at the end is optional
+        but we should add ";" always for more clarification
+        */
+        alert(5 + 3); // 8
+        alert(4 / 2); // 2
+        alert(7 * 2); // 14
+        alert(5 - 3); // 2
+
+    </script>
+</body>
+<!--
+    We can only place the script element inside the head or the body
+    anywhere else, W3C Validator will give us this error:
+    Error: Stray start tag script.
+    Or:
+    Error: script element between head and body.
+
+    So we should not place the script element outside the body or outside the head
+
+    Like the example below: Yes, it's working fine! but it's invalid HTML code
+ -->
+<script>
+    alert("outside the body!!!");
+</script>
+
+</html>

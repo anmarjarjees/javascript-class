@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try and Catch</title>
+</head>
+
+<body>
+    <div id="main-content">
+        <h1 id="first">Simple Calculations</h1>
+        <form id="main-form" name="mainForm">
+            Enter your full name:
+            <input type="text" id="full-name" size="30" maxlength="30" name="fullName">
+            <p>Your Gender:</p>
+            <input type="radio" name="gender" value="m" checked="checked">Male
+            <br>
+            <input type="radio" name="gender" value="f">Female
+
+            <input type="button" value="Submit" onclick="userInfo()">
+            <!-- we can create a button using: -->
+            <!-- <button type="submit" onclick="userInfo();">Submit</button> -->
+        </form>
+        <p id="result"> </p>
+    </div>
+    <script>
+        // below is the try and catch() block
+        try {
+            // we place our code here:
+            // alart('test'); // ReferenceError: alart is not defined
+            function userInfo() {
+                var myForm = document.mainForm;
+                var fullName = myForm.fullName.value;
+                var element = document.getElementById("result");
+                if ((fullName == null) || (fullName == "")) {
+                    element.innerHTML = "Please Enter your first name!";
+                } else {
+                    var gender = myForm.gender.value;
+                    if (gender == 'm') gender = "Male"; else gender = "Female";
+                    // alert(gender);
+                    element.innerHTML = "Your full name is: " + fullName;
+                    element.innerHTML += "<br> Gender: " + gender;
+                }
+            }
+        } catch (ex) { // this catch statement will be executed if there is an error in the try block code
+            // display the exception (the error message)
+            document.write(ex); // ReferenceError: alart is not defined
+        }
+
+
+
+    </script>
+</body>
+
+</html>

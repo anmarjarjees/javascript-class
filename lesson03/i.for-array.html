@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For loop with Arrays</title>
+</head>
+
+<body>
+    <script>
+        // Review about using Arrays:
+        // create an array that contains the marks of 5 exams
+        // we can call this array "myExams"
+        // we will create a new array and populate it with values at the same time in one line only:
+        // the marks: 90, 82, 78, 88, 92 
+
+        // We have two different ways to create this array (both are the same thing)
+        // 1. we can use the following short syntax that we learnt before:
+        // var myExams = [90, 82, 78, 88, 92]; // Notice that we commented this line to practice the other way
+
+        // 2. using the long syntax (new Object syntax):
+        // array is an object, the original/official to create any new object is using: new ObjectName()
+        // It's good to know about this way but you don't have to use it:
+        var myExams = new Array(90, 82, 78, 88, 92); // You don't have to use this way in your assignment
+
+        // for testing:
+        document.write(myExams); // 90,82,78,88,92
+        document.write("<br>");
+
+        /*
+        To review:
+        Each element in an array has its own unique index number. 
+        We can use the index value to access any element in the array.
+        JavaScript (like other languages) is 0 based index, which means:
+        - The first exam "90" has the index of 0
+        - The second exam "82" has the index of 1
+        - and so on...
+        */
+
+        // Output/print the first exam, notice that the first exam (element) has the index 0
+        document.write(myExams[0]); // 90
+        document.write("<br>");
+        // to output the value of the second exam:
+        document.write(myExams[1]); // 82
+        document.write("<hr>");
+
+        // if we want to output all the 5 values of the array in vertical layout:
+        document.write(myExams[0] + "<br>");
+        document.write(myExams[1] + "<br>");
+        document.write(myExams[2] + "<br>");
+        document.write(myExams[3] + "<br>");
+        document.write(myExams[4] + "<br>");
+        document.write("<hr>");
+        // Or below just to list 3 as an example:
+        document.write(myExams[0] + "<br>" + myExams[1] + "<br>" + myExams[2] + "<br>");
+
+        // it's better to use the loop than writing 5 times document.write()
+        // we can declare the for loop counter outside the for block to make it global:
+        /*
+            for (initial value of the loop counter; the condition; the increment/decrement loop counter ) {
+
+            }
+        */
+
+        document.write("<hr>");
+        var index; // to refer to the array index values (easy to remember)
+        // condition: index < array length ==> index < 5
+        // or condition: index <= (array length-1) ==> index <= 4
+        // in this example we have to count the array's element
+        // but later we will use the array's length property
+        // [90, 82, 78, 88, 92]
+        // I want to keep looping while the index value is less than 5
+        // Once the index value becomes 5, the following loop will stop because the condition will become false 
+        for (index = 0; index <= 4; index++) {
+            // if index=0 ==> document.write(myExams[0]); // 90
+            // if index=1 ==> document.write(myExams[1]); // 98
+            // and so on....
+            // but if index=5 ==> stop the loop because 5<=4 is false
+            document.write(myExams[index] + "<br>"); // index will be changed from 0 to 4
+        }
+
+        // another example:
+        /* To review:
+        1. we can create an empty array
+        var letters=[];
+
+        2. then we can add values to this array:
+        letters[0] = "A";
+        letters[1] = "B";
+        and so on
+        -----------
+        Or just declare an array and the values at the same time (one line of code)
+        */
+
+        // Let's create an array of the music notes:
+        // Don't forget that with string value, we have to user either " or '
+        var musicNots = ["A", "B", "C", "D", "E", "F", "G"];
+
+        // Loop through the array "musicNots" to print all its elements:
+        // let's use a loop counter named i as a short for index
+        // below is the most commonly used way (putting the keyword var inside the loop):
+        // the condition could be: i<7 or i<=6
+        // whether the array has numeric values or string value, 
+        // its index is numeric that's why we can use the same loop structure:
+        for (var i = 0; i <= 6; i++) {
+            // our loop counter variable named "i"
+            // we have to use i to access each element 
+            document.write(musicNots[i] + "<br>");
+        }
+    </script>
+</body>
+
+</html>

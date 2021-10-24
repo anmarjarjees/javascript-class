@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Custom Functions 2</title>
+</head>
+
+<body>
+    <script>
+        document.write("<br>************ Math Operations *************<br>");
+        // More Examples:
+        // 1- ask the user to input two numeric values
+        // and save them into two variables (we need to use prompt 2 times):
+
+
+
+        var number1 = parseFloat(prompt("Please Enter your first number")); // "2" => 2.0
+        var number2 = parseFloat(prompt("Please Enter your second number")); // "3" => 3.0
+
+        /*
+        When the user input their two numeric values,
+        we can give them the option to:
+        either: number1 + number2
+        or: number1 - number2
+        or: number1 * number2
+        or: number1 / number2
+    
+         We have the option to let the user enters:
+        + or - or * or /
+    
+        or we can ask the user to enter:
+        1 for +
+        2 for -
+        3 for *
+        4 for /
+        */
+        var userOp = parseInt(prompt("Please enter:\n- 1 for +\n- 2 for -\n- 3 for *\n- 4 for /")); // "1"
+
+
+        /*
+        Just to practice more how to use functions in JavaScript
+        */
+        // Create a function:
+        // function name: addNumbers()
+        // parameters: this function accepts two parameters (for example x and y)
+        // these two parameters will represent the two numeric values of the user later on
+        // when we call/execute the function
+
+        // the function has to return the result of adding the two parameters (x and y)
+        /*
+        in other words,
+        create a new function named "addNumbers()",
+        this function will accept two numeric parameters and find the total of them,
+        then return the total.
+        */
+
+        function addNumbers(x, y) {
+            var add = x + y; // 4 + 1 == 5
+            return add; // return the value 5
+        }
+
+        function subNumbers(x, y) {
+            // instead of typing two lines like myAdd() function:
+            // we can write the formula with the return keyword:
+            return x - y;
+        }
+
+        function mulNumbers(x, y) {
+            // instead of typing two lines like myAdd() function:
+            // we can write the formula with the return keyword:
+            return x * y;
+        }
+
+        function divNumbers(x, y) {
+            // instead of typing two lines like myAdd() function:
+            // we can write the formula with the return keyword:
+            return x / y;
+        }
+
+        /*
+        We need to use a condition based on the user input to call the required function
+    
+        For example:
+        when the user inputs 1 (for addition) => we need to call addNumbers
+        when the user inputs 2 (for subtraction) => we need to call subNumbers
+        and so on
+    
+        Although we can use if condition, but we will use switch just for more practice:
+        */
+
+        // declare a variable named "result"
+        var result;
+        switch (userOp) {
+            case 1:
+                // for addition => call my addition function
+                result = addNumbers(number1, number2);
+                break;
+            case 2:
+                // for subtraction => call my subtraction function
+                result = subNumbers(number1, number2);
+                break;
+            case 3:
+                // for multiplication => call my multiplication function
+                result = mulNumbers(number1, number2);
+                break;
+            case 4:
+                // for division => call my division function
+                result = divNumbers(number1, number2);
+                break;
+
+            // we know that the default statement
+            // will run ONLY if the user inputs other number rather than 1,2,3, or 4 or other value (string)
+            default:
+                // alert("Invalid Input! Please enter either 1,2,3, or 4");
+                document.write("<p style='background-color: darkred; color: yellow'>Please input the right operation number</p>");
+                document.write("<ul><li>1 for +</li><li> 2 for -</li><li> 3 for *</li><li>4 for /</li></ul>");
+                break;
+        }
+
+        // we can check if the result contains a numeric value
+        // then output the result with document.write
+        // else if the the result is not a number so output "invalid value"
+        // using isNan()
+        if (isNaN(result)) {
+            // let's try to insert inline styles into this:
+            document.write("<p style='background-color: darkred; color: yellow'>Please input two numeric values</p>");
+        } else {
+            document.write("<p>The result is: " + result + "</p>");
+        }
+
+        document.write("<br>*************************<br>");
+        // Major Task:
+        // create a simple function to receive a numeric array
+        // this function will return the average of this array
+
+
+        // Let's try to create 3 different arrays:
+
+        // initializing a new variable of type array named "myNumbers" with random numbers
+        var myNumbers = [90, 78, 82, 91, 95, 100]; // 5 elements
+
+        // initializing a new variable of type array named "myExams" with random exam marks
+        var myExams = [89, 87, 90, 75, 87]; // 5 elements
+
+        // initializing a new variable of type array named "myAssignments" with random assignment marks
+        var myAssignments = [91, 90, 78, 81, 92]; // 5 elements
+
+        // We need to find the average of each array from the above
+
+        /* ***********************************
+        First Solution:
+        Finding the average (mean) without using function (not good enough)!
+        **************************************
+        */
+
+        // average = total of values / number of values
+
+        // 1. find the total of all the values in each array
+        // instead of creating 3 for loops for the 3 arrays,
+        // we can just create one for all since they all have the same length
+        // we can have it ALL-IN-ONE :-)
+
+        var total1 = 0; // the initial value of the total container for myNumbers array
+        var total2 = 0; // total for myExams array
+        var total3 = 0; // total for myAssign array
+        // since the height index is 4 for all the 3 arrays:
+        for (var i = 0; i < 5; i++) {
+            total1 = total1 + myNumbers[i];
+            total2 = total2 + myExams[i];
+            total3 = total3 + myAssignments[i];
+        }
+
+        // 2. find the average
+        var average1 = total1 / 5;
+        var average2 = total2 / 5;
+        var average3 = total3 / 5;
+
+
+        document.write("<p>The average of my numbers: " + average1 + "</p>");
+        document.write("<p>The average of my exams: " + average2 + "</p>");
+        document.write("<p>The average of my assign: " + average3 + "</p>");
+
+        /* **************** Second Solution with function (The ideal one) ******************************** */
+        // since we need to reuse, repeat, or call the same piece of code 3 times,
+        // it's better to use a function
+
+        // 1. create our function
+        // this function needs a variable of type array in order to work and find the average
+        // "arguments" or "parameters"
+        // "parameter" => temp variable as placeholder to receive the real value from the main script
+        // "argument"  => the real value from the main script
+
+        // build the function block:
+        // the syntax: function myFunction() { }
+        // between () ==> function parameter(s)
+
+        // task:
+        // create a function named "avg"
+        // to accept any array and find the average of its numeric values:
+
+        // Parameters and Arguments
+        /*
+        below: anyArray is a parameter (placeholder)
+        that will be replaced by the following arguments:
+        myNumbers array
+        myExams array
+        myAssignments array
+        and so on...
+        */
+        function avg(anyArray) {
+            // this function to find the average so we can use the exactly the same logic (code):
+            // Use the same logic like your assignment 1 to find the total
+            var total = 0; // total for myAssign array
+            // the maximum index could be any number ????
+            // for fun: anyArray is not defined
+            // console.log(anyArray);
+
+            for (var i = 0; i < anyArray.length; i++) {
+                total = total + anyArray[i];
+            }
+            // after the loop for finding the total:
+            // 2. find the average
+            var average = total / anyArray.length;
+
+            // fot testing:
+            // document.write("<br> Final Average: " + average);
+
+            // based on the function name and job,
+            // this function should only return the average value
+            // we don't want this function to print or output anything
+            // use the keyword "return" to return the result of the function to our main script
+            // notice that the keyword "return" can be used ONLY inside the function
+            return average;
+            /* We need to design or create our function to be more specific */
+
+            /*
+            in many cases, we can combine the two lines into one line:
+            instead of typing:
+
+            var average = total / anyArray.length;
+            return average;
+
+            we can just do it in one line:
+            return (total / anyArray.length);
+            */
+        }
+
+        document.write("<br>*************************<br>");
+        // call our function "avg" three times by passing the three arrays:
+
+        // we need to call our function inside document.write() in order to see the output!
+        avg(myNumbers);
+        avg(myExams);
+        avg(myAssignments);
+
+
+        document.write("<p>" + avg(myNumbers) + "</p>");
+        document.write("<p>" + avg(myExams) + "</p>");
+        document.write("<p>" + avg(myAssignments) + "</p>");
+
+
+        // our function is flexible to work with any array of any length:
+        myCourses = [90, 78, 90, 93]; // 4 Elements
+        myMarks = [92, 87, 95, 91, 86, 82]; // 6 Elements
+
+        document.write("<p>" + avg(myCourses) + "</p>");
+
+        // or do it in two lines:
+        var myMarksAvg = avg(myMarks).toFixed(2);
+        document.write("<p>" + myMarksAvg + "</p>");
+
+
+        /* 
+        Anonymous function:
+        Immediately invoked function execution:
+    
+        (function() {
+            Your code
+        })();
+    
+        Two Steps:
+        First Step: define a function expression:
+    
+        (function () {
+            console.log('Test1');
+        })
+    
+        Second Step: the trailing parentheses () allow you to call the function:
+        (function () {
+            console.log('Test2');
+        })();
+        */
+        (function () {
+            console.log('Hi there, I am an immediately invoked function');
+        })();
+
+
+    </script>
+</body>
+
+</html>

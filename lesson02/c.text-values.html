@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert or Console with Text</title>
+    <style>
+        /*	Internal Styles only in the head */
+        /* W3C */
+    </style>
+
+    <script>
+	// JavaScript code could be inside the head
+	// We can have more than one script element inside the head and the body
+    </script>
+</head>
+
+<body>
+    <script>
+        /*
+            To Review:
+            In JS, we can see we have alert() or console.log()
+            anyName() => It's a function (method) because it has "(" and ")"
+            example:
+            alert() => function/method
+            alert is built-in function or built-in method
+       */
+
+        // Create 5 variables for 5 games scores and find the total:
+        var game1; // only declaring game1 variable without giving it any value yet
+        // alert(game1); // undefined
+        game1 = 100; // assign 100 to game1 variable
+        // alert(game1); // 100
+
+        // The code below will produce an error:
+        // alert(game2); // game2 is not defined
+        var game2 = 203;
+        var game3 = 561;
+        var game4 = 305;
+        var game5 = 370;
+
+        // We can find the total of all these games and output the result using console:
+        console.log(game1 + game2 + game3 + game4 + game5); // output: 1539
+
+        // Use a new variable to find the total
+        var gamesPointTotal = game1 + game2 + game3 + game4 + game5;
+        console.log(gamesPointTotal); // output: 1539
+
+        // display: The total of games points is x
+        // print or to output the total variable which is "gamesPointTotal"
+        // we need to output the gamesPointTotal
+        // I want to see this message: The total of games points is 1539
+        // don't forget that any text (string) needs to be enclosed by either " or '
+        alert("The total of games points is gamesPointTotal");
+        console.log("The total of games points is gamesPointTotal");
+        // output: The total of games points is gamesPointTotal
+        // we want: The total of games points is 1539
+
+        /*
+        The solution for combining text and amount of number (variable's value):
+        below are alerting text and numeric value
+        below we need to add text value to a numeric value
+        so we have to "concatenate" these two different data type values
+        In JavaScript the symbol for concatenating is +
+        text + variable value
+
+        Before solving this issue, let's try the "concatenation" subject
+        check the examples below:
+        */
+        var firstName = "Alex";
+        var lastName = "Chow";
+        // below we are using the + symbol not as addition math operation
+        // in JS the + symbol can be also used to combine strings also!
+        var fullName = firstName + lastName; // "Alex"+"Chow" => AlexChow
+        console.log(fullName);
+
+        // since I want to use/update the same varaible "fullName" => don't use var
+        fullName = firstName + " " + lastName; // "Alex"+" "+"Chow" => Alex Chow
+        console.log(fullName);
+
+        // return to our main code about the game total points:
+        // adding/concatenating the string (text): The total of games points is
+        // to the variable: gamesPointTotal
+        alert("The total of games points is " + gamesPointTotal);
+
+        // the same rules can applied to console.log:
+        console.log("The total of games points is: " + gamesPointTotal);;
+
+        // Let's try to find the average of these 5 games:
+        // we can output the average of the games points
+        // console.log(gamesPointTotal/5);
+        // or we can create a new variable called average:
+        var average = gamesPointTotal / 5;
+        // using console.log() output: The average of the 5 games is: x
+        console.log("The average of the 5 games is: " + average);
+
+        /************************* Task: *************************/
+        /*
+        1. Declare two different variables:
+        one variable for first exam
+        second variable for second exam
+        assign an exam value to each one of them
+
+        we are hard coding the values just for now
+        */
+        var exam1 = 88;
+        var exam2 = 90;
+
+        /*
+        2. Finding the average:
+        Declare a new variable for the average equation
+        and find the average of these two exams
+        */
+        var avg = (exam1 + exam2) / 2;
+
+        console.log("The average is: " + avg); // The average is: 89
+
+        /*
+        3. Output (console window):
+        "The average of [first exam value] and [second exam value] is: [average value]"
+
+        NOTE: use the variables exam1 (88) and exam2 (90) in the message
+        Don't type the exam values as a literal text!
+
+        Example:
+        if the first exam value is: 88
+        and the second exam value is" 90
+        their average is 90.5
+
+        the output in the console should be like this:
+        The average of 89 and 92 is: 89
+
+        Notice below we are using the + sign for concatenating text and values
+        */
+        console.log("The average of " + exam1 + " and " + exam2 + " is: " + avg);
+
+        // more examples:
+        var num1 = 100; // a pure numeric value
+        var num2 = "200"; // a numeric value but because of the ", JS will treat it as string (text)!
+        // JS: number + string => JS will concatenate them
+        // JS: string + string => JS will concatenate them
+        // JS: number + number => JS will add (the math operation +) them
+        console.log(num1 + num2); 100200
+
+        // Another modern way to use something called "literal template"
+        /*
+        We can inject the values using the ${TextGoesHere} into "Template Literals" Syntax
+        That We Used For Concatenation:
+        */
+        // we can ignore the ' or " and just warp our entire text with ` first
+        // wrap every variable with { } with the symbol of $ => ${variableName}
+        console.log(`The average of ${exam1} and ${exam2} is: ${avg}`);
+    </script>
+</body>
+
+</html>

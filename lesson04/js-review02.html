@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Review Part2</title>
+</head>
+
+<body>
+    <script>
+        /*
+            if condition:
+            switch condition: 
+        */
+
+        var answer = 'n'; // initial value for the user answer
+        do {
+            // ask the user to input any integer number then we can check if it's even or odd number
+            var number = parseInt(prompt("Enter any integer number: ", 0));
+
+            // step 1 make sure that the user input is number:
+            // isNaN() ==> True for string ==> False for number
+
+            // we need to keep repeat the question: 
+            // Till the user deicides to stop it:
+
+            if (isNaN(number)) {
+                alert("Please enter a valid number");
+            } else {
+                // alert("good job");
+                // instead of alert, we will write our main code
+                // writing our main if statement for the number is even or odd
+                // the modulo operator => % 
+                if (number % 2 == 0) {
+                    alert("Your number is even");
+                } else {
+                    alert("Your number is odd");
+                }
+            }
+            answer = prompt("Do you want to enter another number, please type 'Y' for 'yes' or 'N' for 'no'", "n");
+            // Notice that above we added a default value for the answer which is "n"
+            // if the user clicks "Ok" without putting any value, the value of answer variable will be "n"
+            // below we are using toLowerCase() method to convert "N" or "n" or "n" will be the same "n"
+            // abc, 123, n, y, abc, xyz
+            if (answer == null) {
+                answer = "n";
+            }
+        } while (answer.toLowerCase() != "n")
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even and Odd numbers</title>
+</head>
+
+<body>
+    <script>
+        // Quick review about if condition:
+        /*
+        Problem:
+        We will ask the user to input an integer number (whole number),
+        then we can output one of the following messages:
+        - Your number is even (if it's even number)
+        - Your number is odd (if it's odd number)
+        if the user type a text they should see a warning message
+        */
+
+        /*
+      Math Hint:
+      - even numbers have the value of 0 as remainder when dividing them by 2
+      - odd numbers have different remainder value other than 0 => 1
+
+      JS Example:
+      4/2 = 2.0 ==> 4 is even number without any decimal points (remainder = 0)
+      5/2 = 2.5 ==> 5 is odd number with decimal pints (remainder = 1 in JS)
+
+      The logic here, we need to know the value of the division remainder
+      if (the division remainder is 0) => this number is "Even"
+      else => this number is "Odd"
+
+      We know we have this symbol "/" to give the full result of division
+
+      Good News! In JavaScript we can use this symbol "%" named "modulo operator"
+      The modulo operator (%) returns the remainder of division operation.
+
+      Conclusion:
+      The result of using % is either 0 (for even number) or 1 (for odd number)
+      */
+
+        var num = parseInt(prompt("Please enter your integer number"));
+
+        // let's try to test the %
+        // console.log(num % 2);
+
+        // we have a function named isNaN()
+        // it returns "true" if the value is not number
+        // it returns "false" if the value is number
+
+
+        // at the very beginning let's check the user input is number or not
+        // Using the JS built-in function isNaN()
+        // isNaN(num) ==> return True if num is not a number
+        // isNaN(num) ==> return False if num is a number
+        if (isNaN(num)) {
+            document.write("Invalid Input!");
+        } else if (num % 2 == 0) {
+            document.write("Your number is even");
+        } else {
+            document.write("Your number is odd");
+        }
+
+        document.write("<hr>");
+
+        // Other solution:
+        if (num % 2 == 0) {
+            document.write("Your number is even");
+        } else if (num % 2 == 1) {
+            document.write("Your number is odd");
+        } else {
+            document.write("Invalid Input!");
+        }
+    </script>
+</body>
+
+</html>

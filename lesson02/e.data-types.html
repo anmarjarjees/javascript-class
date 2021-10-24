@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Data Types</title>
+</head>
+
+<body>
+    <script>
+        /*
+        In JavaScript like any other language has different data types:
+        1- string (Text Value) ==> "ABC" or 'Adobe Photoshop'
+        => with string, we can single quote ' or double "
+
+        2- number (numeric value)
+        => int short for integer (whole number): 10, 80, etc
+        => or float (decimal number) 67.58 etc
+
+        3- boolean ==> "true" or "false" (We will work more on this type when we start learning about if conidition)
+        */
+
+        // Examples of the 3 data type:
+        var firstName = "Martin"; // string data type with ""
+        var lastName = 'Smith'; // string data type with ''
+
+        var exam1 = 78.56; // number (floating point number-float) decimal
+        var exam2 = 89; // number (integer number) whole number, no decimal point
+        var boolVariable = true; // Boolean Variable is equal to true or false
+
+        // more examples with boolean variable:
+        // Please notice that in JavaScript the boolean values (true or false)
+        // are case-sensitive (all in small letters)
+        var isLegal = false;
+        var isUnderAge = true;
+
+        /*
+        At this moment the boolean might not be clear or make sense to you,
+        but it will when we start a new topic named "if condition"
+        */
+
+        /*
+        One more topic for this file:
+        in JS we have a built-in function to tell us (return)
+        the data type of the variable's value
+        this function is named typeof()
+
+        To summarize:
+        typeof():
+        - is another built-in JS function
+        - return the data type of the variable:
+        --- number
+        --- string
+        --- boolean
+
+        Notice that this function doesn't output anything like alert() or console.log()
+
+        The use: typeof(myVariableName) or typeof(value)
+        */
+
+        var myNumber1 = 89; // an integer value => "number"
+        // we can mix/nest two functions!
+        // function1(function2(function3()))
+        // console.log() => to print the result
+        // typeof (myNumber1) => to return the type of my variables
+        // JS is lol :-)
+        console.log(typeof (myNumber1)); // number
+
+        var myNumber2 = 89.5; // a decimal/float value
+        console.log(typeof (myNumber2)); // number
+
+        var mySubject = "JavaScript"; // a string value
+        console.log(typeof (mySubject)); // string
+
+        var boolValue = true; // a boolean value
+        console.log(typeof (boolValue)); // boolean
+
+        // More Examples:
+        // we can check the variable type using the JS built-in method typeof()
+        var x = "100"; // string data type
+        var y = 100; // number data type
+        var z = false; // boolean data type
+
+        // We can use typeof() JS built-in function to find the data type:
+        // typeof() method is just to ask the computer the answer will be: either string or number or boolean
+        console.log(typeof (x)); // string
+        console.log(typeof (y)); // number
+        console.log(typeof (z)); // boolean
+
+        // We also have another type named "object" (Later)
+
+
+        // another built-in function is: isNaN()
+        // isNaN() => is Not a Number function
+
+        // Notice that n JS we have an error of we use text with math operation:
+        // testing
+        myVar1 = "abc100";
+        myVar2 = 200;
+        // the symbol "/" is used for dividing numeric values
+        console.log(myVar1 / myVar2); // NaN
+
+        // isNaN() function returns either "true" or "false" value (boolean value)
+        // True: if the value that we want to test is not a number
+        // False: if the value that we want to test is a number
+        // isNaN means is Not a Number
+        // isNaN() ==> return true if the value is not numeric
+        // isNaN() ==> return false if the value is numeric
+
+        // 100 is Not a Number = False (No! It's a number)
+        // "xy" is Not a Number = True (Yes, it's a text)
+        console.log("Examples of using isNaN() function:");
+
+        // remember that isNaN() can only return "true" or "false" but not printing
+        console.log(isNaN("abc100")) // "abc100" is Not a Number ==> true
+        console.log(isNaN(100)); // 100 is Not a Number, how come!!! ==> False
+
+        console.log(isNaN("ABC")); // "ABC" is Not a Number, Yes of course! ==> true
+
+
+        // let's try to test our "z" variable that contains a boolean value "false"
+        console.log("z: " + isNaN(z)); // z: false
+
+        // let's change the z varaible to be true
+        z = true;
+        console.log("z: " + isNaN(z)); // z: false
+
+
+        /*
+        The global isNaN() function, converts the tested value (between the " or ') to a Number, then tests it.
+
+        Number.isNaN() does not convert the values to a Number,
+        and will not return true for any value that is not of the type Number.
+        */
+        // Please be advised that isNan()
+        // checks if the value inside the quote (ignore the quote) is number or not
+        console.log(isNaN("100")); // if "100" is Not a Number? No it's a number although it has " but we have 100 inside "
+
+        // just for more idea!
+        console.log("one more example: " + isNaN("100")); // False
+    </script>
+</body>
+
+</html>

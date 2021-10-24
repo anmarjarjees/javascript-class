@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The For Loop 1</title>
+</head>
+
+<body>
+    <script>
+        // We want to output the following numbers into our html page:
+        /*
+        1
+        2
+        3
+        4
+        5
+        6
+        7
+        8
+        9
+        10
+        */
+
+        document.write("1 2 3 4 5 6 7 8 9 10");
+        document.write("<br>");
+
+        // just to output 1:
+        document.write(1); // or (1+"<br>")
+        document.write("<br>"); // just to have a break
+
+        // to output 2:
+        document.write(2 + "<br>");
+
+        // to output 3:
+        document.write(3 + "<br>");
+
+        // to output 4:
+        document.write(4 + "<br>");
+
+        // to output 5:
+        document.write(5 + "<br>");
+
+        // Or even better to use:
+        document.write("1 <br> 2 <br> 3 <br> 4 <br> 5 <br> 6 <br> 7 <br> 8 <br> 9 <br> 10");
+
+        document.write("<hr>");
+        /*
+        To avoid the too many lines of coding,
+        we can use the "loop" statement.
+        we are going to use "for loop":
+
+        - we can create a loop variable like "loopCounter" for example or any name you like.
+        - and having this loopCounter to start with the value of "1" (the required initial value)
+        - and keep increment this variable one by one till it reaches the value of "10"
+        - then the loop should be stopped because we don't want to go beyond the 10
+
+        for loop structure:
+        for (part1; part2; part3) {
+            // the for loop code goes here
+        }
+
+        part1: The initial value of the loop counter (The start counting number)
+        part2: The condition to keep the loop "running"=> I want to keep looping since this condition is true
+        part3: The increment/decrement operation for the loop counter
+        */
+
+
+        // Exercise: using for loop to output/print 1 to 10:
+
+        // creating one variable named "loopCounter" to be used in both loops:
+        var loopCounter;
+        // Part1: loopCounter = 1 => the initial is 1 for the loop counter variable "loopCounter"
+        // Part2: loopCounter <= 10 => keep looping while the loopCounter is less than/equal to 10
+        // Part3: loopCounter++ => to increment the loopCounter by 1 in each iteration
+        for (loopCounter = 1; loopCounter <= 10; loopCounter++) {
+            // the for loop code goes here
+            // This code/message will be printed 10 times!
+            document.write(loopCounter + "<br>");
+        }
+
+        /*
+              After the loop is done, loopCounter will be based on the last value it received
+              */
+        document.write("test: " + loopCounter + "<br>"); // 11
+
+        document.write("<hr>");
+        /*
+        to print from 10 to 1 (descending):
+        10
+        9
+        8
+        7
+        6
+        5
+        4
+        3
+        2
+        1
+        */
+
+        // To print 10 to 1 (Descending)
+        for (loopCounter = 10; loopCounter >= 1; loopCounter--) {
+            // the for loop code goes here
+            // This code/message will be printed 10 times!
+            /*
+          the first time => loopCounter = 10
+          after loopCounter--
+          the second time => loopCounter = 9
+          after loopCounter--
+          the third time => loopCounter = 8
+          and so on till we reach the 10th time
+            */
+            document.write(loopCounter + "<br>");
+        }
+
+        document.write("test: " + loopCounter + "<br>"); // 0
+
+        /*
+            So with increment and decrement, we can count or print odd or even numbers:
+            when loopCounter=1 and we use loopCounter++ (loopCounter=loopCounter+1) ==> 1,2,3,4,5,6,7
+
+            when loopCounter=1 and we use loopCounter +=2 (loopCounter=loopCounter+2) ==> 1,3,5,7,9,11,13
+
+            so:
+
+              loopCounter = loopCounter + 1 (Long Way)
+              loopCounter++; (Short Hand)
+            */
+          document.write("<hr>");
+        // Task:
+        /*
+            Using the for loop to print only the even numbers from 0 to 10
+
+            Hint:
+            - We can't use loopCounter++ ==> +1 then +1 then +1 ==> 0 1 2 3
+            - we need to increment the loopCounter by 2 every time, so we have to use +2 then +2 then +2 and so on... ==> 0 2 4 6
+            Answer: loopCounter +=2 (instead of using loopCounter++)
+        */
+        for (loopCounter = 0; loopCounter <= 10; loopCounter += 2) {
+            document.write(loopCounter + "<br>");
+        }
+
+        document.write("<hr>");
+
+        /*
+        Task: output 20 to 1 vertically using for loop, you can use the same variable "loopCounter"
+        20
+        9
+        8
+        7
+        .
+        .
+        .
+        1
+        */
+        // we can use the same declared variable "loopCounter"
+        for (loopCounter = 20; loopCounter >= 1; loopCounter--) {
+            document.write(loopCounter);
+            document.write("<br>");
+        }
+
+        document.write("<hr>");
+        document.write("<h2>Times Table of 5<h2>");
+
+
+
+        /*
+           Task: print times table of number 5 (from 1 to 10 only)
+
+           Find/printing the output of each equation below:
+           1 x 5
+           2 x 5
+           3 x 5
+           .
+           .
+           .
+           10 x 5
+       */
+
+        // Let's try it without using for loop:
+        // document.write and <p> element ==> <p> </p>
+        // be careful that 5 * 1 is our formula
+        document.write("<p>5 x 1 = " + 5 * 1 + "</p>"); // 5 x 1 = 5
+        document.write("<p>5 x 2 = " + 5 * 2 + "</p>"); // 5 x 2 = 10
+        document.write("<p>5 x 3 = " + 5 * 3 + "</p>"); // 5 x 3 = 15
+        document.write("<p>5 x 4 = " + 5 * 4 + "</p>"); // 5 x 4 = 20
+        // and so on for the rest
+        // and so on till 5 X 10
+        document.write("<br>*****************************</br>");
+        // since we want to start by 5 times "1" => loopCounter initial value is 1
+        // looping from 1 to 10 => keep looping while loopCounter is less than 11
+        // loopCounter++ to go one by one
+        for (loopCounter = 1; loopCounter < 11; loopCounter++) {
+            // easy
+            // document.write(5 * loopCounter + "<br>");
+
+            // more nice, advanced:
+            document.write("<p>5 x " + loopCounter + " = " + 5 * loopCounter + "</p>");
+        }
+
+        // or with <br>
+        for (loopCounter = 1; loopCounter < 11; loopCounter++) {
+            document.write("<br>5 x " + loopCounter + " = " + 5 * loopCounter);
+        }
+
+    </script>
+</body>
+
+</html>

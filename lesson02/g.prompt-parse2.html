@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt - Parse Extra</title>
+</head>
+
+<body>
+    <!--	
+The user needs to input the prices of their 3 textbooks
+to find the total price of these 3 books
+-->
+    <script>
+        /*
+        Task:
+        - Ask the user to input the price of his/her first book
+        - Ask the user to input the price of his/her second book
+        - Ask the user to input the price of his/her third book
+
+        Notice that in every question you will need to save the user's input into a variable
+
+        - alert the result of the total for the three books
+
+        Note:
+        don't forget to parse the user input
+        */
+
+
+        // create a variable named "book1Price" to refer to the first book price
+        // declare a variable and assign a value to it at the same time from the user
+        /*
+        prompt() can have two parameters
+        - The first one is the text we want to display (optional)
+        - The second one is optional so we can ignore it
+        */
+        var book1Price = prompt("Enter the price of your first book:"); // 10.75 == prompt() ==> "10.75"
+        // if the user inputs 90 as a number ==> book1Price = "90" as a text
+        // before using parseFloat() => "10"+"20"+"30" = "102030"
+        // we need to convert the text value of book1Price1 to a numeric value
+        book1Price = parseFloat(book1Price); // "10.75" == parseFloat() ==> 10.75
+
+        // do the same for second/third book:
+        // If you like, we can combine the two lines of code into just a one line of code!!
+        /*
+        which means that we can nest functions together (putting a function inside another function),
+        so the returned value from the prompt function will be the passed value to the parseFloat() function
+        */
+        var book2Price = parseFloat(prompt("Enter the price of your second book:"));
+        // 23.75 == prompt() ==> "23.75" == parseFloat() ==> 23.75 ==> book2Price
+
+        // Just to review: we can add a default value for the prompt function if the user doesn't put any value like below
+        var book3Price = parseFloat(prompt("Enter the price of your third book", 0));
+
+        // let's do a console.log() test:
+        console.log(book1Price + book2Price + book3Price);
+
+        // Or:
+
+        // Now we can create a new variable to save the total of the books:
+        // your task1
+        var total = book1Price + book2Price + book3Price;
+
+        // The final step is to output the result using alert() or console.log() function
+        // your task2
+        console.log("The total price for your three books is: " + total);
+
+        /*
+        Besides these two very specific functions that convert text to numbers:
+        - parseFloat()
+        - parseInt()
+    
+        JS also has another general function to convert text to number:
+        Number() <= be careful that N is capital
+        you can see that Number() function doesn't follow the naming convention "camelCase"
+        because it's a "Constructor"
+    
+        The Number() function converts the object argument to a number that represents the object's value.
+        If the value cannot be converted to a legal number, NaN is returned.
+        */
+        var num1 = Number(prompt("Please enter your first number: ", 0));
+        var num2 = Number(prompt("Please enter your second number: ", 0));
+
+        var addNumbers = num1 + num2;
+        alert("The total of your two numbers is: " + addNumbers);
+    </script>
+</body>
+
+</html>

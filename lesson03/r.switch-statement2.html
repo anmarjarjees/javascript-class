@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Statement Part2</title>
+</head>
+
+<body>
+    <script>
+        //  ask the user to input his MS-Office Current Module:
+        var officeModule = prompt("What's your current MS Office module (Word, PowerPoint, Excel, or Outlook)?");
+
+        /*
+        The logic:
+        Using Switch statement:
+
+        in case if the module is "Word" or "WORD" or "word"
+        and look here we need to make it open to any case or working with any case
+        then write "MS Word is 2 weeks"
+
+        in case if the module is "Excel"
+        then write "MS Excel is 2 weeks"
+
+        in case if the module is "PowerPoint"
+        then write "MS PowerPoint is 1 week"
+
+        in case if the module is "Outlook"
+        then write "MS Outlook is 1 week"
+
+        otherwise, write "Sorry this module is not part of the curriculum!"
+
+        you will use document.write()
+
+        Now we need to find a solution:
+        To ignore the lower case or upper case or mixing case,
+
+        Remember that JavaScript is built on objects, anything in JavaScript is an "object"
+
+        >> objectName.property
+        >> objectName.method()
+
+        we had to work with array object and we used
+        the length property that belong to that object
+
+        Now here we are dealing with a string object (text value), the string object has two methods
+
+        We will just use one of the two built-in JavaScript functions/methods of the string object:
+
+        - toUpperCase() ==> to convert the current text to UPPER CASE
+        - toLowerCase() ==> to convert the current text to lower case
+
+        so we need to attach one of these method to the end of the text variable in order to change its case.
+
+        To attach one of these two functions to a variable of type text
+        we need to use the "object.method()" syntax
+
+        officeModule variable is a "string"
+        because anything in JS is an object
+        so "string" is an object
+        which means it has properties and methods
+        */
+
+        // do you want to use WORD or word
+        // we will use the lower case to check the module's names
+        // if the user put (officeModule variable): "WORD" or "word" or "Word" or "WoRd", or "wOrD", "worD", etc...
+        // all these inputs have to be changed to "word" with lowercase
+        // so at the end the value of officeModule will be "word"
+
+        /*
+            Below our object name is "officeModule"
+            and this officeModule object is of type "string object"
+            and string object has the following two methods
+            - toUpperCase() ==> to convert the current text to UPPER CASE
+            - toLowerCase() ==> to convert the current text to lower case
+
+            because they are methods we need to add ( and ) at the end
+        */
+
+        // using if condition:
+        officeModule = officeModule.toLowerCase();
+        if (officeModule == "word") {
+            document.write("MS Word is 2-week module");
+        } else if (officeModule == "excel") {
+            document.write("MS Excel is 2-week module");
+        } else if (officeModule == "powerpoint") {
+            document.write("MS PowerPoint is 1-week module");
+        } else if (officeModule == "outlook") {
+            document.write("MS Outlook is 1-week module");
+        } else {
+            document.write("Sorry, this module is not part of the curriculum!");
+        }
+
+        // using the switch statement: 
+        switch (officeModule.toLowerCase()) {
+            case "word": // we are checking if the value is "word" all in small letter
+                document.write("MS Word is 2-week module");
+                break;
+
+            case "excel": // we are checking if the value is "excel" all in small letter
+                document.write("MS Excel is 2-week module");
+                break;
+
+            case "powerpoint": // we are checking if the value is "powerpoint" all in small letter
+                document.write("MS PowerPoint is 1-week module");
+                break;
+
+            case "outlook": // we are checking if the value is "outlook" all in small letter
+                document.write("MS Outlook is 1-week module");
+                break;
+            default:
+                document.write("Sorry, this module is not part of the curriculum!");
+                break;
+        }
+    </script>
+</body>
+
+</html>

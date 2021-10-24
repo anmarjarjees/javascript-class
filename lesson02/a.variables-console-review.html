@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review: Variables and Operators</title>
+</head>
+
+<body>
+    <!-- Writing JavaScript code -->
+    <script>
+        // Review:
+        // JavaScript can have containers called "Variables"
+        // Variables are used to save any types of values
+        // we need to (should) declare the variable before using it:
+        // To declare a new variable, we use the keyword "var" or "let"
+        var x;
+        x = 200;
+        alert(x);
+        // We can declare and initialize a new variable
+        // in the same line (at the same time):
+        var y = 100;
+
+        // since both variables x and y have values:
+        alert(x + y);
+
+
+        /*
+        if you find using alert() method (function)
+        is annoying, we can output our result into the console window.
+        In this case the output will not be pop-up in the
+        browser window, it will just be written inside the
+        console window
+        */
+        // error: console is not a function
+        // console(x + y); // Error => console is not a function
+        // Yes we have a built-in named "alert()" but we don't have "console()"
+        console.log(x + y); // out put 300 inside the console window
+
+        /*
+        It's a good practice to create a new variable using a meaningful names
+        or descriptive names
+        like exam1 instead of just e1
+        like average instead of just a
+        */
+        var e1 = 90; // what's e1?
+        var exam1 = 90; // it's more clear for us as human
+        var avg; /* to refer to the user's age better than using a or Monday or August !! */
+        /*
+        - We cannot start the variable name with a number
+        or other special characters like & ! * - ) ( $ # @
+        - We cannot have spaces or special characters inside the file name
+        */
+
+        // 2exam = 89; // error
+
+        /*
+        we should always use the keyword var when we declare a new variable
+        to specify its scope (we will talk about scope later)
+        */
+        var exam2 = 89;
+        // instead of using alert function, use console.log
+        console.log(exam1 + exam2);
+
+        // Since JavaScript is "case sensitive"
+        // so the variable below "Exam2" is not the same like "exam2"
+        var Exam2 = 92;
+
+        /*
+        We should avoid using this way of naming:
+        like creating two different variables with the
+        same name exactly but with different case:
+        var value1 = 10;
+        var Value1 = 20;
+        */
+
+        /* Naming Convention */
+        /*
+        The naming convention that most developers follow:
+        to name their variables in JavaScript or PHP by using "camelCase"
+
+        Examples:
+        var firstExam;
+        var studentAverage;
+        var monthlyPaymentTotal;
+        var exam1
+        var myCar
+        var myCollegeName
+
+        Even with the method/function names (We will talk about functions later):
+        myFunction()
+
+        calculateGrossPay()
+        ===============================================
+        Other High level languages like C# or JAVA,
+        they use "PascalCase":
+        examples:
+        var FirstDegree;
+        FindTotalPayment();
+        */
+
+        /*
+        JavaScript will not complaint
+        about declaring the same variable more than one time using "var"
+        but it will give us an error when declaring the same variable more than one time using "let"
+
+        It's really not a good coding practice to declare the same variable two times
+        mainly the same scope (later)
+
+        And that's we can use the modern way to avoid this issue
+        */
+        var mySubject = "JavaScript";
+        console.log(mySubject); // JavaScript
+
+        var mySubject = "PHP";
+        console.log(mySubject); // PHP
+
+
+        let myProgram = "DMWD";
+        console.log(myProgram); // DMWD
+        // let myProgram = "FSSD";
+        // Error: Identifier 'myProgram' has already been declared
+        console.log(myProgram); // DMWD
+
+
+        // Task: The average of the two exams":
+        // 3 ways of writing this code:
+
+        // 1.
+        // we can alert the answer directly:  alert((exam1 + exam2) / 2);
+        // notice the same command we can write using the console window
+        console.log((exam1 + exam2) / 2);
+
+        // 2. creating two variables: total and average
+        var total = exam1 + exam2;
+        var average = total / 2;
+        console.log(average);
+
+        // We can declare multiple varaibles in the same line using one keyword "var" with ,
+        var book1, book2, book3;
+
+        // 3. create one variable to get the average result instantly:
+        /*
+        PEDMAS OR BEDMAS:  (to be explained later)
+        */
+
+        var avg = (exam1 + exam2) / 2;
+        console.log(avg);
+        // or we can use the console window to output the result:
+        console.log("This text will be inside the console window");
+        console.log(avg); // This value will appear only inside the console window (F12)
+
+        /*
+        Functions (Methods) Examples:
+        the function pattern: name() => function always ends with ( and )
+
+        Examples:
+        alert()
+        console.log()
+
+        later, we will learn these:
+        prompt()
+        parseFloat()
+        */
+
+    </script>
+</body>
+
+</html>

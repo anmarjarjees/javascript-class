@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Average with JavaScript (Challenge)</title>
+</head>
+
+<body>
+    <!-- 
+        General Math Rules:
+        In JS we have 5 operations (symbols):
+        + for addition
+        - for subtraction
+        * for multiplication
+        / for division
+        % for the remainder of the division
+
+Task:
+using <script> element:
+1- declare 3 different variables for 3 different exams
+using any descriptive names you like for example "exam1" and "exam2"
+and initialize them with random values.
+You will assign an amount of number to each one exam1 variable and exam2 variable
+
+2- declare a new variable for the average with any name
+like "avg" or "average" and this variable will receive the average value for the three exams using the right formula for finding the average of any 3 numeric values
+
+3- use either alert or console.log or both to output the value of the average variable
+-->
+    <script>
+        // 1:
+        // Using the keyword "var" to declare our 3 variables:
+        var exam1 = 80;
+        var exam2 = 92;
+        var exam3 = 87;
+
+        // 2:
+        // student answer1:
+        // in this case no need to declare a variable "average"
+        // alert((exam1+exam2+exam3)/3); // 2 + 3 at the same line
+
+        // student answer2:
+        var total = exam1 + exam2 + exam3; // 
+        // oneValue/3 ==> no need to write (oneValue)/3
+        // total/3 ==> no need to write (average)/3
+        alert(total / 3);
+
+        // student answer3:
+        // find the average
+        // below we are following the 
+        var examAverage = (exam1 + exam2 + exam3) / 3;
+
+        // next step:
+        // alert(examaverage); // error: examAverage is not examaverage
+        // examaverage is not defined
+        alert(examAverage);
+        // or
+        console.log(examAverage);
+    </script>
+</body>
+
+</html>

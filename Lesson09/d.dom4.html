@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model - DOM 4</title>
+</head>
+
+<body>
+    <!-- 
+        NOTE: This file is very important for the second assignment
+    -->
+    <form>
+        <label for="numbers">Enter your numbers with spaces in between:</label>
+        <!-- 
+            HTML NOTES about "required" attribute field validation:
+            ------------------------------------------------------
+            We have an official form element with submit button,
+            But still we can NOT use the attribute "required" => it's useless in this example
+            because we are using the "return false" trick to avoid the form from being submitted
+
+            Notes:
+            - Please remember that you type the full attribute required="required" or just type required
+            - this attribute only works when the form is submitted (type="submit")
+            - Notice that return false will prevent the from from being submitted
+            - You can use the title attribute just to give a hint about any input field
+
+            If you want to customize the HTML warning message:
+            https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+         -->
+        <input type="text" id="numbers" title="Please add one space between numbers">
+
+        <p>Please, select your operation:</p>
+        <!-- 
+            HTML Review:
+            Below, we can NOT omit/ignore the "name" attribute
+            as we need it to group the radio button items
+
+            we used value="*" so we will get this symbol "*" if the user clicks mul radio button
+            we used value="/" so we will get this symbol "/" if the user clicks div radio button
+
+            you as programmer, you can choose:
+            value="1" for mul
+            value="2" for div
+            value="3" for count
+            Or
+            value="m" for mul
+            value="d" for div
+            value="c" for count
+
+            Or anything else you prefer...
+        -->
+
+        <input type="radio" name="operation" id="mul" checked value="1">
+        <label for="mul">Multiply Numbers</label>
+        <br>
+
+        <input type="radio" name="operation" id="div" value="2">
+        <label for="div">Divide Numbers</label>
+        <br>
+
+        <input type="radio" name="operation" id="ctn" value="3">
+        <label for="ctn">Count how many numbers</label>
+        <div>
+            <div>
+                <!-- 
+                Either using type="submit" to have the required attribute working
+                or using type="button" but the required attribute will not work
+
+                One of the tricks that we discussed before is using/adding the code: return false
+                after calling our function.
+                This "return false" will prevent the default behaviour of the browser from being refreshed
+                after submitting the form
+            -->
+                <input type="submit" value="Calculate" onclick="findResult(); return false">
+                <input type="reset" value="Clear Numbers">
+            </div>
+    </form>
+
+    <!-- Let's add the element to receive the result through DOM: -->
+    <p>The result: <span id="result"></span></p>
+
+    <!-- 
+        for practice, let's create an external js file (Main Assignment) 
+        The JS code to manipulate this page is written inside a folder named "js"
+        and the file name is "dom4-script.js"
+    -->
+    <script src="js/dom4-script.js"></script>
+</body>
+
+</html>

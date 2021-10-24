@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model - DOM 2</title>
+    <style>
+        /*
+        Targeting these 3 selectors:
+        - The input field with type value of "button"
+        - The input field with type value of "submit"
+        - The button element
+
+        Then use your imaginations with CSS to style this button:
+        */
+        input[type="button"],
+        input[type="submit"],
+        button {
+            border-radius: 50%;
+            background-color: #d4b386;
+            color: #471414;
+            cursor: pointer;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <!--
+            NOTE: This file is very important for the second assignment
+        -->
+        <h1 id="first">Simple Calculations</h1>
+        <!--
+            Using <form> element:
+
+            "action" attribute is only needed if you want to specify the destination/or the file to handle
+            the form in the server (which is the php for example => our next module).
+
+            In this example we don't need "action" attribute, nothing to be sent to the server
+            we will do our code to handle the from using JavaScript in the client's browser (front-end).
+
+            "method" attribute is needed to specify the submission using:
+            - GET
+            - POST
+            Again, we need these two values to be use with the back-end development as we will do in PHP module
+
+            Very Important Note:
+            Since we are only using JavaScript and nothing to be submitted to the server, we don't need this attributes
+            - action
+            - method
+
+            Yes, in such case we can ignore using the from element just the some of its fields
+
+         -->
+        <form id="main-form">
+            <label for="number">Enter any numeric value:</label>
+            <!--
+                required => this field is required to have some content when the form is being submitted
+                the required attribute works ONLY when the from is being submitted
+
+                In our code below we are using this trick to prevent the form from being submitted
+                so adding/removing the attribute "required" will not make any difference
+
+                In such case, we can write our custom JS code to check the form if it's empty or not empty
+             -->
+            <input type="text" name="number" id="number" size="5" maxlength="10">
+
+            <div>
+                <!--
+                    input element is an empty element => the label of this button will be inside the value attribute
+                    as in the examples below:
+                    the labels "Submit1" and "Submit2" are inside the value attributes:
+                    - value="Submit1"
+                    - value="Submit2"
+
+                    We can use this code <input type="button"...
+                    type="button":
+                    - prevents the form from being submitted to the server
+                    - prevents the page from being refreshed again.
+
+                    Notice that using this way, no need to return false
+                    as it will be explained later below:
+                 -->
+                <input type="button" value="Submit1" onclick="checkNumber1();">
+                <br>
+                <!--
+                Using type="submit":
+                In such case, we need to use return false to prevent the from from being submitted
+                to the same page.
+
+                NOTE:
+                The form is submitted to the page itself if there is no action attribute
+                to specify other distention.
+
+                If the form is submitted to the page, the page will be reloaded (refreshed)
+                ==> refresh the page means clear everything!
+
+                So we can:
+                1. we need to add the keyword return within the onclick event: onclick="return checkNumber2()
+                2. we need to write at the end of our function "checkNumber2": return false
+                -->
+                <input type="submit" value="Submit2" onclick="return checkNumber2();">
+                <br>
+                <!--
+                    button element is not an empty => it has an opining and closing tags
+                    so the label for this element is placed in between the opening and the closing tag elements
+                    - <button ...>Submit3</button>
+                    - <button ...>Submit4</button>
+
+                    OR: if you don't want to change your function or adding anything to your function
+               like we don't' want to add "return false" as the first way, you can this second way:
+
+               Second way: by adding return false to the "onclick" event:
+               onclick="checkNumber3(); return false"
+
+               Notice that this way we don't need the statement "return false" in our function
+               because we put it here: return false
+                 -->
+                <button type="submit" onclick="checkNumber3(); return false">Submit3</button>
+                <br>
+                <!--
+                    Since we don't have to use the real action form which is submitting to the server, we can also just use simple button element
+                    without any type!
+                 -->
+                <button onclick="checkNumber4();">Submit4</button>
+            </div>
+        </form>
+        <p>The total of your numbers: <span id="result"> </span></p>
+    </div>
+
+    <!--
+        The best practice is to make sure that all the page elements are loaded before staring paring them in JS
+        which means we should place our JS DOM code after loading all the document elements:
+    -->
+    <!-- Internal JavaScript -->
+    <script>
+        // below is the function to find the total of x numbers that use inputs
+
+        // This function "checkNumber1()" will be called/run on click event for "Submit1"
+        function checkNumber1() {
+            // for test:
+            // alert(" checkNumber1() is called!");
+
+            /*
+            // look the code below:
+           var userNumber = document.getElementById("number");
+           console.log(inputDataStr); //  <input type="text" name="numbers" id="number" size="5" maxlength="10">
+           */
+            // We need only the value inside the input field not the entire input element!
+            // We can use the property named "value"!
+            var userNumber = document.getElementById("number").value;
+
+            var numType;
+            if (userNumber % 2 == 0) {
+                numType = "Even number";
+            } else {
+                numType = "Odd number";
+            }
+
+            // We can use .innerHTML
+            document.getElementById("result").innerHTML = numType;
+            // Or since there is not HTML element just the value/text itself we can use .innerText:
+            document.getElementById("result").innerText = numType;
+        } // end function checkNumber1
+
+        function checkNumber2() {
+            // for test:
+            // alert(" checkNumber2() is called!");
+            // Below is just the same code:
+            var userNumber = document.getElementById("number").value;
+
+            // Instead of using the full if/else block, we can use the ternary operator :-)
+            // Syntax: condition ? exprIfTrue : exprIfFalse
+            // For more refreshment:
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+            var numType = (userNumber % 2 == 0) ? "Even number" : "Odd number";
+            document.getElementById("result").innerText = numType;
+
+            // to prevent the browser from being reloaded after submitting the form using type="submit"
+            // we can add the very end of our function: return false;
+            // we also need to add the keyword "return" before our function call on the "Click Handler"
+            return false;
+        } // end function checkNumber2
+
+        function checkNumber3() {
+            // for test:
+            // alert(" checkNumber3() is called!");
+
+            var userNumber = document.getElementById("number").value;
+            /*
+            Instead of writing this line:
+            // var numType = (userNumber % 2 == 0) ? "Even number" : "Odd number";
+            We can just place the ternary operator as the value for .innerText:
+            */
+            document.getElementById("result").innerText = (userNumber % 2 == 0) ? "Even number" : "Odd number";
+
+            /*
+            In this function, we didn't add: return false;
+            because we added to the click event after calling our function!
+            */
+        } // end function checkNumber3
+
+        function checkNumber4() {
+            // for test:
+            // alert(" checkNumber3() is called!");
+            var userNumber = document.getElementById("number").value;
+            document.getElementById("result").innerText = (userNumber % 2 == 0) ? "Even number" : "Odd number";
+        } // end function checkNumber4
+    </script>
+</body>
+
+</html>

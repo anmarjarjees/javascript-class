@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list with if</title>
+</head>
+
+<body>
+    <script>
+        // 1) Getting the number of items:
+        var itemsNum = parseInt(prompt("How many items did you buy?")); // 4 items ==> items = 4;
+
+        // The first step is to check the user input: if it's a number or not
+        // *******************************************************************
+
+        /*
+
+        Initial Logic:
+
+        if (user input is NOT a Number) {
+            // alert a warning message
+        } else {
+            // write the entire code here to find the total of all the items
+        }
+
+        Review (isNaN):
+        we can use isNaN():
+        - isNaN(numeric) ==> returns false ==> We can proceed with our code and find the total
+        - isNaN(not numeric) ==> returns true ==> We need to alert the user
+
+        Example:
+        isNaN(5) ==> False because 5 is numeric value ==> we can go ahead and find the total
+        isNaN(xyz) ==> True because xyz is not numeric value ==> We need to give a warning message
+        */
+
+        if (isNaN(itemsNum)) {
+            alert("Invalid Input!");
+        } else {
+            // testing:
+            // console.log("Starting my code");
+            // Here will be our major/main code to:
+            // 1) ask the user to insert each price and calculate the total within the same loop
+            // 2) print the list of the prices
+            // 3) print the total
+
+            // the code here is exactly the same as the code in basic example :-)
+            var itemPriceList = []; // var itemPriceList = new Array();
+            var priceTotal = 0; // the container with initial value of 0 for the total formula
+            for (var counter = 0; counter < itemsNum; counter++) {
+                itemPriceList[counter] = parseFloat(prompt("Enter the price of this item:"));
+                priceTotal += itemPriceList[counter];
+            }
+            // below will output value1, value2, value3, ....
+            document.write(itemPriceList); // 20,60,34
+            document.write("<br>");
+
+            for (var i = 0; i < itemsNum; i++) {
+                document.write(itemPriceList[i] + "<br>");
+            }
+
+            // NOTE: don't forget to place the output message for the total after the loop (not inside the loop)
+            document.write("Total is: " + priceTotal);
+        } // end major else
+    </script>
+</body>
+
+</html>

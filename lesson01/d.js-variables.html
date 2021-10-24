@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variables</title>
+    <style>
+
+    </style>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <!--
+    Remember we can't put <style> inside the body
+    as we do with <script> :-)
+	<style>
+	</style>
+    -->
+
+
+
+    <!--
+        just for learning we will continue using internal js code:
+        although in a real big project,
+        we should create a new folder and save our js file
+        that contains our js code in that folder as you will do in your final project
+
+        We will keep using Internal JS code to focus on JS syntax
+        Using script element to start coding our JavaScript within the HTML file:
+    -->
+
+    <!--
+    our script element inside the body
+    which is another location for JavaScript code
+    -->
+    <script>
+        /*
+            Variable is just a container inside the Computer Memory (RAM)
+            Random Access Memory that contains some data.
+
+            it's a place to hold some data temporarily while the file still running
+        */
+
+        // we need to officially declare the variable before start using it
+        // we can declare a variable using using the keyword "var" or "let"
+        // var variableName;
+        var x;  // we are not giving x any data or value!
+
+        // let's try to alert the variable x:
+        // remember that x has no value
+        alert(x); // "undefined" <=> The variable has been declared but with no value
+
+        // notice the case below:
+        alert(y); // y is not defined <=> Code ERROR: There is no such varaible "y"
+
+        // after declaring a variable, we can start using it
+        // x is already declared before, so we can just assign a value to it
+        x = 1;
+        alert(x); // 1
+
+        // we can declare a variable, and give it a value at the same time (line)
+        // this is called "initialize" the variable
+        var y = 2; // let y=2
+        alert(y); // 2
+
+
+        // initialize "num1" variable (which is short for number) with the value of 100:
+        /*
+        var num1;
+        num1=100;
+        */
+        // Or just in one step:
+        var num1 = 100;
+
+        // declare num2 variable first, and give it a value later:
+        var num2;
+        num2 = 200;
+
+        // I need to find the total of these two variables num1 and num2:
+        // and save the result into another variable named "total":
+        var total = num1 + num2;
+        alert(total);
+
+        // we can even use the result variable to find the average
+        var avg = total / 2;
+        alert(avg);
+
+        // more examples about variables:
+
+        /*
+        Task:
+        Simple program to calculate the total price of my 4 textbooks.
+
+        Assume you have 4 textbooks
+        first book is $40.75
+        second book is $72.45
+        third book is $54.28
+        fourth book is $57.31
+        */
+
+        // Part 1:
+        // we can create/declare and initialize a new variable for each book
+        // this variable will hold price of the book
+        // declare and initialize variables "book1", "book2", "book3", and "book4" for example:
+
+        // We are just assign a fixed value to each variable using our code
+        // it's called "Hard Coding the values"
+        var book1 = 40.75;
+        var book2 = 72.45;
+        var book3 = 54.28;
+        var book4 = 57.31;
+
+        // Part 2: Output the total of the four variables (books):
+
+        // First Solution:
+        // we can use alert to alert/show/display the total :
+        alert(book1 + book2 + book3 + book4); // 224.79000000000002
+
+        // Second Solution:
+        // or we can create a variable named total or any name your prefer
+        /*
+        But if we need to save the total into a variable,
+        in this case we need to create a new variable in the computer memory,
+        this variable will be used to save the total of the 4 books
+
+        Maybe we want to use another variable name to make it more meaningful
+        to us as a programmer instead of just name it "total"
+
+        For example: a name that contains three words => book price total
+
+        Variable Naming Rules:
+        1. No spaces, but we can use the underscore symbol: _
+        2. We can't start with numbers
+        3. We can't add special characters % ^ etc...
+
+        In JS we have a naming convention that we should follow:
+        is called "camelCase" ==> myFinalExam
+
+        in other programming languages like C#:
+        they have "PascalCase" ==> MyFinalExam
+
+        in other programming languages like Python:
+        they have "snake_case" ==> my_final_exam
+
+         examples:
+         a variable for full name => var fullName
+
+         so please remember that it's just a naming convention for us as JS programmers
+         all the following varaible names are Valid:
+         - bookpricetotal
+         - book_price_total
+         - BookPriceTotal
+         - The one we should use ==> bookPriceTotal (camelCase)
+
+
+         var bookPriceTotal;
+         bookPriceTotal = book1 + book2 + book3 + book4;
+       */
+
+        // Instead of using two lines, below is just one line
+        // We can declare and initialize at the same time:
+        var bookPriceTotal = book1 + book2 + book3 + book4;
+        alert(bookPriceTotal); // 224.79000000000002
+
+        /*
+        Besides using alert() function to output data to the browser window,
+        We can output data in to the console window by using another function (method) named console.log()
+        */
+
+        // instead of using alert, we can use: console.log() JS method (function)
+        // the result will be seen ONLY inside the console window
+
+        // To recap: you can use the hot keys (PC): CTRL+SHIFT+J or I or F12 ==> Console window
+        console.log(bookPriceTotal); // 224.79000000000002
+
+        // Yes, the number should be rounded
+
+        /*
+         Note: Remember that we, as programmers, use console.log to output our results,
+         or testing our code only,
+         but for the end user (our clients, customers) we can use the alert function for the time being. Later in the next chapters we will learn another more user friendly functions/tools to output/print the results on the page itself
+         */
+
+    </script>
+</body>
+
+</html>

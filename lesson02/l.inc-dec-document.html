@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment, Decrement Operators, and write</title>
+</head>
+
+<body>
+    <script>
+        // Review:
+        var studentCount = 100;
+        // if you want to add 1 (increment the counter by 1):
+        // to make the studentCount 100+1 ==> 101
+        // so we need just to increment the same variable "studentCount" by 1
+        // x = y + 1
+        studentCount = studentCount + 1; // 100+1 = 101 ==> the new value of same "studentCount"
+
+        // another example:
+        var i = 0;
+        i = i + 1;
+        document.write("The value of i is: " + i); // The value of i is: 1
+
+        // in JS we can ++ to add 1 to the value:
+        // increment operator: ++ always means the current value + 1
+        var j = 0;
+        // instead of typing j=j+1;
+        j++; // here we are saying j=j+1; // j=1
+
+        var count = 3;
+        count++; // instead of typing: count = count + 1;
+        console.log("count:" + count); // count: 4
+        count++; // 4+1 ==> 5
+        count++; // 5+1 ==> 6
+        count++; // 6+1 ==> 7
+        console.log("count:" + count); // count: 7
+
+
+        var x = 10;
+        // instead of typing x=x-1;
+        x--; // here we are saying x=x-1; // x=9
+        document.write("<br>");  // Just to add a break
+        /*
+        so the ++ or -- is used only to increment or decrement
+        the variable by number 1
+        */
+
+        // we can do equation inside document.write():
+        document.write(j + x); // 1+9 ==> 10
+        document.write("<br>");  // Just to add a break
+
+        var value1 = 10;
+        value1++; // 11
+        value1++; // 12
+        value1++; // 13
+        value1++; // 14
+        value1--; // 13
+        value1--; // 12 
+        // so now the last value of value1=12	
+
+        // below we are outputting the result then adding 1
+        document.write("value1 is: " + value1++); // value1 is 12
+        document.write("<br>");  // Just to add a break
+        document.write(value1); // 13
+        // so now the last value of value1=13	
+
+        // below we are adding 1 then outputting
+        document.write("<br>");  // Just to add a break
+        document.write("value1 is: " + ++value1); // 14
+
+
+        document.write("<br>");  // Just to add a break
+        // more example with using --
+        var myCurrentValue = 100;
+        document.write("myCurrentValue: " + --myCurrentValue); // myCurrentValue: 99
+
+        document.write("<br>");  // Just to add a break
+        // to add more than 1 we can check the following:
+        var test = 90;
+        // what if we want to add 2 to 90?
+        test += 2; // we are saying: test = test + 2;
+        document.write("test: " + test);
+
+        // Decrement operator again: --
+        var num1 = 5;
+        num1--; // num1 = num1 - 1;
+
+        // to deduct 2 from the current value of num1:
+        num1 -= 2; // num1 = num1 - 2;
+
+
+        /*
+        We can use the shorthand also for other operators:		
+        */
+        var result = 2;
+
+        result *= 2; // result = result * 2 ==> 4
+        console.log("result: " + result); // result: 4
+
+        result /= 2; // result = result / 2;
+        console.log("result: " + result); // result: 2
+
+        result /= 2;
+        console.log("result: " + result); // result: 1
+
+        var myValue1 = 100;
+        ++myValue1;
+
+        var myValue2 = 200;
+        --myValue2;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document.write method</title>
+
+    <!-- Internal Styles -->
+    <style>
+        /*
+        New rule for a custom class named vip
+        */
+        .vip {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* another custom class named extra */
+        .extra {
+            color: yellow;
+            /* this will override the color:red */
+            background-color: darkblue;
+        }
+
+        /* our last custom class named highlight */
+        .highlight {
+            font-weight: bold;
+            font-style: italic;
+            color: white;
+            background-color: brown;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- let's try it in plain html -->
+    <!-- you can just type lorem then press TAB key to generate a random paragraph: -->
+    <p class="vip">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt expedita tempora dolores numquam dolor odio
+        adipisci, delectus assumenda veniam, nihil sed veritatis amet labore laboriosam libero odit optio vitae
+        reprehenderit!
+    </p>
+
+
+    <p class="extra">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam labore repellendus veritatis nihil
+        qui eveniet placeat expedita sequi aspernatur reprehenderit similique architecto explicabo fuga eligendi nobis
+        vero, nemo ducimus quasi?</p>
+
+    <p class="highlight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam labore repellendus veritatis
+        nihil qui eveniet placeat expedita sequi aspernatur reprehenderit similique architecto explicabo fuga eligendi
+        nobis vero, nemo ducimus quasi?</p>
+
+    <!--
+        Below also pure HTML (no JS):
+        <span> is an inline element
+    -->
+    <p class="vip">Here is just a simple paragraph <span class="highlight">outside</span> the script element</p>
+
+    <script>
+        // Review:
+        // alert("Hi, there!");
+        console.log("JavaScript");
+        // we put/write formulas in console.log()
+        console.log("5 x 10 = " + 5 * 10); // 5 x 10 = 50
+
+        var exam1 = 90;
+        var exam2 = 89;
+        var avg = (exam1 + exam2) / 2;
+        // example of concatenating
+        console.log("The average of " + exam1 + " and " + exam2 + " is: " + avg);
+
+
+        /****************** document.write ******************/
+        /*
+            output: we learnt two ways to output the result:
+            - alert(): built-in function to output data inside the browser "WINDOW"
+            - console.log(): to output data inside in the console window of the browser developer tools
+
+            besides using "alert()" and "console.log()" to output our results
+             we can use the document.write() method
+
+            Remember JS script is built on many objects:
+            In JavaScript we have objects, and each object can have methods and properties
+
+            we have an object called "document":
+            document: refer to your html file (document)
+            write(): is the built-in method of document object
+
+            we will use another method/function that belongs to the "document object" called "write()"
+            - document.write("Your text goes here");
+
+            Because document.write will write into our html page so we can use this method to write html elements!!!
+        */
+
+        var firstName = "Martin";
+
+        // using the document object + its method write(): to write Martin into my page:
+        document.write(firstName);
+
+
+        // notice the same rules for concatenating can be used here
+        document.write("First Name: " + firstName);
+        // output: MartinFirst Name: Martin
+
+        /*
+      The output for the 2 document.write methods:
+
+      MartinFirst Name: Martin
+      */
+
+        // we can use document.write to output "HTML code" also!
+        // and since in HTML we have the element <br> to have a line break,
+        // so we can use it here to add a new line after the first name.
+        // we just need to insert the html tags inside the quotes as a text
+        document.write("<br>First Name: " + firstName);
+
+        // let's try to use <hr> for horizontal line:
+        document.write("<hr>");
+        document.write("<hr> First Name: " + firstName + "<br>");
+        document.write("<br>School: CBC");
+
+        /*
+          Since we can insert any HTML element into our document.write() method:
+          we can practice the following examples:
+        */
+        document.write("<h1>" + firstName + "</h1>");
+        document.write("<h2>" + firstName + "</h2>");
+        document.write("<h3>" + firstName + "</h3>");
+        document.write("<h4>" + firstName + "</h4>");
+
+        /*
+        So instead of using alert() or console.log(),
+        we used document.write() to output our data
+        */
+        var lastName = "Smith";
+        document.write("<hr>First name is " + firstName + " and last name is " + lastName + "<hr>");
+        // we can add the <br> or <hr> to the same sentence above or we can write it in a new line:
+        document.write("<hr>");
+
+        var fullName = firstName + " " + lastName; // Martin + " " + Smith
+        document.write("Full name is: " + fullName);
+
+
+        document.write("<h1>" + fullName + "</h1>");
+        document.write("<h2>" + firstName + "</h2>");
+        document.write("<h3>" + lastName + "</h3>");
+
+        // notice below we are using single quote instead of double quotes:
+        document.write('<p>Hi there, I am just a simple paragraph, but I am not as <em>important</em> as the first one</p>');
+
+        // another example of mixing the quotes:
+        document.write("<p>Martin's car is Dodge</p>");
+
+        //  output this text inside p element: I do like "JavaScript", it is very useful!
+        document.write('<p> I do like "JavaScript", it is very useful!</p>');
+
+        // Let's try to output:
+        // Martin likes "cars". Martin's favourite car is Dodge!
+        // below is just an easy amazing solution:
+        // we can use the "escape" character "\" to ignore the quote after it
+        document.write('<p>Martin likes "cars". Martin\'s favourite car is Dodge!</p >');
+
+        // Using the escape character will much easier to read, look at this complex solution:
+        // avoid this complex answer!!!
+        document.write('<p>Martin likes "cars", Martin' + "'s favourite car is Dodge</p>");
+
+
+
+        // Adding class attributes:
+        // we want to apply .vip class rules to this paragraph
+        /*
+        <p class="vip">here is my text</p>
+
+        so we can just write class=vip
+        or based on our code we can write class='vip'
+        */
+        document.write('<p class="vip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam labore repellendus veritatis nihil qui eveniet placeat expedita sequi aspernatur reprehenderit similique architecto explicabo fuga eligendi nobis vero, nemo ducimus quasi?</p>');
+
+        // document.write("<p class="vip">This was your average of 4 exams<p>"); // error
+        // 1:
+        document.write("<p class='vip'>This was your average of 4 exams<p>");
+        // 2
+        document.write('<p class="vip">This was your average of 4 exams<p>');
+        // 3
+        document.write("<p class=vip>This was your average of 4 exams<p>");
+
+        // also concatenating:
+        document.write("<p class='vip'> My first name is " + firstName + " and my last name is " + lastName + " and I think that you were able to guess that my full name is " + fullName + '.</p>'); // we can use ' instead of "
+
+        document.write("<hr>The final average is: " + avg + "<hr>");
+
+        // Below we are applying two classes "vip" and "extra"
+        // in HTML any element can have more than one class value but ONLY one id value
+        document.write('<p class="vip extra">Here is just a simple paragraph <span class="highlight">inside</span> the script element</p>');
+
+        // Review with adding a class attribute:
+        document.write('<p class="vip" id="main">The main programming language for web development is "JavaScript", it\'s more important than PHP</p>');
+        document.write("<footer>Learning JavaScript</footer>");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model - DOM 1</title>
+
+    <!-- Internal Styles -->
+    <style>
+        /* Adding two custom classes: blue-theme and red-theme */
+        /*
+        We haven't applied/written these two classes in our HTML code,
+        We wil add them through JavaScript using DOM :-)
+        */
+        .blue-theme {
+            background-color: #e6f2ff;
+            border: 2px solid #00264d;
+            color: darkblue;
+        }
+
+        .red-theme {
+            background-color: #ffebe6;
+            border: 2px solid #661400;
+            color: darkred;
+        }
+
+        /*
+        CSS Review:
+        we can write these rules two times for each class:
+        font-style: italic;
+        font-weight: 500;
+
+        OR we can write them just one time with a new rule:
+        */
+        .blue-theme,
+        .red-theme {
+            font-style: italic;
+            font-weight: 700;
+        }
+    </style>
+
+    <!--
+        for learning and testing purposes:
+        We wrote our script/code to target one of the element using DOM
+        targeting the element with id of "wrapper" by using alert() to output it
+    -->
+    <script>
+        // This alert will output "null" because the id "wrapper" is not available yet!
+        // alert(document.getElementById("wrapper")); // null
+    </script>
+</head>
+
+<body>
+    <!--
+        - div a block level element
+        - span an inline element
+
+        we can just try to apply our custom classes: blue-theme and red-theme
+        to see the new look of our page for testing the two classes manually:
+
+        <div id="wrapper" class="blue-theme">
+        <div id="wrapper" class="red-theme">
+
+        But we don't want to add the classes in the HTML code
+        we want to add them on the fly (live) through JavaScript based on the user's choice:
+
+        if the user clicks "Blue Theme" button => class="blue-theme"
+        if the user clicks "Red Theme" button => class="red-theme"
+     -->
+    <div id="wrapper">
+        <header class="main">
+            <!-- using the inline element <span> -->
+            <h1 id="head1">Document Object Model - <span>DOM</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!--
+                Adding the block-level div element to hold/contain our two buttons:
+                - first button => for applying the blue color theme
+                - second button => for applying the red color theme
+            -->
+            <div>
+                <!--
+                    We will use the html attribute named "onclick"
+                    onclick is a mouse event to trigger a JavaScript
+                    so the value of this event "onclick" will be just pure javascript
+
+                    For quick test and learning:
+                    onclick="alert('So you clicked the blue')" => for the first button
+                    onclick="alert('So you clicked the red')" => for the second button
+
+                    Now we can attach the name of our function "changeColor" to this click event
+
+                    Notice that we are calling the same function wether the button is blue or red?!
+                    yes, we can make two functions:
+                    - one for changing the color to blue to be called if the Blue button is clicked
+                    - one for changing the color to red to be called if the Red button is clicked
+
+                    Or we can just create one major function to change the color,
+                    In such case this function needs a parameter to identify if the blue or the red clicked
+                    let's
+                 -->
+                <button onclick="changeColor(1)">Blue Theme</button>
+                <button onclick="changeColor(2)">Red Theme</button>
+            </div>
+        </header>
+
+        <section id="content">
+            <h2 id="sub-title">Working with DOM!</h2>
+            <p id="first">Here is my first paragraph</p>
+            <p>Here is my second paragraph</p>
+            <!--
+                The following p element with span that has an id value
+                is important for your second assignment :-)
+             -->
+            <p>The result is: <span id="result"></span></p>
+            <!--
+                using inline JavaScript here: onclick mouse event
+                we can attach our JS code to one of the HTML event attributes
+            -->
+            <p onclick="alert('so you clicked this paragraph!')">Don't click me</p>
+        </section>
+
+        <footer class="main">
+            Designed by me...
+        </footer>
+    </div> <!-- end div.wrapper -->
+
+    <!--
+        The best way to make sure that all the page elements are loaded before staring paring them is to place our JS DOM code after loading the entire page (html elements) :
+
+        In other words,
+        we need to make sure that all the page elements are loaded before staring parsing them
+        so we place our JS DOM code after loading the entire page (html elements) :
+        the script element should be the last element to be written inside the body element
+    -->
+    <!-- Internal JavaScript -->
+    <script>
+        /*
+        Document Object Model (DOM): It's a Browser API
+
+        Application Programming Interface (API) is a computing interface which defines interactions
+        between multiple software intermediaries.
+
+        DOM: Document Object Model
+        document represents this entire HTML page
+
+        JS can control the web page (document)
+
+         DOM is for parsing all the web page content (HTML elements),
+         So we have to load or run our JS code after finishing loading the entire page
+         and that's why we usually place our code at the end after all the HTML elements
+         (one of the main/major reasons)
+        */
+
+        // DOM represents the HTML "Document":
+        // test: document is an object that refers to this HTML page
+        console.log(document); // output all the content of this document (web page)
+        /*
+          Review:
+          document is the object that has properties and methods:
+          document.title ==> title is a property
+          document.write() ==> write is a method because it has ()
+      */
+
+        // using getElementById() method of document object
+        // this method needs to know the id name:
+        // It either returns the element or a null value if the element cannot be found.
+        // review: either alert() [For short] OR window.alert()
+        // VSC This method: (method) Document.getElementById(elementId: string): HTMLElement
+        document.getElementById("head1"); // This line will NOT output anything
+
+        // The returned value from "getElementById()" will be printed by console.log:
+        // remember that "head1" is the id value for this element:
+        // First Result before overriding: <h1 id="head1">Document Object Model - DOM</h1>
+        // Second Result after overriding: <h1 id="head1">Document Object Model (DOM)</h1>
+        console.log(document.getElementById("head1"));
+
+        // OR instead of print them directly:
+        let head1Element = document.getElementById("head1");
+        console.log(head1Element); // Output: <h1 id="head1">Document Object Model - <span>DOM</span></h1>
+        document.write(head1Element); // Output:  [object HTMLHeadingElement]
+
+        document.write("<hr>");
+
+        let subTitleHeading = document.getElementById("sub-title");
+        console.log(subTitleHeading); // Output: <h2 id="sub-title">Working with DOM!</h2>
+        document.write(subTitleHeading); // Output: [object HTMLHeadingElement]
+
+        document.write("<hr>");
+        /*
+        DOM Chaining Methods:
+        *********************
+        Retrieve or set properties such as:
+        - innerText
+        - innerHTML
+        - style
+        Like many object properties works as a getter (getting the value) and a setter (setting the value).
+        That means that we can use these properties to
+        retrieve and change the data (the content of our web document).
+
+        In other words, we can use these two properties:
+        - innerText
+        - innerHTML
+        to get the contents of an element
+
+        We can also use them to change the content!
+        */
+        console.log(document.getElementById("head1").innerText); // Document Object Model - DOM
+        document.write(document.getElementById("head1").innerText); // Document Object Model - DOM
+
+        // Notice the following line will generate an error:
+        // Uncaught TypeError: Cannot read property 'innerHTML' of null
+        // There is no element with id value of "head2" => null element
+        // document.getElementById("head2").innerHTML;
+        document.write("<br>");
+        console.log(document.getElementById("head1").innerHTML); // Document Object Model - <span>DOM</span>
+        document.write(document.getElementById("head1").innerHTML); // Document Object Model - DOM
+
+        // OR since we saved "document.getElementById("head1")" to this variable "head1Element"
+        // We can use the following code:
+        console.log(head1Element.innerText); // Document Object Model
+        console.log(head1Element.innerHTML); // Document Object Model - <span>DOM</span>
+        /*
+        In both lines above:
+        head1Element => document.getElementById("head1")
+        */
+        document.write("<br>");
+        // we can also use innerHTML to display the content of this element:
+        document.write(head1Element.innerHTML); // Document Object Model - DOM
+
+        // Let's try to use innerText and innerHTML as setters, to set/change the value of their objects
+        // using the innerText to override the content of this element with id value of "head1":
+        document.getElementById("head1").innerText = "Document Object Model (DOM)";
+        // Or just simply use its variable "head1Element":
+        head1Element.innerText = "Document Object Model (DOM)";
+        // testing:
+        console.log(head1Element.innerText);
+
+        // We know that the property "innerText" is used for getting/setting a text value only
+        // Or if you are thinking of adding text and elements, we can use innerHTML:
+        // Below we are adding a text with the element <span>
+        head1Element.innerHTML = "Document Object Model <span>(DOM)</span>";
+        // testing:
+        console.log(head1Element.innerHTML);
+
+        /*
+            Important for your second assignment:
+            We will target the span element that has an id named "result" by changing its inner text:
+        */
+        document.getElementById("result").innerText = 73.69;
+
+        document.write("<hr>");
+        // more examples:
+        // I want to get the element with id="first"
+        var myParaElement = document.getElementById("first");
+        console.log(myParaElement); // <p id="first">Here is my first paragraph</p>
+        document.write(myParaElement); // [object HTMLParagraphElement]
+        document.write("<br>");
+        document.write(myParaElement.innerText); // Here is my first paragraph
+
+        /*
+            In CSS we used to write the properties in this layout/format/template/syntax: property: value;
+
+            Examples:
+            background-color: #897856; // blue
+            border-bottom: 1px solid red;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: red;
+            font: arial;
+
+
+            We can attach the same CSS properties to our HTML element using DOM:
+
+            Just we need to remove the - and use the camelCase instead
+            also we need to add the property named "style" first
+
+            The same code/properties as we have in CSS above, is written below using DOM syntax (part of it):
+            backgroundColor = any value;
+            borderBottom = "1px solid red";
+            fontWeight = "bold";
+            textTransform= "uppercase";
+            color = "red";
+            font = "arial";
+        */
+
+        // Let's put these DOM CSS Properties into practice by using the "style" property:
+        // We are going to target the element "myParaElement"
+        // Remember that "myParaElement" is: <p id="first">Here is my first paragraph</p>
+
+
+        // So instead of typing: document.getElementById("first")!
+        // we can simply use "myParaElement"
+
+        // testing: the following code will return all the CSS rules that has been applied to this element:
+        console.log(myParaElement.style);
+
+        // in CSS we used: border-bottom:
+        myParaElement.style.borderBottom = "2px solid red";
+
+        // in CSS we used: font-style:
+        myParaElement.style.fontStyle = "italic";
+
+        // in CSS we used: font-weight:
+        myParaElement.style.fontWeight = "bold";
+
+        // in CSS we used: padding:
+        myParaElement.style.padding = "10px";
+
+        // in CSS we used: font-family:
+        myParaElement.style.fontFamily = "Cambria";
+
+        // in CSS we used: width:
+        myParaElement.style.width = "400px";
+
+        // in CSS we used: text-align:
+        myParaElement.style.textAlign = "center";
+
+        // in CSS we used: margin:
+        myParaElement.style.margin = "auto";
+
+        // in CSS we used: background-color:
+        myParaElement.style.backgroundColor = "lightyellow";
+
+        /*
+        Notice that JavaScript will apply all these styles as inline styles (HTML attributes):
+
+        <p id="first"
+        style="border-bottom: 2px solid red; font-style: italic;
+        font-weight: bold; padding: 10px;
+        font-family: Cambria; width: 400px;
+        text-align: center; margin: auto; background-color: lightyellow;">
+        Here is my first paragraph
+        </p>
+        */
+
+        // To recap: we can get the styles of the element:
+        console.log("my paragraph styles: ", myParaElement.style);
+
+        /*
+        NOTE: In this task we will use a new concept in JS called "Events"
+        Events will be discussed in more details in the next lessons
+
+        Task:
+        Create the function named "changeColor()"
+        this function will be triggered on click event:
+        for this demo, we will use onclick HTML attribute
+
+        Task:
+        - This function should change the color theme to Blue Theme
+        if the user clicks the blue button
+
+        - This function should change the color theme to Red Theme
+        if the user clicks the red button
+        */
+        function changeColor(colorOption) {
+            // Initial basic test:
+            // alert("test my function:");
+
+            /*
+            Task:
+            we want to check if the user has clicked the blue the red theme button
+            if the user clicks blue theme => change page color to blue => by targeting the div#wrapper
+            if the user clicks red theme => change page color to red => by targeting the div#wrapper
+
+            Whether the user clicks the blue or the red button
+            we will target the same element which is the div with id value of "wrapper"
+            */
+
+            /*
+            Task:
+            Create a variable named "wrapperDiv"
+            to get the entire div#wrapper element
+            using our normal code: getElementById() method
+            */
+            let wrapperDiv = document.getElementById("wrapper");
+            // testing:
+            console.log(wrapperDiv);
+
+            // testing:
+            console.log("Color Option: ", colorOption);
+            if (colorOption == 1) {
+                // alert("Aha! you like blue color");
+                // 1: blue theme:
+
+                // First Solution: Using the style property that we learnt above
+                // Instead of typing 4 lines for styling:
+                /*
+                wrapperDiv.style.backgroundColor = "#e6f2ff";
+                wrapperDiv.style.border = "2px solid #00264d";
+                wrapperDiv.style.color = "darkblue";
+                wrapperDiv.style.fontStyle = "italic";
+                */
+
+                // Second Solution:
+                // By applying/adding the class name!
+                wrapperDiv.className = "blue-theme";
+            } else {
+                // alert("Aha! you like red color");
+                // 2: red theme
+                // repeat the same solution as the blue-theme above:
+                wrapperDiv.className = "red-theme";
+            }
+
+            // Yes, we can use the switch() statement:
+            // Notice that the logic will be duplicated just for learning purpose
+            /*
+                      either by using parseFloat or parseInt in the prompt() syntax
+                      or we can just add " " to the case statements
+                  */
+            switch (colorOption) {
+                case 1:
+                    wrapperDiv.className = "blue-theme";
+                    break;
+                case 2:
+                    wrapperDiv.className = "red-theme";
+                    break;
+            }
+
+            /*
+            For More Practice!
+            Try to add another button to change the color theme to green! :-) have fun
+            */
+            // ****************************************************************************************
+            // We Put this alert at the very end of my script (my final code):
+            // alert("Hello there, Yes you need to click me in order to proceed with your page hahaha!");
+            // alert(document.getElementById("wrapper")); // [object HTMLDivElement]
+            // alert(document.getElementById("wrapper").innerHTML); // the full div#wrapper content
+        } // end changeColor()
+    </script>
+</body>
+
+</html>

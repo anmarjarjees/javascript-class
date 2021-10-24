@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Scope</title>
+</head>
+
+<body>
+    <!-- 
+        This file complete reference: https://www.w3schools.com/js/js_scope.asp
+    -->
+    <h1>Variable Scope</h1>
+    <p>Scope determines the accessibility (visibility) of variables.</p>
+    <p>JavaScript has 3 types of scope:</p>
+
+    <ul>
+        <li>Global scope</li>
+        <li>Block scope</li>
+        <li>Function scope</li>
+    </ul>
+
+    <h2>Block Scope</h2>
+    <p>
+        Before ES6 (2015), JavaScript had only Global Scope and Function Scope.
+        ES6 introduced two important new JavaScript keywords: let and const.
+        These two keywords provide Block Scope in JavaScript.
+        Variables declared inside a { } block cannot be accessed from outside the block:
+    </p>
+
+    <h1>Global and Local (function) Variable Scope</h1>
+    <p>
+        We can declare any variable in JavaScript by using the keyword "var" or the keyword "let".
+        If we declare a variable outside a function body/block, this variable will be global variable (its scope is
+        global), so this variable will be seen by or available to all the code. If we declare a variable inside a
+        function body/block, this variable will be a local/function variable (its scope is local), so this variable will
+        be seen or available to only the code inside
+        the function.
+    </p>
+
+    <script>
+        /*
+        create "myMsg1" which is variable of string datatype:
+        */
+        var myMsg1 = "Hi there, I am myMsg1 variable declared in the main script, outside the function";
+
+        /*
+        it's declared outside the function (in the main script code), so it's available to all my code.
+        and that's why it's called "Global Variable"
+
+        Global Variable: is any variable that we declare outside a function
+        */
+
+        // Step1: Create the function
+        function myOutput() {
+            // output (using or calling) the variable "myMsg1" inside this function:
+            document.write("<p>" + myMsg1 + "</p>");
+            /*
+            we are going to declare a new variable named "myMsg2"
+            inside the function (not in the main script),
+            so this variable will be a "Local Variable"
+            which means we can use it (access it) locally inside this function only!
+            */
+
+            // myMsg2 variable is declared inside the function body,
+            // so it's only available to my code within the same function!
+            var myMsg2 = "Hi there, I am myMsg2 variable declared inside the function";
+            document.write("<p>" + myMsg2 + "</p>"); // OK
+        } // end myOutput()
+
+        // Step2: Call this function "myOutput()":
+        myOutput();
+
+        document.write("<p>" + myMsg1 + "</p>"); // we will see the result
+
+        // Below we are trying to access/use the variable named "myMsg2" which was declared inside a function!
+        // document.write("<p>" + myMsg2 + "</p>"); // Console Error: myMsg2 is not defined
+
+        document.write("<br>***********************<br>");
+
+        /*
+        Very Important Note:
+        Variables declared within/inside a block with:
+        - "var" keyword can be accessed from outside the block { }.
+        - "let" keyword can NOT be accessed from outside the block { }.
+        */
+        // Examples about "block scope":
+        if (true) {
+            var x = 100;
+        }
+        // The following code line will work fine:
+        console.log(x); // 100
+
+        if (true) {
+            let y = 100;
+        }
+        // The following code line will generate an error: y is not defined
+        // console.log(y);
+
+        // More examples:
+        // we are creating a global variable
+        // is defined inside the main script and outside any function
+        var myGlobalVariable = 100;
+
+        function myAddition() {
+            // Let's try to change the value of the global variable "myGlobalVariable"
+            // by adding 1 to its original value
+            myGlobalVariable++; // 101
+        }
+
+        document.write("<br>The value of 'myGlobalVariable' is: " + myGlobalVariable); // 100
+
+        myAddition();
+        document.write("<br>The value of 'myGlobalVariable' is: " + myGlobalVariable); // 101
+
+        myAddition();
+        document.write("<br>The value of 'myGlobalVariable' is: " + myGlobalVariable);  // 102
+
+        document.write("<br>***********************<br>");
+        // declaring a new variable outside the function to be global
+        var mySecondGlobalVar = 200;
+
+        // let's create a function to divide any global variable by 2:
+        function myDivByTwo() {
+            // local variable like "myLocalVariable" is defined inside the function
+            var myLocalVariable = 100;
+            myLocalVariable = myLocalVariable / 2;
+            alert("myLocalVariable: " + myLocalVariable); // 50
+
+            // work with the global variable "mySecondGlobalVar"
+            mySecondGlobalVar = mySecondGlobalVar / 2;
+            alert("mySecondGlobalVar: " + mySecondGlobalVar); // 50
+        }
+
+        myDivByTwo();
+
+
+        // NOTE:
+        // the code below we will generate an error
+        // because we are calling a local variable of myDivByTwo() function
+        // document.write("myLocalVariable: " + myLocalVariable);
+
+        // This code will work
+        document.write("mySecondGlobalVar: " + mySecondGlobalVar);
+
+        // going with more examples:
+
+        var total; // Global variable => was declared (var or let) in the main script element
+        // Notice that we are going to use this varaible inside our function!
+
+        // Step1: Create/declare our function first
+        function addNumbers(x, y) {
+            // below, we are using the same global variable "total"
+            total = x + y; // 11
+            document.write("<br>" + total); // 11
+
+            // since we changed the value of a global variable "total"
+            // no need to use "return"
+
+            // Just for learning only:
+            // local/functional variable (scope)
+            var subject = "JavaScript";
+            // This line below will work fine (no errors)
+            document.write("<p>My current subject is : " + subject + "</p>");
+        }
+
+        // for testing:
+        // the code below will generate an error: subject is not defined
+        // document.write("<p>My current subject is : " + subject + "</p>");
+
+        // Step2: call our function
+        addNumbers(5, 6); // find the total of 5 + 6
+        document.write("<br>" + total); // since total is global variable so there is no error
+
+        addNumbers(5, 5);
+        document.write("<br>" + total);
+
+        addNumbers(2, 3);
+        document.write("<br>" + total);
+
+        // More Advanced Topic:
+        function printLanguage() {
+            var myLanguage = "JavaScript"; // local variable
+            document.write("<p>" + myLanguage + "</p>");
+            /*
+            In other programming languages like Python, we use the keyword GLOBAL
+            to make any varaible even if it's declared inside a function
+
+            In JS is different!
+            If you assign a value to a variable that has not been declared,
+            it will automatically become a GLOBAL variable.
+
+            If we don't use the keyword "var" or "let"
+            JS will declare this varaible globally!
+
+            Very Important Note:
+            --------------------
+            All modern browsers support running JavaScript in "Strict Mode".
+            In "Strict Mode", undeclared variables are not automatically global.
+
+            Read more: https://www.w3schools.com/js/js_strict.asp
+            */
+            myProgram = "Wed Design and Development";
+            document.write("<p>" + myProgram + "</p>");
+        }
+
+        // Now we do need to call our function "printLanguage()" at least to set a value to "myProgram"
+        printLanguage(); // Wed Design and Development
+        document.write("<p>" + myProgram + "</p>"); // Wed Design and Development
+    </script>
+</body>
+
+</html>

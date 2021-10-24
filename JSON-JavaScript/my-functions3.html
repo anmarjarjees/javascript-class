@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Custom Functions 3</title>
+</head>
+
+<body>
+    <script>
+        /*
+           Problem:
+           Create a function just to:
+           - check or scan an average value
+           - return one of the following messages based on the average value:
+               - if the average is 90+ AND less or equal to 100 ==> Excellent
+               - else if the average is 80+ AND less or equal to 89 ==> Very Good
+               - else if the average is 70+ AND less or equal to 79 ==> Good
+               - else if the average is 60+ AND less or equal to 69 ==> Satisfactory
+               - else if the average is 0+ and less than 60 ==> Fail
+               - else ==> Invalid Average Value
+       */
+
+
+        // The classical way to create our functions
+        /*
+        function averageGrade(avg) {
+            return "Good!";
+        }
+        */
+
+        // The other way:
+        averageGrade = function (average) {
+            // Excellent (Honors) ==> 90 - 100
+            if (average >= 90) {
+                return ("<p>Excellent (Honors)</p>");
+            } else if (average >= 80 && average <= 89) {
+                // Very Good ==> 80 - 89
+                return ("<p>Very Good</p>");
+            } else if (average >= 70 && average <= 79) {
+                // Good ==> 70 - 79
+                return ("<p>Good</p>");
+            } else if (average >= 60 && average <= 69) {
+                // Satisfactory ==> 60 - 69
+                return ("<p>Satisfactory</p>");
+            }
+            // Yes, instead of typing: if (average >= 0 && average < 60)
+            // We can just type else
+            else {
+                // Unsatisfactory ==> 0 - 59
+                return ("<p>Unsatisfactory</p>");
+            }
+        } // End function
+
+        // call my function: 
+        console.log(averageGrade(75));
+
+        // or:
+        let grade = averageGrade(85);
+        console.log(grade);
+
+        // Another Example:
+        // instead of: function evenOdd(num) { }
+        // we can use this format/template:
+        evenOdd = function (num) {
+            if (num % 2 === 0) {
+                return "Even";
+            } else {
+                return "Odd";
+            }
+        }
+
+        console.log("Number 2 is: " + evenOdd(2));
+        console.log("Number 3 is: " + evenOdd(3));
+
+        isValidAge = function (age) {
+            if (age >= 18) {
+                console.log("Yes you can buy fireworks");
+            }
+            else {
+                console.log("Yes you cannot buy fireworks");
+            }
+        }
+
+        isValidAge(18);
+        isValidAge(17);
+        isValidAge(28);
+    </script>
+</body>
+
+</html>
