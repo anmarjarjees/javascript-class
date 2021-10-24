@@ -9,3 +9,5 @@ My JavaScript code and lectures for my Web Design and Development Students
 - W3schools.com
 - TutorialRepublic.com
 - My code examples
+
+NOTE: Other New Folders to be added...
