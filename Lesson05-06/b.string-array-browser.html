@@ -76,35 +76,35 @@
 
 
         // using substr() method of string object:
-          // myStr1 = "JavaScript Programming Language"
+        // myStr1 = "JavaScript Programming Language"
 
-          // Task: Getting the word "JavaScript" out of the of the full text "JavaScript Programming Language"
-          // VSC Hint: (method) String.substr(from: number, length?: number): string
-          // will take the first char in index 0 and counts 10 characters (starting from index 0)
-          // first parameter (argument) is the starting index of the string that we want to cut/copy
-          // second parameter (argument) is the length of the string (how many characters)
-          var myLanguage = myStr1.substr(0, 10);
-          document.write("<br>");
-          document.write(myLanguage); // JavaScript
-          document.write("<br>the length of my string varaible 'myLanguage' is:" + myLanguage.length); // JavaScript
+        // Task: Getting the word "JavaScript" out of the of the full text "JavaScript Programming Language"
+        // VSC Hint: (method) String.substr(from: number, length?: number): string
+        // will take the first char in index 0 and counts 10 characters (starting from index 0)
+        // first parameter (argument) is the starting index of the string that we want to cut/copy
+        // second parameter (argument) is the length of the string (how many characters)
+        var myLanguage = myStr1.substr(0, 10);
+        document.write("<br>");
+        document.write(myLanguage); // JavaScript
+        document.write("<br>the length of my string varaible 'myLanguage' is:" + myLanguage.length); // JavaScript
 
-          // Or we can simply use this code:
-          document.write("<br>");
-          document.write(myStr1.substr(0, 10)); // JavaScript
+        // Or we can simply use this code:
+        document.write("<br>");
+        document.write(myStr1.substr(0, 10)); // JavaScript
 
-          // Task: Getting the word "Programming" out of the of the full text "JavaScript Programming Language"
-          /*
-          substr(): has two parameters:
-          - First: the starting for the text that we want
-          - Second (Optional): how many characters
-          */
-          var topic1 = myStr1.substr(myStr1.indexOf("Programming"));
-          document.write("<br>");
-          document.write(topic1); // Programming Language
+        // Task: Getting the word "Programming" out of the of the full text "JavaScript Programming Language"
+        /*
+        substr(): has two parameters:
+        - First: the starting for the text that we want
+        - Second (Optional): how many characters
+        */
+        var topic1 = myStr1.substr(myStr1.indexOf("Programming"));
+        document.write("<br>");
+        document.write(topic1); // Programming Language
 
-          var topic2 = myStr1.substr(myStr1.indexOf("Programming"), 11);
-          document.write("<br>");
-          document.write(topic2); // Programming
+        var topic2 = myStr1.substr(myStr1.indexOf("Programming"), 11);
+        document.write("<br>");
+        document.write(topic2); // Programming
 
         document.write("<br>");
         document.write("<br>");
@@ -149,6 +149,26 @@
         for (var any = 0; any < myLetterArray.length; any++) {
             document.write(myLetterArray[any] + "<br>");
         }
+
+
+        // More Array's methods:
+        const notesArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'A'];
+
+        // .join() method => return a string
+        const notesLetters1 = notesArray.join(); // adding a comma by default
+        console.log(notesLetters1); // A,B,C,D,E,F,G,A
+
+        // We can use .join() with specifying a delimiter:
+        const notesLetters2 = notesArray.join('-');
+        console.log(notesLetters2); // A-B-C-D-E-F-G-A
+
+        // Concatenating arrays:
+        const days1 = ['Mon', "Tue"];
+        const days2 = ['Wed', 'Thu', 'Fri'];
+        const workingDays = days1.concat(days2);
+        console.log(workingDays); // (5) ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+
+
 
         // BOM: Browser Object Model ==> for the browser object "window"
         // example:

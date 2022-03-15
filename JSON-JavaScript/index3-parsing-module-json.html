@@ -33,7 +33,12 @@
             <p id="college"></p>
         </section>
     </div>
-    <script src="script2.js"></script>
+    <!-- 
+        link to our external JS file: 
+        Notice that we added: type="module"
+        if not, the Uncaught syntax error: cannot use import statement outside a module occurs
+    -->
+    <script type="module" src="script2.js"></script>
 </body>
 
 </html>

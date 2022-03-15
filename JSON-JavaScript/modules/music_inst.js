@@ -1,4 +1,16 @@
-[
+/*
+The first thing you do to get access to module features is export them. This is done using the export statement.
+
+Link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#exporting_module_features
+
+You can export functions, var, let, const, and classes.
+
+The easiest way to use it is to place it 
+in front of any items you want exported out of the module, 
+for example:
+*/
+
+export const musicInstruments = [
     {
         "name": "Piano",
         "history": "very old",
@@ -48,3 +60,4 @@
         }
     }
 ]
+

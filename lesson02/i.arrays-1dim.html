@@ -394,6 +394,74 @@
     console.log(myTextbook.length); // 20
     // toUpperCase() => Converts all the alphabetic characters in a string to uppercase.
     console.log(myTextbook.toUpperCase()); // BEGINNING JAVASCRIPT
+
+    // Adding/Removing elements to/from the front of the array:
+    // ********************************************************
+    let instruments = ["Keyboard", "Guitar", "Bass", "Violin"];
+    console.log('Original Instruments Array:', instruments);
+
+    // .unshift() method => adding data to the front:
+    instruments.unshift('Flute');
+    // (4) ['Keyboard', 'Guitar', 'Bass', 'Violin']
+
+    console.log('Adding Flute to Instruments Array:', instruments);
+    // (5) ['Flute', 'Keyboard', 'Guitar', 'Bass', 'Violin']
+
+    // .shift() method => removing data from the front:
+    instruments.shift();
+    console.log('Removing Flute from Instruments Array:', instruments);
+    // (4) ['Keyboard', 'Guitar', 'Bass', 'Violin']
+
+    /*
+    NOTES:
+    You can see the returned value from these two methods push() and unshift() are number
+    because both methods return the length of the array after adding the new element
+    */
+
+    // To return selected element(s) from an array, as a new array
+    // We will use .slice() method:
+    // https://www.w3schools.com/jsref/jsref_slice_array.asp
+    /*
+    - .slice() method selects from a given start, up to a (not inclusive) given end.
+    - .slice() method does not change the original array.
+    */
+
+    let myInstruments = instruments.slice(0, 2);
+    console.log(myInstruments);
+    // (2) ['Keyboard', 'Guitar']
+
+
+    // Deleting an item or items from anywhere in an array (front, middle, end)
+    // NOTES: 
+    // The splice() method adds and/or removes array elements.
+    // The splice() method overwrites the original array.
+    // https://www.w3schools.com/jsref/jsref_splice.asp
+    /*
+    .splice(param1, param2, param3)
+    - param1 => Required= > The index (position) of the item to be removed (or replaced)
+    - param2 => Optional => Number of items to be removed.
+    if not specify, all the element after the current index (param1) will be removed
+    */
+
+
+    let frontEndList = ['HTML', 'CSS', 'PHP', 'JavaScript'];
+    // We need to remove the "PHP" from the middle as its a back-end language!
+    // frontEndList.splice(2); // ending with (2) ['HTML', 'CSS']
+
+    frontEndList.splice(2, 1); // Remove the element in index 2, and only one element
+    console.log(frontEndList);
+    // (3) ['HTML', 'CSS', 'JavaScript']
+
+    // .splice() method can be also used to replace an element (besides deleting an element):
+    let backEndList = ['PHP', 'HTML', 'MySQL', 'MongoDB'];
+    console.log(backEndList); // (4) ['PHP', 'HTML', 'MySQL', 'MongoDB']
+
+    // We need to replace the "HTML" in the middle as its a front-end language!
+    // Let's replace it with "Python"
+    backEndList.splice(1, 1, 'Python');
+    console.log(backEndList); // (4) ['PHP', 'Python', 'MySQL', 'MongoDB']
+
+    // More arrays methods to be discussed in the next chapters
   </script>
 
 </body>

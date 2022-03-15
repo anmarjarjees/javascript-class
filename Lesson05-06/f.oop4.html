@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object-Oriented Programming 4</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+        Dear Students,
+        This code example was taken from my code example of using inheritance with Python language.
+        So the same example in Python has been to translated to JavaScript
+
+        W3Schools:
+        ECMAScript 2015, also known as ES6, introduced JavaScript Classes.
+        JavaScript Classes are templates for JavaScript Objects.
+        */
+
+        class Member {
+            /*
+            The constructor() special method:
+            - It has to have the exact name "constructor"
+            - It is executed automatically when a new object is created
+            - It is used to initialize object properties
+            - If you do not define a constructor method, JavaScript will add an empty constructor method.
+            
+
+            Member Class is for accepting the following member info:
+            - fullName: The Member Full Name (Mandatory)
+            - dob: The Date of Birth YYYY-MM-DD (Mandatory)
+            - title: The Job Title (Optional) and it's empty by default
+            */
+            constructor(fullName, dob, title = "") {
+                this.name = fullName;  // self.name will be the full name
+                this.dob = dob;  // YYYY - MM - DD
+                this.jobTitle = title;
+
+                // JS will split the text based on the space in between the first and the last name
+                let nameParts = fullName.split(' ');
+                // index 0 will have the first name value
+                this.firstName = nameParts[0];  // index 0 will have the first name value
+                this.lastName = nameParts[1];  // index 1 will have the last name value
+            }
+
+            memberAge() {
+                const currentDateObj = new Date();
+                const dobYear = parseInt(this.dob.slice(0, 4));
+                const dobMonth = parseInt(this.dob.slice(5, 7));
+                const dobDay = parseInt(this.dob.slice(8, 10));
+                // Creating the date of birth object using the formal JS date Object Template:
+                // new Date(YYYY,MM,DD)
+                // Instead of "YYYY-MM-DD"
+                const dobObj = new Date(dobYear, dobMonth, dobDay);
+                // test:
+                // console.log("Date of Birth: ", dobObj);
+                // console.log("Current Date: ", currentDateObj);
+                /*
+                This formula are not accurate although its working
+                person can turn into a new age any day in any month of the year based on his dob!
+                In order to make it correct exactly, we have to calculate the age based on the day
+                As a conclusion: We should calculate the number of days between two dates not the number of years
+                */
+                const age = currentDateObj.getFullYear() - dobObj.getFullYear();
+                return age;
+            }
+
+            // let's add another method for just printing/console.log the member full info:
+            // - the member first name
+            // - the member last name
+            // - the member date of birth
+            // - the member job title if it's exist
+            printMainInfo() {
+                console.log("\n******************");
+                console.log("Member Information:");
+                console.log("******************");
+                // # Quick Test for accessing the method "memberAge()":
+                // console.log(this.memberAge());
+                // Using the literal Template
+                console.log(`First Name: ${this.firstName}`);
+                // # or use the comma:
+                console.log("Last Name: ", this.lastName);
+                // or use the concatenation:
+                // Notice that we need to add this.before calling any class method
+                console.log("Date of Birth: " + this.dob +
+                    "\nAge: " + this.memberAge());
+                if (this.jobTitle != "") {
+                    console.log("Job Title: ", this.jobTitle);
+                }
+            }
+        } // end Member
+
+        // JavaScript Class Inheritance:
+        // use the "extends" keyword
+        class SpecificMember extends Member {
+            // Creating the constructor method to accept value(s) for the class:
+            // We have to add the same parameters from the parent class + the new one(s):
+            constructor(fullName, dob, title = "", memType = "Basic") {
+                /*
+                the keyword "supper"
+                learn more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super
+                When used in a constructor, 
+                the "super" keyword appears alone and must be used before the this keyword is used. 
+                The "super" keyword can also be used to call functions on a parent object.
+                */
+                // We need to use the keyword "super" to refer to the parent class first
+                // Then we can refer to the current object with keyword "this"
+                // super() will call the constructor of the parent/super class
+                // Then passing exactly what the constructor needs in the super class
+                super(fullName, dob, title = "");
+                // Adding an extra custom property "memType" for Membership Type:
+                this.memType = memType;
+            }
+
+            printFullInfo() {
+                /*
+                The super keyword is used also to access and call functions on an object's parent.
+                Syntax: super.functionOnParent([arguments]);                
+                */
+                super.printMainInfo();
+                console.log("Membership Type: ", this.memType);
+            }
+        } // end SpecificMember
+
+        // Creating our objects from the child class "SpecificMember":
+        // Creating our objects "member1, member2, member3"
+        // Adding a literal empty string (if no title) as a parameter for the title argument
+        member1 = new SpecificMember("Sally Graysons", "1982-02-05", "", "Basic");
+        member2 = new SpecificMember("Alex Chow", "1972-09-23", "", "Standard");
+        member3 = new SpecificMember("Martin Smith", "1974-04-03", "", "Premium");
+
+        // We have to call two methods to print all the information!
+        member1.printMainInfo();  // print the initial field, when we initialized our object
+        member1.printFullInfo();  // print the membership type
+        member2.printFullInfo();
+        member3.printFullInfo();
+
+        console.log("****************** User's Age Report ********************");
+        console.log("The age of member1:", member1.firstName, "is", member1.memberAge());
+
+        console.log("**********************************************");
+        console.log("The age  of member2:", member2.firstName, "is", member2.memberAge());
+
+        console.log("**********************************************");
+        console.log("The age  of member3:", member3.firstName, "is", member3.memberAge());
+    </script>
+</body>
+
+</html>

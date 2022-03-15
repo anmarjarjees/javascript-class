@@ -272,10 +272,10 @@
         var myMarksAvg = avg(myMarks).toFixed(2);
         document.write("<p>" + myMarksAvg + "</p>");
 
-
         /* 
         Anonymous function:
-        Immediately invoked function execution:
+        - Doesn't have a name
+        - Immediately invoked function execution:
     
         (function() {
             Your code
@@ -298,6 +298,45 @@
         })();
 
 
+        // NOTE:
+        // In case if we don't want the "Anonymous Function" to be executed immediately:
+        // 1. Remove the the trailing parentheses () at the end
+        // 2. Assign the function to a variable (can also receive the returned value)
+        // This variable/constant will be the function name
+        // it will be used to call the actual anonymous function as we do in the normal one
+        const factorial = function (num) {
+            let result = 1
+            for (let i = 1; i <= num; i++) {
+                result *= i;
+            }
+            return result;
+        }
+
+        let num = 5;
+        // We can/run/execute the
+        console.log(factorial(num));
+        document.write("<br>The factorial of " + num + " is ", factorial(num));
+
+        /* Arrow Functions */
+        /*
+        The newer way to create functions:
+        let's rewrite the same function but using arrow syntax  
+
+        The syntax:
+        (x parameter(s)) => {
+            // function code
+        }      
+        */
+        const factorial2 = (num) => {
+            let result = 1
+            for (let i = 1; i <= num; i++) {
+                result *= i;
+            }
+            return result;
+        }
+
+        console.log(factorial2(num));
+        document.write("<br>The factorial of " + num + " is ", factorial2(num));
     </script>
 </body>
 

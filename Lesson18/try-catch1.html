@@ -25,31 +25,55 @@
         <p id="result"> </p>
     </div>
     <script>
-        // below is the try and catch() block
+        /*
+        Multiple Errors in JS, for examples:
+        SyntaxError => Error in Code Punctuation
+        example:
+        car..type <=> using double dot notation!
+
+        ReferenceError => Calling of undefined function for example
+        example:
+        alart() <=> calling a function named alart() which is not defined and it's not alert()
+
+        TypeError <=> assigning values to a variable for example
+        example:
+        const program = "Web Development Bootcamp";
+        program = "Graphic Design";
+
+        TypeError: Assignment to constant variable.
+        */
+
+        // below is vary basic example of using try and catch() block
         try {
             // we place our code here:
-            // alart('test'); // ReferenceError: alart is not defined
+            // creating an error in try block by typing alart() instead of alert()
+            alart('test'); // This will not work => ReferenceError: alart is not defined
             function userInfo() {
-                var myForm = document.mainForm;
-                var fullName = myForm.fullName.value;
-                var element = document.getElementById("result");
+                let myForm = document.mainForm;
+                let fullName = myForm.fullName.value;
+                let element = document.getElementById("result");
                 if ((fullName == null) || (fullName == "")) {
                     element.innerHTML = "Please Enter your first name!";
                 } else {
-                    var gender = myForm.gender.value;
+                    let gender = myForm.gender.value;
                     if (gender == 'm') gender = "Male"; else gender = "Female";
                     // alert(gender);
                     element.innerHTML = "Your full name is: " + fullName;
                     element.innerHTML += "<br> Gender: " + gender;
                 }
             }
+            // catch block accept a parameter that refer to the error ID or exception
+            // we can use any name by convention=> er, e, error, ex, exc, ...
         } catch (ex) { // this catch statement will be executed if there is an error in the try block code
-            // display the exception (the error message)
+            // display the exception (the error message) on our webpage:
             document.write(ex); // ReferenceError: alart is not defined
+
+            // OR with console:
+            console.log(ex);
+
+            // the catch() parameter which is the error is an object that has many properties:
+            console.log(typeof ex);
         }
-
-
-
     </script>
 </body>
 

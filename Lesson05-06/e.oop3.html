@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object-Oriented Programming 3</title>
+</head>
+
+<body>
+    <script>
+        // Using Classes in JavaScript:
+        /*
+        The term "classes" has been introduced to us
+        in JavaScript2015 Es6
+
+        it's called "Syntactic Sugar"
+        so it's not a changing in the infrastructure in dealing with Objects in JS
+        it's just a different (modern) way as we use in other OO languages
+
+        Just a new syntax
+
+        Let's take the same example of the "House" but with a simple version for a quick demonstration
+
+        House(modelName, bedRoomNum, hasGuestRoom, finishedBasement, kitchenNum, garageNum, bathRoomNum, flooringType = "Laminate") {
+        }
+
+        class is a blue print for creating an object
+        */
+
+        class House {
+            // Creating the class constructor:
+            constructor(modelName, bedRoomNum, finishedBasement, kitchenNum, garageNum, bathRoomNum) {
+                this.name = modelName;
+                this.bedrooms = bedRoomNum;
+                this.finishedBasement = finishedBasement;
+                this.kitchenNum = kitchenNum;
+                this.garage = garageNum;
+                this.bathrooms = bathRoomNum;
+
+                // We can also add these properties that doesn't need a passing value:
+                this.builder = "Dream Homes Inc.";
+            }
+
+            // creating a method (a function inside a class):
+            // Notice that we don't use the "function" keyword:
+            build() {
+                console.log(`${this.builder}: Building a house with these specifications:
+                House Model: ${this.name}
+                Bedrooms: ${this.bedrooms}
+                Basement: ${this.finishedBasement}
+                Kitchen: ${this.kitchenNum}
+                Garage: ${this.garage}
+                bathrooms: ${this.bathrooms}`);
+            }
+
+            /*
+                JS doesn't have the access modifiers (private, public, protected)
+                like other OO languages.
+                But we can imitate the same idea by creating:
+                - getter method
+                - setter method
+
+                For more details and explanations,
+                please refer to my lectures of working with Object Oriented Programming using:
+                - PHP
+                - Python
+
+                Examples of JS:
+                - Getting the value of the House bedrooms number
+                - Using the keyword "get" followed by a method name as we use the keyword "function"
+                - we can NOT use/call the actual property name after get, using a meaningful name
+                
+                NOTE:
+                getter and setter methods are called without ()
+            */
+
+            // Getter method for getting the value of the "bedrooms" property:
+            get getBedrooms() {
+                return this.bedrooms;
+            }
+
+            // Setter method for setting the value of the "bedrooms" property:
+            set setBedrooms(number) {
+                this.bedrooms = number;
+            }
+
+            /*
+            To make the code easier in JS,
+            Developers usually use getter and setter like a class method without any keyword:
+            So let's try it on "Bathrooms":
+            */
+
+            // Getter: using get then the property name by convention
+            getBathrooms() {
+                return this.bathrooms;
+            }
+
+            // Setter: using set then the property name by convention
+            setBathrooms(number) {
+                this.bathrooms = number;
+            }
+        } // end class House
+
+        // Creating an object out of the class:
+        const house1 = new House("Astoria", 3, true, 1, 2, 2);
+        const house2 = new House("Presto", 2, false, 1, 1, 2);
+        const house3 = new House("Galaxy", 2, true, 2, 1, 2);
+
+        // Calling the class method build()
+        house1.build();
+        house2.build();
+        house3.build();
+
+        // Accessing a class property for the object "house1":
+        console.log('First House Bedrooms#:', house1.bedrooms); // First House Bedrooms#: 3
+
+        //  We can also change the value of any property"
+        house1.bedrooms = 4;
+        console.log('First House Bedrooms#:', house1.bedrooms); // First House Bedrooms#: 4
+
+
+        console.log('Second House Bedrooms#:', house2.bedrooms);
+        // Using the getter and setter method with the object "house2":
+        house2.setBedrooms = 7; // Error => setBedrooms(7);
+        console.log('Second House Bedrooms#:', house2.getBedrooms); // Second House Bedrooms#: 7
+
+        // For more details: 
+        // https://www.w3schools.com/js/js_object_accessors.asp
+
+        // Accessing the getter and setter of the property "bedrooms" of the third house:
+        console.log('Third House Bathrooms#:', house3.getBathrooms()); // Third House Bathrooms#: 2
+
+        house3.setBathrooms(3);
+        console.log('Third House Bathrooms#:', house3.getBathrooms()); // Third House Bathrooms#: 3
+    </script>
+</body>
+
+</html>

@@ -66,14 +66,17 @@
             */
 
             // Notice that this object contains "properties" only (no methods/function)
+            // Object can store => string values, numeric values, boolean values as shown below:
             owner: "Martin",  // if the property value is string, we have to enclose it with ' or "
             year: 2017,
             wheels: 4,
             color: "White",
             km: 30000,
             // Yes we can use " or ' but stick with one
-            // no need for comma for the last item/property
-            name: 'speedy'
+            name: 'speedy',
+            // properties can have array values
+            // no need to add a comma for the last item/property (Optional)
+            secondDrivers: ['Alex', 'Chow', 'Sarah']
         };
 
         console.log(carObj);
@@ -101,6 +104,10 @@
         document.write("<hr>");
 
         document.write("<p>This car " + carObj.name + ", it belongs to " + carObj.owner + " the car year model is " + carObj.year + ". Its color is: " + carObj.color + ", " + carObj.wheels + " wheel-drive" + ", and finally they used for " + carObj.km + " km.</p>");
+
+        // We can also access the object values using  [ and ]
+        // objectName['propertyName']
+        console.log('The owner of the first car is: ' + carObj['owner']);
 
         /*
         We had a very basic example of creating a object with properties only:
@@ -132,8 +139,9 @@
 
                 Yes, we can use for example: carFullInfo.owner (Not recommended)
                 
-                To access any object members (properties/methods) within this object itself
+                To access any object member (properties/methods) within this object itself
                 we need to use a JS keyword "this" (it's better than using the object name itself)
+                so the keyword "this" is used when we want to refer to information within the object
                 */
                 document.write("<p>This car belongs to " + this.owner + ".</p>");
                 // Error: owner is not defined => we need to use the object dot notation to access its properties
@@ -178,7 +186,6 @@
         // these two object's functions (methods) will output the content to my page:
         carFullInfo.bio();
         carFullInfo.specs();
-
 
         // Another Example:
         let country = {
@@ -270,6 +277,96 @@
         console.log(this); // The keyword "this" contains the properties and method of the browser window
         // this will represent the "window" object
 
+
+        // Constructing with Literal Objects:
+        // Creating another "generic" object named "keyboard":
+        const keyboard = {
+            brand: "Yamaha",
+            type: "Stage Keyboard",
+            url: "https://ca.yamaha.com/en/products/music_production/stagekeyboards/index.html",
+            play: function () {
+                return "Do Re Mi Fa Sol La Ti"
+            }
+        }
+
+        console.log("*********************************");
+        // Don't forget that code below will output: object object as it will concatenated as a string
+        console.log(`Main Keyboard Object: ${keyboard}`);
+        console.log("Main Keyboard Object: " + keyboard);
+        // This will output the full object:
+        console.log("Main Keyboard Object: ", keyboard);
+        /*
+        {
+            brand: 'Yamaha', 
+            type: 'Stage Keyboard', 
+            url: 'https://ca.yamaha.com/en/products/music_production/stagekeyboards/index.html', 
+            play: ƒ
+        }
+        */
+        // Creating another object but with different way:
+        // Using Object.create() method
+        // this method accept the object name that we had already created
+        // we are passing the generic "keyboard" object as a constructor for other objects
+        const yc61 = Object.create(keyboard);
+        const yc73 = Object.create(keyboard);
+        const yc88 = Object.create(keyboard);
+
+        yc61.keypad = "Semi-weighted Waterfall";
+        yc61.keyNum = 61;
+
+        yc73.keypad = "Balanced Hammer Standard";
+        yc73.keyNum = 73;
+
+        yc88.keypad = "Natural Wood Graded Hammer";
+        yc88.keyNum = 88;
+
+        // Output the new objects:
+        console.log("YC61 Keyboard: ", yc61);
+        console.log("YC73 Keyboard: ", yc73);
+        console.log("YC88 Keyboard: ", yc88);
+        /*
+        Output:
+        YC61 Keyboard:  {keypad: 'Semi-weighted Waterfall', keyNum: 61}
+        YC73 Keyboard:  {keypad: 'Balanced Hammer Standard', keyNum: 73}
+        YC88 Keyboard:  {keypad: 'Natural Wood Graded Hammer', keyNum: 88}
+
+        We see the main properties that attached to each object specifically,
+        But every object from the 3 different keyboard objects has "[[Prototype]]: Object"
+        which is embedded within each one and it includes:
+        Type: "Stage Keyboard"
+        brand: "Yamaha"
+        play: ƒ ()
+        url: "https://ca.yamaha.com/en/products/music_production/stagekeyboards/index.html"
+        [[Prototype]]: Object
+
+        And we can access all the properties and the methods 
+        from original generic object "keyword" through each one and this is called "Inheritance" in OOP
+
+        so all the children "yc61" and "yc73" and "yc88" will inherit all the members 
+        from their parent object "keyboard"
+        */
+        console.log(`YC61 Keyboard: Is a ${yc61.type} made by ${yc61.brand}`);
+        // and so on for the rest yc73 and yc88
+
+        // We can access the play method:
+        console.log(`Playing the music scale of "${yc88.play()}" using full 88 keys of YC88 Keyboard`);
+        // Playing the music scale of "Do Re Mi Fa Sol La Ti" using full 88 keys of YC88 Keyboard
+
+        /*
+        We can go deeper by creating another object from "yc88" object for example,
+        which has already created from the original "keyboard" object and so on...
+        */
+
+        // Finally using:
+        // Object.keys() to output all the object's keys
+        // Object.values() to output all the object's values
+        console.log("YC88 Object Keys: ", Object.keys(yc88));
+        // (2) ['keypad', 'keyNum']
+        console.log("Person Object Keys: ", Object.keys(person));
+        // (3) ['firstName', 'lastName', 'hello']
+
+        console.log("Person Information: ", Object.values(person));
+
         // More examples about literal objects:
         // objects can have objects:
         let tree = {
@@ -311,7 +408,24 @@
         delete tree.height;
         console.log(tree);
 
-        // What if we need to create 4 objects of "house"
+        console.log("Loop with objects:");
+        // Looping through an object: using "for in" loop
+        console.log("country Object Properties:");
+        for (let item in country) {
+            console.log(item); // return the properties names
+        }
+
+        console.log("country Object Values:");
+        for (let item in country) {
+            console.log(country[item]); // return the properties values
+        }
+
+        console.log("country Object Properties and Values:");
+        for (let item in country) {
+            console.log(item, ':', country[item]); // return the properties values
+        }
+
+        // Problem: What if we need to create 4 objects of "house"
         // The three should have the same specifications (properties) but with different values:
 
         // The issues:
@@ -319,48 +433,48 @@
         // 2) The first object has the key "flooring" and we didn't add this key for the rest
 
         let house1 = {
-            model: "Astra",
-            bedRooms: 3,
+            model: "Astoria",
+            bedrooms: 3,
             guestRoom: true,
             finishedBasement: true,
             kitchen: 1,
             garage: 2,
-            bathRooms: 2,
+            bathrooms: 2,
             flooring: "laminate"
         }
 
         let house2 = {
             model: "Presto",
-            bedRooms: 2,
+            bedrooms: 2,
             guestRoom: false,
             finishedBasement: false,
             kitchen: 1,
             garage: 1,
-            bathRooms: 2
+            bathrooms: 2
         }
 
         let house3 = {
             model: "Galaxy",
-            bedRooms: 3,
+            bedrooms: 3,
             guestRoom: true,
             finishedBasement: false,
             kitchen: 1,
             garage: 2,
-            bathRooms: 2
+            bathrooms: 2
         }
 
         let house4 = {
             model: "Horizon",
-            bedRooms: 4,
+            bedrooms: 4,
             guestRoom: true,
             finishedBasement: true,
             kitchen: 2,
             garage: 3,
-            bathRooms: 2
+            bathrooms: 2
         }
 
         // Example to access house1 properties:
-        console.log("Bathrooms Number: ", house1.bathRooms);
+        console.log("bathrooms Number: ", house1.bathrooms);
         console.log("Garage Number: ", house1.garage);
     </script>
 </body>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher-Order Functions</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Functions that operate on other functions, 
+        either by taking them as arguments or by returning them, 
+        are called higher-order functions.
+
+        Link: https://eloquentjavascript.net/05_higher_order.html#h_xxCc98lOBK         
+        */
+
+
+        // forEach Array Method:
+        /*
+        here is a built-in array method, forEach, that provides something like a for/of loop as a higher-order function.
+        */
+        let musicScale = ["C", "D", "E", "F", "G", "A", "B",];
+        musicScale.forEach(note => console.log(note));
+        // OR:
+        ["C", "D", "E", "F", "G", "A", "B",].forEach(letter => console.log(letter));
+
+        // The following two methods to be added later...
+        // Or refer to my code lectures for the Front-Dev Stack repo
+
+        // map() Array Method:
+        /*
+        The map method transforms an array by applying a function
+        to all of its elements and building a new array from the returned values.
+        The new array will have the same length as the input array,
+        but its content will have been mapped to a new form by the function.
+        */
+
+        /*
+        Using .map() method of the array object:
+        
+        arrayName.map(our function)
+
+        arrayName.map(function(){
+
+        });
+        */
+
+        /*
+        Example 1: 
+        Return an array (Generate an new array) with the "square root" of all the values in the original array:
+        */
+        var numbers1 = [4, 9, 16, 25]; // our original array
+        console.log("Numbers1", numbers1);
+        /*
+        Using Math objet with its method  Math.sqrt()
+        Math.sqrt(value)
+        */
+
+        console.log(Math.sqrt(16)); // 4
+
+        // The solution using our normal way that we have learned before:
+        // the idea is to get numbers1=[2,3,4,5]
+
+        console.log(numbers1);
+        // We need to declare our new array before starting putting any value inside it
+        var sqrtNumbers1 = [];  // declare an empty array => our new array
+        // Now we can use all the methods/properties that comes with the array:
+        for (let i = 0; i < numbers1.length; i++) {
+            // Nested methods:
+            // Using this method of Array object named "push()"
+            // Using this method of Math object named "sqrt()"
+            // (method) Math.sqrt(x: number): number
+            sqrtNumbers1.push(Math.sqrt(numbers1[i]));
+            // Or:
+            // sqrtNumbers1[i] = Math.sqrt(numbers1[i]);
+        }
+
+        // for testing
+        console.log(sqrtNumbers1); // array => [2,3,4,5]
+
+        // The solution using .map() array method
+        /*
+            arrayName.map( using any built-in JS method(function) or our custom anonymous function or calling our function)
+
+            arrayName.map ( function() {
+                // writing my own code
+                // this code will target all the elements in the array
+            })
+        */
+
+        // filter Array Method:
+        const evenNumbers = numbers1.filter(letter => {
+            return letter % 2 === 0
+        });
+
+        console.log("Even Number Array: ", evenNumbers);
+
+        // Another example:
+        const allGrades = [90, 98, 65, 55, 88, 50, 81, 40, 75];
+
+        const passGrades = allGrades.filter(grade => {
+            return grade >= 60
+        });
+
+        console.log("All Grades: ", allGrades); // (9) [90, 98, 65, 55, 88, 50, 81, 40, 75]
+        console.log("Passing Grades: ", passGrades); // (6) [90, 98, 65, 88, 81, 75]
+
+
+        // map Array Method:
+        /*
+        Task: Find the square root of all these numbers:
+        Hint: use Math.sqrt()
+        The Math.sqrt() function returns the square root of a number
+        Link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt
+        */
+        const allNumbers = allGrades;
+        const sqrtNumArrays = allNumbers.map(number => {
+            return Math.sqrt(number)
+        });
+
+        console.log("Sqrt Num Arrays: ", sqrtNumArrays);
+
+
+
+
+    </script>
+</body>
+
+</html>

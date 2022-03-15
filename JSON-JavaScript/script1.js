@@ -41,19 +41,26 @@ as you can in a standard JavaScript object — strings, numbers, arrays, boolean
 
 // Literal JavaScript Object vs JSON:
 // Below is just a pure literal JS object named "objCar"
-var objCar = {
+let objCar = {
     // we and add the object members:
     // - Properties: variables declared inside the object
     // - Methods: functions declared inside the object
     type: "Honda",
     model: 2010,
-    color: "white"
+    color: "white",
+    describe: function () {
+        console.log(`Car Type: ${this.type} - Model: ${this.model} - Color: ${this.color}`);
+    }
 }; // end car object
+
+// calling properties/methods of "objCar":
+objCar.describe();
 
 // Below converting JS Object above to JSON Object
 // JSON Object Syntax:
 // we are saving the JSON into a new variable named "jsonCar"
-var jsonCar = {
+// Notice that JSON cannot have functions
+let jsonCar = {
     "type": "Honda",
     "model": 2010,
     "color": "white"
@@ -65,7 +72,7 @@ To make sure that we have the valid (correct) JSON object,
 We can use this online JSON Validator: https://jsonlint.com
 
 NOTE: Please, make sure to copy just the literal JSON value:
-- Place (write) just the pure JSON data without the variable name (remove: var varName =)
+- Place (write) just the pure JSON data without the variable name (remove: let varName =)
 - Remove the ; at the end
 
 So in the example of jsonCar, we have to copy only this part:
@@ -78,8 +85,8 @@ So in the example of jsonCar, we have to copy only this part:
 Results: Valid JSON
 */
 
-console.log(objCar);
-console.log(jsonCar);
+console.log(objCar); // {type: 'Honda', model: 2010, color: 'white', describe: ƒ}
+console.log(jsonCar); // {type: 'Honda', model: 2010, color: 'white'}
 /*
 The output for both:
 Object
@@ -97,7 +104,7 @@ we can also create an array of JSON objects below:
 - Each element is a JSON object { "property": value }
 - The first element (JSON object) has the index of 0
 */
-var theCars = [
+let theCars = [
     {
         "type": "Honda",
         "model": 2019,
@@ -127,7 +134,7 @@ console.log(typeof (theCars)); // object
 // one more example for JSON that contained within an array (array of JSON object):
 // Array of "JSON" objects for our college "CBC":
 // Every property (key) in JSON object has to be quoted 
-var cbc = [
+let cbc = [
     {
         "campus": "Toronto",
         "programs": ["FSSD", "MDM", "DMWD", "APA"]
@@ -183,7 +190,7 @@ first part: cbc[0]:
 then the second part programs[0]:
 "FSSD"
 */
-var fullInfo = "I am taking the " + cbc[0].programs[0] + " program at CBC, " + cbc[0].campus + " campus.";
+let fullInfo = "I am taking the " + cbc[0].programs[0] + " program at CBC, " + cbc[0].campus + " campus.";
 
 // Place our content in <p id="college">:
 document.getElementById("college").innerText = fullInfo;
@@ -215,7 +222,7 @@ and so on for the second and the third employee:
 */
 
 // 1) Below is an array of JSON Objects
-var employees = [
+let employees = [
     {
         "first_name": "Martin",
         "last_name": "Smith",
@@ -235,6 +242,30 @@ var employees = [
 
 // Don't forget to validate your array of JSON
 console.log(typeof (employees));
+
+/*
+JSON.stringify():
+We can use a JSON method named stringify()
+to convert a JavaScript object into a JSON Formatted String
+*/
+const carJSONstr = JSON.stringify(objCar);
+console.log("carJSONstr: ", carJSONstr); // carJSON:  {"type":"Honda","model":2010,"color":"white"}
+console.log("carJSONstr Data Type: ", typeof carJSONstr); // carJSON Type:  string
+// so carJSON is just a string data type, not an object although it looks like
+
+/*
+So with API (Application Programming Interface), when we ask for some data from other online resources,
+The data will be sent to us (the received data) as a JSON formatted string
+So we can use JSON.parse() to parse this valid JSON formatted string into a JSON object
+*/
+const carJSONobj = JSON.parse(carJSONstr);
+console.log("carJSONobj: ", carJSONobj);
+/*
+carJSONobj:  
+> {type: 'Honda', model: 2010, color: 'white'}
+*/
+console.log("carJSONobj Data Type: ", typeof carJSONobj); // carJSONobj Data Type:  object
+// We can access all the properties of carJSONobj using the dot notation as we did before
 
 // 2) Below is the same information using XML language:
 // Make/build it as an XML:

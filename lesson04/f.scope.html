@@ -10,7 +10,8 @@
 
 <body>
     <!-- 
-        This file complete reference: https://www.w3schools.com/js/js_scope.asp
+        This file comments, paragraph, and explications from W3Schools:
+        reference: https://www.w3schools.com/js/js_scope.asp
     -->
     <h1>Variable Scope</h1>
     <p>Scope determines the accessibility (visibility) of variables.</p>
@@ -23,18 +24,19 @@
     </ul>
 
     <h2>Block Scope</h2>
-    <p>
-        Before ES6 (2015), JavaScript had only Global Scope and Function Scope.
-        ES6 introduced two important new JavaScript keywords: let and const.
-        These two keywords provide Block Scope in JavaScript.
-        Variables declared inside a { } block cannot be accessed from outside the block:
-    </p>
+    <ul>
+        <li>Before ES6 (2015), JavaScript had only Global Scope and Function Scope.</li>
+        <li>ES6 introduced two important new JavaScript keywords: "let" and "const".</li>
+        <li>These two keywords (let and const) provide "Block Scope" in JavaScript.</li>
+        <li>Variables declared inside a { } block cannot be accessed from outside the block:</li>
+    </ul>
 
     <h1>Global and Local (function) Variable Scope</h1>
     <p>
         We can declare any variable in JavaScript by using the keyword "var" or the keyword "let".
-        If we declare a variable outside a function body/block, this variable will be global variable (its scope is
-        global), so this variable will be seen by or available to all the code. If we declare a variable inside a
+        If we declare a variable outside a function body/block,
+        this variable will be global variable (its scope is global),
+        so this variable will be seen by or available to all the code. If we declare a variable inside a
         function body/block, this variable will be a local/function variable (its scope is local), so this variable will
         be seen or available to only the code inside
         the function.
@@ -52,6 +54,11 @@
 
         Global Variable: is any variable that we declare outside a function
         */
+
+        var minNumber = 1;       // Global scope
+        let maxNumber = 10;       // Global scope
+        const fixedNumber = 2;       // Global scope
+
 
         // Step1: Create the function
         function myOutput() {
@@ -99,6 +106,21 @@
         // The following code line will generate an error: y is not defined
         // console.log(y);
 
+        // Notice that we can also create a block scope just by simply adding { and }
+        // Examples:
+        {
+            let inBlockLetNum = 100;
+        }
+        // Since we used "let" to declare the varaible "inBlockLetNum"
+        // So we can NOT access the variable "inBlockLetNum" outside its block so it can NOT be used here
+
+        {
+            var inBlockVarNum = 200;
+        }
+        // Since we used "var" to declare the varaible "inBlockVarNum"
+        // So we can access the variable "inBlockVarNum" outside its block so it can be used here
+
+
         // More examples:
         // we are creating a global variable
         // is defined inside the main script and outside any function
@@ -122,9 +144,19 @@
         // declaring a new variable outside the function to be global
         var mySecondGlobalVar = 200;
 
+        /*
+        Function Scope:
+        JavaScript has function scope: Each function creates a new scope.
+        Variables defined inside a function are not accessible (visible) from outside the function.
+        Variables declared with var, let and const are quite similar when declared inside a function.
+        */
         // let's create a function to divide any global variable by 2:
         function myDivByTwo() {
             // local variable like "myLocalVariable" is defined inside the function
+            /*
+            Local variables have Function Scope:
+            They can only be accessed from within the function.
+            */
             var myLocalVariable = 100;
             myLocalVariable = myLocalVariable / 2;
             alert("myLocalVariable: " + myLocalVariable); // 50
@@ -180,11 +212,25 @@
         addNumbers(2, 3);
         document.write("<br>" + total);
 
+        // Another example with using "const" to create a local scope variable (Function Scope):
+        function anyValue() {
+            const mainRatio = 35.25;
+        }
+        // console.log(mainRatio); // will generate an error => mainRatio is not defined
+
+        // So using "const" for creating a block/function scope variable has the same rules as "let"
+        {
+            const passMark = 60;
+        }
+        // console.log('Passing Mark: ', passMark); // will generate an error => passMark is not defined
+
         // More Advanced Topic:
         function printLanguage() {
             var myLanguage = "JavaScript"; // local variable
             document.write("<p>" + myLanguage + "</p>");
             /*
+            To Review:
+            ==========
             In other programming languages like Python, we use the keyword GLOBAL
             to make any varaible even if it's declared inside a function
 
@@ -192,8 +238,8 @@
             If you assign a value to a variable that has not been declared,
             it will automatically become a GLOBAL variable.
 
-            If we don't use the keyword "var" or "let"
-            JS will declare this varaible globally!
+            If we don't use the keyword "var" or "let" or "const"
+            JS will declare this varaible globally without any error!
 
             Very Important Note:
             --------------------
@@ -209,6 +255,24 @@
         // Now we do need to call our function "printLanguage()" at least to set a value to "myProgram"
         printLanguage(); // Wed Design and Development
         document.write("<p>" + myProgram + "</p>"); // Wed Design and Development
+
+        /*
+        As a conclusion:
+        
+        a local scope varaible is a varaible that we can declare:
+        - inside any block of code => Block Scope
+        - inside any function => Function Scope
+
+        so in "Local Scope", we can have block scope and function scope
+
+        The three types of Scope:
+        - Global Scope: the variable is declared in the main script,
+                        and it can be accessed inside any block or function
+        - Function Scope: the varaible is declared inside a function
+                          and it can NOT be accessed from outside its function
+        - Block Scope: the varaible is declared inside any block of code or just inside pair of { and }
+                       and it can NOT be accessed from outside the block
+        */
     </script>
 </body>
 

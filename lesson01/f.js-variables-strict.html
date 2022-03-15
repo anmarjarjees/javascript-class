@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variables with Strict Mode</title>
+</head>
+
+<body>
+    <script>
+        /*
+            If we don't use the keyword "var" or "let" or "const"
+            JS will declare this varaible globally without any error!
+
+            Very Important Note:
+            --------------------
+            All modern browsers support running JavaScript in "Strict Mode".
+            In "Strict Mode", undeclared variables are not automatically global.
+
+            Read more: https://www.w3schools.com/js/js_strict.asp
+
+            So we can the syntax "use strict" to avoid creating/declaring a new varaible 
+            without using a proper keyword: const, let, var (old fashioned)
+            */
+
+        "use strict"; // Defines that JavaScript code should be executed in "strict mode".
+        // myCourse = "JavaScript Fundamentals"; // Error: Uncaught ReferenceError: myCourse is not defined
+        let testResult = true;
+    </script>
+
+    <script>
+        // "use strict"; 
+        backendLang = "PHP"; // No errors as this is a new script block and strick mode is commented
+    </script>
+</body>
+
+</html>

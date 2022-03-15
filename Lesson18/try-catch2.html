@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try and Catch</title>
+</head>
+
+<body>
+    <script>
+        // More about try and catch:
+        /*
+        Creating an arrow function and assign it to a constant named "errorTestFun":
+        To recap:
+        - arrow function like anonymous function, doesn't have a name
+        - this doesn't accept any parameters so it's just ()
+        - using the symbol of => then the function block {}
+        */
+        const errorTestFun = () => {
+            // Inside this function we can embed the try-catch:
+            try {
+                const myCourse = "JavaScript Fundamentals";
+                myCourse = "Python Fundamentals";
+            }
+            // let's use er for error
+            catch (er) {
+                console.log(er); // as a text: TypeError: Assignment to constant variable.
+                // OR as an error:
+                console.error(er);
+                // OR as a warning:
+                console.warn(er);
+            }
+            // try-catch can have finally block which comes at the end
+            // the code inside it will always be executed whether there is an error on not
+            finally {
+                console.log("Finally, this is the end!");
+            }
+        }
+        // calling our function by referencing its variable name "errorTestFun" with () as a function:
+        errorTestFun();
+    </script>
+</body>
+
+</html>

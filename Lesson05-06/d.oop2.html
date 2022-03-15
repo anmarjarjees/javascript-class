@@ -20,13 +20,13 @@
 
       the code we had before with out "Constructor Function) example:
       let house1 = {
-          model: "Astra",
-          bedRooms: 3,
+          model: "Astoria",
+          bedrooms: 3,
           guestRoom: true,
           finishedBasement: true,
           kitchen: 1,
           garage: 2,
-          bathRooms: 2,
+          bathrooms: 2,
           flooring: "laminate"
       }
       */
@@ -56,7 +56,7 @@
             // the variable on the left-hand side is the key (property) for this object
             // teh variable on the right-hand side is the value we are passing to this Constructor
             this.name = modelName;
-            this.bedRooms = bedRoomNum;
+            this.bedrooms = bedRoomNum;
             // we can use the same name for both: the property name and its value varaible:
             // LHS: (property) House.hasGuestRoom
             // RHS: (parameter) hasGuestRoom
@@ -64,7 +64,7 @@
             this.finishedBasement = finishedBasement;
             this.kitchenNum = kitchenNum;
             this.garage = garageNum;
-            this.bathRooms = bathRoomNum;
+            this.bathrooms = bathRoomNum;
             this.flooring = flooringType;
         }
 
@@ -86,7 +86,7 @@
 
         Now we can use the same syntax with our constructor function House!
         */
-        let house1 = new House("Astra", 3, true, true, 1, 2, 2);
+        let house1 = new House("Astoria", 3, true, true, 1, 2, 2);
         let house2 = new House("Presto", 2, false, true, 1, 1, 2);
         let house3 = new House("Galaxy", 2, true, true, 2, 1, 2);
 
@@ -95,13 +95,13 @@
 
         // output the numbers of bedroom for each house model
         console.log("Model Name: ", house1.name);
-        console.log("Number of bedrooms: ", house1.bedRooms);
+        console.log("Number of bedrooms: ", house1.bedrooms);
         console.log("****************************************");
         console.log("Model Name: ", house2.name);
-        console.log("Number of bedrooms: ", house2.bedRooms);
+        console.log("Number of bedrooms: ", house2.bedrooms);
         console.log("****************************************");
         console.log("Model Name: ", house3.name);
-        console.log("Number of bedrooms: ", house1.bedRooms);
+        console.log("Number of bedrooms: ", house1.bedrooms);
 
         // Another example:
         // Constructor named "Member":

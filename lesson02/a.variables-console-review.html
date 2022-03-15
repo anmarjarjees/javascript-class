@@ -15,17 +15,17 @@
         // JavaScript can have containers called "Variables"
         // Variables are used to save any types of values
         // we need to (should) declare the variable before using it:
-        // To declare a new variable, we use the keyword "var" or "let"
+        // To declare a new variable, we can use the keyword "var" or "let" or "const"
         var x;
         x = 200;
         alert(x);
+
         // We can declare and initialize a new variable
         // in the same line (at the same time):
         var y = 100;
 
         // since both variables x and y have values:
         alert(x + y);
-
 
         /*
         if you find using alert() method (function)
@@ -101,30 +101,6 @@
         FindTotalPayment();
         */
 
-        /*
-        JavaScript will not complaint
-        about declaring the same variable more than one time using "var"
-        but it will give us an error when declaring the same variable more than one time using "let"
-
-        It's really not a good coding practice to declare the same variable two times
-        mainly the same scope (later)
-
-        And that's we can use the modern way to avoid this issue
-        */
-        var mySubject = "JavaScript";
-        console.log(mySubject); // JavaScript
-
-        var mySubject = "PHP";
-        console.log(mySubject); // PHP
-
-
-        let myProgram = "DMWD";
-        console.log(myProgram); // DMWD
-        // let myProgram = "FSSD";
-        // Error: Identifier 'myProgram' has already been declared
-        console.log(myProgram); // DMWD
-
-
         // Task: The average of the two exams":
         // 3 ways of writing this code:
 
@@ -164,7 +140,6 @@
         prompt()
         parseFloat()
         */
-
     </script>
 </body>
 

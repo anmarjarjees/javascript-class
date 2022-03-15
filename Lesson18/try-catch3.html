@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try and Catch</title>
+</head>
+
+<body>
+    <script>
+        /*
+        This array "mixedValues" contains different data types:
+        const numericValues: (string | number | boolean)[]
+
+        so will use try-catch-finally with a new keyword "throw" to throw an error
+        to generate a valid numeric array and let's named "numericList"
+        this array should contain only numeric values
+
+        We loop through each element in mixedValues array,
+        if it's not a number => throw an error
+        */
+        const mixedValues = [10.67, 51, "abc", 72.86, true, 25, false, 100, 89, "xyz", 91.83, 20];
+        const numericList = []; // Declaring an empty array:
+
+        const isOK = true;
+        console.log(typeof (isOK));
+        const errorTestFun = (anyArray) => {
+            let i = 0;
+            while (i < anyArray.length) {
+                // Inside this function we can embed the try-catch:
+                try {
+                    console.log(`Checking ${anyArray[i]}`);
+                    if (isNaN(anyArray[i]) || typeof (anyArray[i]) == "boolean") {
+                        // using the keyword "throw" to throw a new Error
+                        throw new Error(`${anyArray[i]} is not a numeric value!`);
+                        // Then the rest of the try block code will be skipped (will not be executed)
+                        // and the program will jump to the end so no need for else block
+                    } // end if
+                    // Otherwise if it's a numeric value, push it to the numericList array
+                    // Notice that the following code will not run if an error is thrown!
+                    // the two lines of code below will only be executed if no error has been thrown
+                    // so need to add else block:
+                    console.log(`Adding the value ${anyArray[i]} to the "numericList" array.`);
+                    numericList.push(anyArray[i]);
+                } // end try
+                catch (er) {
+                    // Notice that the value of "er" will be the value of our custom error message
+                    console.log("Our Custom Error Message: ", er);
+                } finally {
+                    console.log("Finally block: Increment the loop counter to jump to the next element");
+                    i++;
+                    console.log('****************************************');
+                }
+            } // end while
+        } // end function
+
+        // calling our function by referencing its variable name "errorTestFun":
+        errorTestFun(mixedValues);
+
+        console.log("The final numeric array:", numericList);
+    </script>
+</body>
+
+</html>

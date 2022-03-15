@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Scope Review</title>
+</head>
+
+<body>
+    <script>
+        // Quick Review for using var, let, and const scopes:
+        var varNum = 1;
+        let letNum = 2;
+        const conNum = 3;
+
+        console.log(`Global Variable varNum: ${varNum}`);
+        console.log(`Global Variable letNum: ${letNum}`);
+        console.log(`Global Variable conNum: ${conNum}`);
+
+        function mainFunction() {
+            console.log(`Inside Main Function Output varNum: ${varNum}`);
+            console.log(`Inside Main Function Output letNum: ${letNum}`);
+            console.log(`Inside Main Function Output conNum: ${conNum}`);
+
+            // Creating a block inside this function:
+            {
+                console.log(`Inside block of Main Function  Output varNum: ${varNum}`);
+                console.log(`Inside block of Main Function Output letNum: ${letNum}`);
+                console.log(`Inside block of Main Function Output conNum: ${conNum}`);
+            }
+        }
+
+        // calling our function "mainFunction()":
+        mainFunction(); // All the values will be printed ok
+
+        // practising function and block scope within a function:
+        function minorFunction() {
+            // create new variables with the same names
+            // overriding the previous one but locally only:
+            var varNum = 100;
+            let letNum = 200;
+            const conNum = 300;
+            /*
+            If you comment/remove/delete any from the above local varaibles,
+            the console.log will use the globally declared values from the global varaibles with the same names
+            */
+            console.log(`Inside Minor Function Output varNum: ${varNum}`);
+            console.log(`Inside Minor Function Output letNum: ${letNum}`);
+            console.log(`Inside Minor Function Output conNum: ${conNum}`);
+
+            // Creating a block inside this function:
+            {
+                console.log(`Inside block of Minor Function Output varNum: ${varNum}`);
+                console.log(`Inside block of Minor Function Output letNum: ${letNum}`);
+                console.log(`Inside block of Minor Function Output conNum: ${conNum}`);
+            }
+        }
+
+        // calling our function "minorFunction()":
+        minorFunction(); // All the local values of the local (function) variables will be printed ok
+
+
+        function detailedFunction() {
+            // create new variables with the same names
+            // overriding the previous one but locally only:
+            var varNum = 100;
+            let letNum = 200;
+            const conNum = 300;
+            /*
+            If you comment/remove/delete any from the above local varaibles,
+            the console.log will use the globally declared values from the global varaibles with the same names
+            */
+            console.log(`Inside detailed Function Output varNum: ${varNum}`);
+            console.log(`Inside detailed Function Output letNum: ${letNum}`);
+            console.log(`Inside detailed Function Output conNum: ${conNum}`);
+
+            // Creating a block inside this function:
+            {
+                var varNum = 1000;
+                let letNum = 2000;
+                const conNum = 3000;
+                console.log(`Inside block of detailed Function Output varNum: ${varNum}`);
+                console.log(`Inside block of detailed Function Output letNum: ${letNum}`);
+                console.log(`Inside block of detailed Function Output conNum: ${conNum}`);
+            }
+        }
+
+        // calling our function "detailedFunction()":
+        detailedFunction();
+
+        function advFunction() {
+            // create new variables with the same names
+            // overriding the previous one but locally only:
+            var varNum = 100.7; // var has a function scope 
+            let letNum = 200.8; // let has a block scope
+            const conNum = 300.9; // const has a block scope also
+            // Creating a block inside this function:
+            {
+                var varNum = 1.1; // This new value will be available outside this block within the function
+                let letNum = 1.2; // This new value will be available only inside this block within the function
+                const conNum = 1.5; // This new value will be available only inside this block within the function
+                console.log(`Inside block of adv Function Output varNum: ${varNum}`); // 1.1
+                console.log(`Inside block of adv Function Output letNum: ${letNum}`); // 1.2
+                console.log(`Inside block of adv Function Output conNum: ${conNum}`); // 1.5
+            }
+            // Let's output the same variables after changing then in the previous block
+            // Notice that varNum has a function scope
+            console.log(`Inside adv Function Output varNum after: ${varNum}`); // 1.1
+            console.log(`Inside adv Function Output letNum after: ${letNum}`); // 200.8
+            console.log(`Inside adv Function Output conNum after: ${conNum}`); // 300.9
+        }
+
+        // calling our function "advFunction()":
+        advFunction();
+
+
+        /*
+        To recap the important notes:
+        - Using the modern way const and let instead of using var
+        - Using const always, unless we need to reassign or changing the value later in our code
+        - Using let (instead of const), if we need to reassign or change the value later in our code
+        */
+    </script>
+</body>
+
+</html>

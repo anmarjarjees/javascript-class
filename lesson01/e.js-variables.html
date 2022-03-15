@@ -186,6 +186,62 @@
          but for the end user (our clients, customers) we can use the alert function for the time being. Later in the next chapters we will learn another more user friendly functions/tools to output/print the results on the page itself
          */
 
+
+        /*
+        VERY IMPORTANT NOTES:
+        The var keyword was since the beginning of JavaScript
+        till 2015 when we had another keyword which is "let"
+        After "let", "var" became one of the legacy code
+     
+        Why we should use "let" instead of "var" to declare a variable:
+        JavaScript will not complaint
+        about declaring the same variable more than one time using "var"
+        but it will give us an error when declaring the same variable more than one time using "let"
+
+        It's really not a good coding practice to declare the same variable two times
+        mainly the same scope (later)
+
+        And that's we can use the modern way to avoid this issue
+        */
+        var mySubject = "JavaScript";
+        console.log(mySubject); // JavaScript
+
+        var mySubject = "PHP";
+        console.log(mySubject); // PHP
+
+
+        let myProgram = "DMWD";
+        console.log(myProgram); // DMWD
+        // let myProgram = "FSSD";
+        // Error: Identifier 'myProgram' has already been declared
+        console.log(myProgram); // DMWD
+
+
+        /*
+        Besides the old way of using the keyword "var"
+        and the new/modern way of using the keyword "let" instead
+        we can use another modern way to declare a varaible which is "const" 
+
+        const for "constant" which means this variable's value cannot be changed
+        */
+        const campus = "Toronto";
+
+        // The following code will throw this error:
+        // Uncaught TypeError: Assignment to constant variable.
+        campus = "Markham"; // ERROR
+
+        /*
+        Conclusion:
+        - You can stop using the keyword "var" due to the main issue the we addressed above
+        - Now "let" or "const", It's better to always use "const" for constant
+        to declare any variable if you have no intention to change its value later, 
+        or use let if the variable might have another value after being initialized 
+        are after being assigned to another one.
+
+        Variable Scopes: 
+        Is a very important topic and depending on using var or let
+        To be discussed with functions
+        */
     </script>
 </body>
 
